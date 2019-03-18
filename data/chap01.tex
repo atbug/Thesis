@@ -24,9 +24,57 @@
 \end{equation}
 此时，这个波包的位置是具有良好定义的期望值的
 \begin{equation}
-\boldsymbol{r}_c = \left. -\frac{\partial}{\partial \bk} \arg w(\bk, t) + \berry_n(\bk)\right|_{\bk=\bk_c}.
+\boldsymbol{r}_c = \left. -\frac{\partial}{\partial \bk} \arg w(\bk, t) + \berry_n(\bk)\right|_{\bk=\bk_c}.\label{semi-rc}
 \end{equation}
-这里的$\berry_n(\bk)=i \langle u_n(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$被称为贝里联络，$u_n(\bk)$则是布洛赫波的周期性部分。
+这里的$\boldsymbol{\berry}_n(\bk)=i \langle u_n(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$被称为贝里联络，$u_n(\bk)$则是布洛赫波的周期性部分。
+
+$\bk_c$ 和 $\br_c$ 是波包的重要性质。在经典的牛顿力学理论中，这两个量分别对应粒子的动量和位置。由于不确定原理，这两个量在量子力学中仅仅是期望值。 在外电场和磁场很小的情况下，$\bk_c$ 和 $\br_c$的运动方程是（下标$c$省略）
+\begin{align}
+	\frac{d\br}{dt} &= \frac{\partial \epsilon_M(\bk)}{\hbar\partial \bk}-\frac{d\bk}{dt}\times\boldsymbol{\Omega}(\bk)\nonumber\\
+	\hbar\frac{d\bk}{dt} &= -e\boldsymbol{E}-e\frac{d\br}{dt}\times\boldsymbol{E}.\label{semi-eqn}
+\end{align}
+这样的方程和经典的牛顿运动方程非常相似，但是存在着几项修正，下面我们一项一项分析其修正。
+
+第一个修正来自于轨道磁矩，和牛顿力学中的粒子不同，波包并没有确定的位置，波包的波函数在实空间里面是延展的。因此波包可以围绕这自己的中心旋转，这样的旋转会带来不为0的轨道磁矩，在磁场中，轨道磁矩会贡献额外的能量，因此第一项修正为$\epsilon_M(\bk)=\epsilon(\bk)-\boldsymbol{m}(\bk)\cdot\boldsymbol{B}$。这里的$\epsilon(\bk)$是没有外场下的布洛赫波的能量，而轨道磁矩的计算表达式为
+\begin{equation}
+\boldsymbol{m}(\bk) = -i\frac{e}{2\hbar}\langle\nabla_{\bk}u|\times [\hat{H}(\bk)-\epsilon(\bk)]|\nabla_{\bk}u\rangle.
+\end{equation}
+可以看到轨道磁矩并不和波包的具体形式有关，只和体的波函数相关。这给计算带来的巨大的便利。
+
+第二项修正来自于贝里曲率，这又是一项超越经典力学的修正项。经典力学中粒子的运动是用实数描述的，而量子力学中的波函数则必须使用复数来描述，复数和实数的巨大差异就来源于复数存在相位。贝里曲率则来源于波包运动过程中产生的几何相位。贝里曲率的定义是
+\begin{equation}
+\boldsymbol{\Omega}(\bk) = \nabla\times\berry(\bk).
+\end{equation}
+它贡献了式\ref{semi-eqn}中的反常速度项（第一行右手边的第二项）。
+
+式\ref{semi-eqn}刻画了波包运动过程中的信息，为了得到固体的各种性质，我们还需要知道波包在相空间（$\bk-\br$空间）的分布情况。在没有磁场的情况下，相空间的态密度是均匀分布的。但是在有磁场的情况下，相空间的态密度则会需要进行修正。这个态密度是
+\begin{equation}
+D(\br,\bk)=\frac{1}{(2\pi)^d}(1+\frac{e}{\hbar}\boldsymbol{B}\cdot\boldsymbol{\Omega}).\label{semi-dens}
+\end{equation}
+这里$d$是空间的维度。
+
+式\ref{semi-eqn}和式\ref{semi-dens}是准经典波包理论的重要结果。这两个式子结合在一起，可以预测固体的大量性质，这些预言在实验上获得了巨大的成功。
+
 \section{位移电流}
+
+位移电流是本文的研究重点之一，这一小节我们对位移电流做一个简单的介绍。
+
+位移电流是一种光伏效应，指的是在线性偏正光的照射下，没有空间反演对称性的材料产生自发直流电的现象。目前广泛应用的光电池往往基于$p-n$结，是一种界面效应。与此相反，位移电流来源于体的能带结构，被称为体的光伏效应。
+
+位移电流是一种二阶效应，具体来说，它可以表达为
+\begin{equation}
+J^\alpha = \sigma^{\alpha\beta\beta}(\omega) E^\beta(\omega) E^\beta(\omega).
+\end{equation}
+这里的$\alpha$和$\beta$是笛卡尔方向的指标，$\omega$是光场的频率，$\sigma^{\alpha\beta\beta}$被称为位移电导。
+
+位移电流的起源是电子在光场的作用下从价带跃迁到导带时发生的位置变化，位移电导计算表达式为
+\begin{equation}
+\sigma^{\alpha\beta\beta}=-\frac{2\pi e^3}{\hbar^2}\int \frac{d\bk}{(2\pi)^3}\sum_{n,m}f_{mn}|\berry^\beta_{mn}|^2 R_{nm}^{\alpha\beta} \delta(\omega_{nm}-\omega),
+\end{equation}
+这里的积分区域为第一布里渊区，$n,m$是能带标号，$f_{mn}=f_m-f_n$是费米分布的差，$\boldsymbol{\berry}_{mn}(\bk)=i \langle u_m(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$是贝里联络的非对角项，$\omega_{nm}=\omega_n-\omega_m$是能带能量的差（$\epsilon_n=\hbar\omega_n$）, 而$R_{nm}^{\alpha\beta}$具有长度的单位，被称为位移矢量。位移矢量和式\ref{semi-rc}紧密相关，具体形式为
+\begin{equation}
+R_{nm}^{\alpha\beta}=\partial_\alpha \phi_{mn}^{\beta}-\berry_m^\alpha+\berry_n^\alpha,
+\end{equation}
+其中$\phi_{mn}^{\beta}$是$\berry_{mn}^{\beta}$的相位。位移矢量的物理阐释就是电子从带$m$跃迁到带$n$发生的位置变化的大小。
 \section{布洛赫电子的磁性质}
 \subsection{量子振荡}

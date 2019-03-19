@@ -30,8 +30,8 @@
 
 $\bk_c$ 和 $\br_c$ 是波包的重要性质。在经典的牛顿力学理论中，这两个量分别对应粒子的动量和位置。由于不确定原理，这两个量在量子力学中仅仅是期望值。 在外电场和磁场很小的情况下，$\bk_c$ 和 $\br_c$的运动方程是（下标$c$省略）
 \begin{align}
-	\frac{d\br}{dt} &= \frac{\partial \epsilon_M(\bk)}{\hbar\partial \bk}-\frac{d\bk}{dt}\times\boldsymbol{\Omega}(\bk)\nonumber\\
-	\hbar\frac{d\bk}{dt} &= -e\boldsymbol{E}-e\frac{d\br}{dt}\times\boldsymbol{E}.\label{semi-eqn}
+	\dot{\br} &= \frac{\partial \epsilon_M(\bk)}{\hbar\partial \bk}-\dot{\bk}\times\boldsymbol{\Omega}(\bk)\nonumber\\
+	\hbar\dot{\bk} &= -e\boldsymbol{E}-e\dot{\br}\times\boldsymbol{E}.\label{semi-eqn}
 \end{align}
 这样的方程和经典的牛顿运动方程非常相似，但是存在着几项修正，下面我们一项一项分析其修正。
 
@@ -69,12 +69,51 @@ J^\alpha = \sigma^{\alpha\beta\beta}(\omega) E^\beta(\omega) E^\beta(\omega).
 
 位移电流的起源是电子在光场的作用下从价带跃迁到导带时发生的位置变化，位移电导计算表达式为
 \begin{equation}
-\sigma^{\alpha\beta\beta}=-\frac{2\pi e^3}{\hbar^2}\int \frac{d\bk}{(2\pi)^3}\sum_{n,m}f_{mn}|\berry^\beta_{mn}|^2 R_{nm}^{\alpha\beta} \delta(\omega_{nm}-\omega),
+\sigma^{\alpha\beta\beta}=-\frac{2\pi e^3}{\hbar^2}\int \frac{d\bk}{(2\pi)^3}\sum_{n,m}f_{mn}|\berry^\beta_{mn}|^2 R_{nm}^{\alpha\beta} \delta(\omega_{nm}-\omega),\label{shift-expr}
 \end{equation}
 这里的积分区域为第一布里渊区，$n,m$是能带标号，$f_{mn}=f_m-f_n$是费米分布的差，$\boldsymbol{\berry}_{mn}(\bk)=i \langle u_m(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$是贝里联络的非对角项，$\omega_{nm}=\omega_n-\omega_m$是能带能量的差（$\epsilon_n=\hbar\omega_n$）, 而$R_{nm}^{\alpha\beta}$具有长度的单位，被称为位移矢量。位移矢量和式\ref{semi-rc}紧密相关，具体形式为
 \begin{equation}
 R_{nm}^{\alpha\beta}=\partial_\alpha \phi_{mn}^{\beta}-\berry_m^\alpha+\berry_n^\alpha,
 \end{equation}
 其中$\phi_{mn}^{\beta}$是$\berry_{mn}^{\beta}$的相位。位移矢量的物理阐释就是电子从带$m$跃迁到带$n$发生的位置变化的大小。
+
+位移电流只有在空间反演破缺的情况下存在，在没有空间反演破缺的材料中，式\ref{shift-expr}被积函数在$\bk$和$-\bk$处严格相反，所以积分结果严格为零。除了空间反演对称性以外，还有别的对称性可以禁止位移电导的某些分量。一般而言，$\berry$和位置算符$\hat{\br}$具有相同的对称变换规则。比如，既然$\hat{T}\hat{\br}\hat{T}^{-1}=\hat{\br}$（$T$是时间反演操作），那么在具有时间反演对称的晶体中就有$\berry_{nm}(\bk)=\berry_{nm}(-\bk)^*$。既然$\inv \hat{\br} \inv^{-1}=-\hat{\br}$（$\inv$是空间反演操作），那么具有空间反演对称性的材料就会有$\berry_{nm}(\bk)=-\berry_{nm}(-\bk)$。这样的关系可以辅助分析位移电导在各种对称性下的变换。注意，由于贝里联络可以出现相位不定性。因此上面的等式都是在选择了一定的相位规范下成立的。
+
+最早的和实验进行对比的位移电流的计算出现2012年，Steve Young等人通过第一型原理方法计算了BaTiO$_3$的位移电流。BaTiO$_3$是典型的铁电材料，具有较大的极化。Steve Young等人和更早期的实验进行了对比，得到了相对比较满意的结果（图）。
+
+自此之后，出于实际应用的目的，人们开始探索什么样的材料能够具有较大的位移电流。其中一个突出的工作是在最简单的模型中将极化和位移矢量联系在了一起。该工作的基本结论是极化越大，位移矢量越大。但是在实际计算中，人们发现位移电流并不是随着极化的增长单调上升的。后来，Tan等人尝试对位移电流进行了高通量计算，从中找出了一些位移电流比较大的材料，得到了一些半经验性的规律。这些规律在简单模型中基本成立，但是在复杂体系中的表现还有待探索。
+
+
 \section{布洛赫电子的磁性质}
+
+与电场相比，布洛赫电子的磁性质的研究要困难许多。在一定的规范下，电场可以不破坏晶体的离散平移对称性。但是无论选取什么规范，磁场一定会破坏晶体的离散平移对称性。因此，布洛赫电子在磁场中的运动往往在磁场非常小的情况下进行近似。这个近似在绝大部分实验条件下都是非常合理的。磁场作为小量的理论在这里被称为准经典理论。
+
+
+人们早已知道，自由电子在磁场中的能级是分立的，这些能级被称为朗道能级。在晶体中，电子的表现是相似的。在费米面没有穿过布里渊区边界的情况下，电子的能级也是分立的，这些能级同样被称为朗道能级。Peierls-Onsager-Lifshitz准经典理论就是一个求解磁场中布洛赫电子的朗道能级和朗道能级波函数的理论，随着磁场变小，Peierls-Onsager-Lifshitz准经典理论越来越精确。Peierls-Onsager-Lifshitz准经典理论的强大之处在于，这个理论仅仅需要知道零场下的电子的能带结构信息，就可以预测出弱磁场下的晶体的各种性质。我们在本文中仅仅讨论等能面闭合的情况，等能面穿过布里渊区的问题留到以后进行研究。
+
+在最简单的物理图像下，电子在磁场中会沿着等能面做回旋运动，此时这个电子被称为磁振子。磁振子的运动方程为
+\begin{equation}
+\hbar\dot{\bk}=-\frac{e}{\hbar}\nabla_{\bk}\epsilon\times\boldsymbol{B}.
+\end{equation}
+这个回旋运动的周期我们称为磁振子的周期，记为$T_c$.
+\begin{equation}
+T_c=\frac{1}{\hbar l^2 |dS/dE|}.
+\end{equation}
+这里，$S$是能量为$E$的等能面的面积。我们同时在这里引入磁长度的概念
+\begin{equation}
+l=\sqrt{\frac{\hbar}{eB}}.
+\end{equation}
+磁长度的物理含义是电子在磁场中运动，大概获得$2\pi$的相位所需要运动的长度。
+
+
+更加严格的理论则是基于有哈密顿量理论。这个理论将哈密顿量中的磁场小量展开，在一组合适的基下进行展开。有效哈密顿量理论既可以在实空间表述，也可以在$\bk$空间表述。在零阶近似下，有效哈密顿量在$\bk$空间的表述叫做Peierls替换：将能带能量$\epsilon(\bk)$直接替换为$\epsilon(\bK)$，这里，$\bK=\bk+(e/\hbar)\boldsymbol{A}(i\nabla_{\bk})$。这里的$\epsilon(\bK)$是一个算符，作用在$\bk$空间的波函数上，定态薛定谔方程就变成了
+\begin{equation}
+\epsilon(\bK)f(\bk)=Ef(\bk).
+\end{equation}
+这个定态薛定谔方程可以用WKB近似得到近似解。近似解最方便的表达方式是量子化条件，量子化条件是一个关于能量$E$和磁场$B$的方程，这个方程的解就是朗道能级。在零阶近似下，量子化条件是
+\begin{equation}
+l^2 S=2\pi n+\pi.
+\end{equation}
+这里的$n$是整数，$\pi$
+
 \subsection{量子振荡}

@@ -43,7 +43,7 @@ $\bk_c$ 和 $\br_c$ 是波包的重要性质。在经典的牛顿力学理论中
 
 第二项修正来自于贝里曲率，这又是一项超越经典力学的修正项。经典力学中粒子的运动是用实数描述的，而量子力学中的波函数则必须使用复数来描述，复数和实数的巨大差异就来源于复数存在相位。贝里曲率则来源于波包运动过程中产生的几何相位。贝里曲率的定义是
 \begin{equation}
-\boldsymbol{\Omega}(\bk) = \nabla\times\berry(\bk).
+\boldsymbol{\Omega}(\bk) = \nabla\times\boldsymbol{\berry}(\bk).
 \end{equation}
 它贡献了式\ref{semi-eqn}中的反常速度项（第一行右手边的第二项）。
 
@@ -103,7 +103,7 @@ T_c=\frac{1}{\hbar l^2 |dS/dE|}.
 \begin{equation}
 l=\sqrt{\frac{\hbar}{eB}}.
 \end{equation}
-磁长度的物理含义是电子在磁场中运动，大概获得$2\pi$的相位所需要运动的长度。
+磁长度的物理含义是电子在磁场中运动，大概获得$2\pi$的相位所需要运动的长度。在磁场是一个小量的假设下，磁长度$l$是一个大量。
 
 
 更加严格的理论则是基于有哈密顿量理论。这个理论将哈密顿量中的磁场小量展开，在一组合适的基下进行展开。有效哈密顿量理论既可以在实空间表述，也可以在$\bk$空间表述。在零阶近似下，有效哈密顿量在$\bk$空间的表述叫做Peierls替换：将能带能量$\epsilon(\bk)$直接替换为$\epsilon(\bK)$，这里，$\bK=\bk+(e/\hbar)\boldsymbol{A}(i\nabla_{\bk})$。这里的$\epsilon(\bK)$是一个算符，作用在$\bk$空间的波函数上，定态薛定谔方程就变成了
@@ -114,6 +114,23 @@ l=\sqrt{\frac{\hbar}{eB}}.
 \begin{equation}
 l^2 S=2\pi n+\pi.
 \end{equation}
-这里的$n$是整数，$\pi$
+这里的$n$是整数，$\pi$被称为Maslov相位，来自于WKB的量子修正。Maslov相位等于$\pi$仅仅在等能面可以连续变化为圆的时候才成立。
+
+近年来，随着凝聚态中拓扑性质的发现，人们逐渐意识到除了动力学相位之外，几何相位同样非常重要。几何相位在量子化条件中贡献的是一阶项。事实上，除了几何相位之外，量子化条件中的一阶项还由轨道磁矩和自旋磁矩贡献。在磁场中，这些磁矩会带来额外的能级移动，从而产生额外的相位。
+
+这些额外的能量在有效哈密顿量里面表现为修正项$\mathfrak{h}_1(\bK)$
+\begin{equation}
+\mathfrak{h}_1(\bk)=B(M_z-g_s\mu_Bs_z/\hbar+e\epsilon_{\alpha\beta}\berry_\beta v_\alpha)
+\end{equation}
+
+在考虑进这些相位之后，量子化条件改变为
+\begin{equation}
+l^2 S+\lambda = 2\pi n +\pi,
+\end{equation}
+其中
+\begin{equation}
+\lambda = \oint \frac{\mathfrak{h}_1}{v_x} dk_y.
+\end{equation}
+这里积分沿着磁振子轨道，方向是逆时针方向，我们在本文都假设磁场沿着$-z$方向。
 
 \subsection{量子振荡}

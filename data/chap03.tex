@@ -1,4 +1,40 @@
 \chapter{非线性光学性质的Wannier插值计算方法}
 
-非线性光学效应在现代光学和现代凝聚态物理中起着非常重要的作用。在激光科学技术中，具有非线性光学效应的材料可以通过频率转换，将现有的激光转换到远红外或者远紫外频率。尽管非线性光学研究已经有了半个世纪以上的历史，但是对新奇的非线性光学效应的探索仍然没有停止。近几年来，人们逐渐开始研究贝里相位和拓扑效应在非线性光学中的效应。重要的是，最近的理论工作揭示了包括位移电流，倍频效应，光伏霍尔效应等等效应都和拓扑相关的物理量如贝里相位和贝里曲率有关系。除此之外，实验和理论都证实了在拓扑材料中的非线性光学效应非常显著。在这样的背景下，研究非线性光学现象中的拓扑效应就成为了非常重要的课题。
+非线性光学效应在现代光学和现代凝聚态物理中起着非常重要的作用\cite{boyd-nlo}。非线性光学材料在很多领域都有非常重要的实际应用，尤其是激光科学技术领域\cite{nurmikko-compact,kanai_generation_2004,boyd-nlo}。非线性光学材料可以通过频率转换，将现有的激光转换到远红外或者远紫外频率\cite{nurmikko-compact,kanai_generation_2004}。尽管非线性光学研究已经有了半个世纪以上的历史，但是对新奇的非线性光学效应的探索仍然没有停止\cite{young2012,young2012_2,tan2016,morimoto2016,morimoto2016prb,rangel_giant_2016,cook_design_2017,wu_giant_2017}。近几年来，人们逐渐开始研究贝里相位和拓扑效应在非线性光学中的效应\cite{xiao2010,hasan2010,qi2011}。重要的是，最近的理论工作揭示了包括位移电流，倍频效应，光伏霍尔效应等等效应都和拓扑相关的物理量如贝里相位和贝里曲率有关系\cite{morimoto2016,morimoto2016prb}。除此之外，实验和理论都证实了在拓扑材料中的非线性光学效应非常显著\cite{tan2016,wu_giant_2017}。在这样的背景下，研究非线性光学现象中的拓扑效应就成为了非常重要的课题。
 
+在材料科学领域，第一性原理方法非常有效，不可替代。第一性原理方法能够在不引入任何经验参数的情况下计算材料的各种性质。现如今，人们多次使用第一性原理方法计算非线性光学效应\cite{sipe_second-order_2000,young2012,rangel_giant_2016,cook_design_2017}。但是，这些方法计算量都非常地大，布里渊区的积分需要极密的$k$点。另外一方面，第一性原理生成的波函数的相位不确定性，如果没有得到很好的处理，将无法计算贝里相位和贝里相位的导数。这个问题被称为相位问题。要解决这些问题，人们需要新的计算非线性光学效应的方法。最近，基于Mazari等人提出的最大局域化Wannier函数方法\cite{marzari_maximally_1997,marzari2012}，Wannier插值方法被用来计算各种各样的物理量，包括反常霍尔电导，轨道磁矩等等\cite{wang_textitab_2006,yates_spectral_2007,lopez_wannier-based_2012}。这些计算采用一阶微扰来解决相位问题。Wannier插值方法计算量很小，并且可以和绝大部分第一性原理计算方法接口，包括密度泛函理论，杂化泛函和$GW$方法。但是，据我们所知，并没有人尝试用Wannier插值方法计算非线性光学效应。
+
+
+我们在这里将Wannier插值方法推广，用以计算非线性光学效应。这个方法通过二阶微扰构建了一个平滑的相位规范，可以准确计算任何$k$点的波函数的导数和二阶导数。作为示例，我们计算了单层GeS和WS$_2$的位移电流，以及GaAs的倍频效应，得到了和前人一致的结果\cite{rangel_giant_2016,nastos_scissors_2005}。我们同时证明了基于微扰的Wannier插值方法优于传统基于波函数的计算方法。传统方法利用了一些近似的求和规则\cite{sipe_second-order_2000,cook_design_2017}，需要对所有能带进行求和，其收敛相对较慢。最后我们提出Wannier插值可以很容易地被用来构建紧束缚模型，方便理论地研究。这些优点让Wannier插值成为一个在非线性光学领域很有前景的计算方法。
+
+
+\section{计算方法}
+\subsection{相位问题}
+
+由于布洛赫波函数存在着相位不确定性，在计算布洛赫波函数的导数的过程中，我们需要非常的小心。在第一性原理中，布洛赫波的相位一般而言是随机的，由于有限差分方法仅适用于连续可导的函数，贝里联络不能够采用有限差分的方法进行计算。这个问题被称为相位规范问题。在计算非线性光学的过程中，相位问题必须小心处理。据我们所知，目前有两种方案来处理相位问题，其中一种是构造规范不变的离散表达式，另外一种是采用动量矩阵和求和规则。下面我们对这两种方式进行简单的介绍。
+
+
+\subsection{构造规范不变的表达式}
+
+任何物理量归根结底不应该依赖于规范的选区，这个性质叫做规范不变性。我们要介绍的第一种克服规范问题的方法是采用规范不变的表达式。这里，我们以Zak相位\cite{zak_berrys_1989}为例，来阐述这个方法。Zak相位可以定义在一维布里渊区中，它的表达式$\frac{1}{2\pi}\ointop dk\berry(k)$。这里积分符号上的圈表示这个积分应该穿过整个布里渊区（我们这里将晶格矢长度设置为1）。Zak相位是一个可观测量，和晶体的极化紧密相关\cite{king-smith_theory_1993,resta_theory_1992}，因此，它应该是规范不变的。在计算Zak相位的时候，人们常常使用下面的表达式：
+\begin{align*}
+\frac{i}{2\pi}\text{ln}[\langle u(k)|u(k+\Delta k)\rangle\langle u(k+\Delta k)|u(k+2\Delta k)\rangle\\
+\times...\langle u(k+2\pi-\Delta k)|u(k+2\pi)\rangle].
+\end{align*}
+这个表达式是规范不变的，因为$|u(k+\Delta k)\rangle$的任意相位变化都会被$\langle u(k+\Delta k)|$抵消掉。在边界上，由于周期性边界条件，$\langle u(k)|$和$|u(k)\rangle=e^{i2\pi\hat{r}}|u(k+2\pi)\rangle$的相位也会抵消掉。对于位移电流，人们也曾经构造过位移电流的规范不变的表达式\cite{young2012}，但是具体细节就不再详述。
+
+
+这里，我们需要提出，非线性光学效应的规范不变性是比Zak相位更加显著的。具体来说，非线性光学效应的表达式在每一个$k$点都是规范不变的，而Zak相位只有整个表达式积分起来才能够规范不变。因此，我们将非线性光学效应称为局域规范不变，而Zak相位被称为全局规范不变。非线性光学效应的局域规范不变性在我们将要发展的Wannier插值起着很大的作用。
+
+\subsection{动量矩阵和求和规则}
+
+另外一种计算贝里相位的方法是采用动量矩阵元和求和规则\cite{sipe_second-order_2000}。动量矩阵元$\langle\psi_{n}|-i\hbar\nabla_{\mathbf{r}}|\psi_{m}\rangle$计算的时候没有相位问题。由于贝里联络和速度矩阵元存在如下关系：$v_{nm}^{b}(\mathbf{k})=\frac{1}{\hbar}\partial_{b}E_{n}(\mathbf{k})\delta_{nm}+\frac{i}{\hbar}(E_{n}(\mathbf{k})-E_{m}(\mathbf{k}))r_{nm}^{b}$，因此得到速度矩阵元就可以得到贝里相位。另外一方面，速度算符和动量算符是成正比的：$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$。这样，贝里联络就可以顺利求得。计算广义贝里相位的方法是采用一个求和规则
+\begin{align}
+r_{nm;a}^{b} & =\frac{i\hbar^{2}}{E_{nm}}[\frac{v_{nm}^{b}\Delta_{nm}^{a}+v_{nm}^{a}\Delta_{nm}^{b}}{E_{nm}}\nonumber \\
+& +\sum_{p\ne n,m}(\frac{v_{np}^{b}v_{pm}^{a}}{E_{pm}}-\frac{v_{np}^{a}v_{pm}^{b}}{E_{np}})]\label{eq:sum-rule}\\ 
+& +\frac{1}{\hbar^{2}}\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle~(n\ne m)\nonumber,
+\end{align}
+这里$\Delta_{nm}^{a}\equiv v_{nn}^{a}-v_{mm}^{a}$， $E_{np}\equiv E_{n}-E_{p}$~\cite{cook_design_2017}.
+式\ref{eq:sum-rule}中的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$难以处理，毕竟数值方法仅仅可以对矩阵而不是算符进行微分。幸运的式，在$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$成立的条件下，$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle  \  (n\ne m)$是0.
+
+但是，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$并不是总是成立。对于形如$\hat{H}=\frac{\hat{\mathbf{p}}^{2}}{2m}+V(\mathbf{r})$，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$确实可以从海森堡对易关系中推出。但是在第一性原理计算中，势能往往被写为 $V=V_{0}(r)+V_{nl}$，这里的$V_{nl}$是非局域的势，一般而言和$\hat{\mathbf{r}}$不对易。这个时候$\hat{\mathbf{p}} m\hat{\mathbf{v}}$仅仅是近似成立。除此之外，在基于紧束缚近似的能带计算中，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$完全不成立。在这些情况下，采用动量矩阵元的方法失效，并且求和规则中前人\cite{sipe_second-order_2000}忽略的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$也不应该忽略。 

@@ -37,4 +37,74 @@ r_{nm;a}^{b} & =\frac{i\hbar^{2}}{E_{nm}}[\frac{v_{nm}^{b}\Delta_{nm}^{a}+v_{nm}
 这里$\Delta_{nm}^{a}\equiv v_{nn}^{a}-v_{mm}^{a}$， $E_{np}\equiv E_{n}-E_{p}$~\cite{cook_design_2017}.
 式\ref{eq:sum-rule}中的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$难以处理，毕竟数值方法仅仅可以对矩阵而不是算符进行微分。幸运的式，在$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$成立的条件下，$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle  \  (n\ne m)$是0.
 
-但是，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$并不是总是成立。对于形如$\hat{H}=\frac{\hat{\mathbf{p}}^{2}}{2m}+V(\mathbf{r})$，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$确实可以从海森堡对易关系中推出。但是在第一性原理计算中，势能往往被写为 $V=V_{0}(r)+V_{nl}$，这里的$V_{nl}$是非局域的势，一般而言和$\hat{\mathbf{r}}$不对易。这个时候$\hat{\mathbf{p}} m\hat{\mathbf{v}}$仅仅是近似成立。除此之外，在基于紧束缚近似的能带计算中，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$完全不成立。在这些情况下，采用动量矩阵元的方法失效，并且求和规则中前人\cite{sipe_second-order_2000}忽略的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$也不应该忽略。 
+但是，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$并不是总是成立。对于形如$\hat{H}=\frac{\hat{\mathbf{p}}^{2}}{2m}+V(\mathbf{r})$，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$确实可以从海森堡对易关系中推出。但是在第一性原理计算中，势能往往被写为 $V=V_{0}(r)+V_{nl}$，这里的$V_{nl}$是非局域的势，一般而言和$\hat{\mathbf{r}}$不对易。这个时候$\hat{\mathbf{p}} m\hat{\mathbf{v}}$仅仅是近似成立。除此之外，在基于紧束缚近似的能带计算中，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$完全不成立。在这些情况下，采用动量矩阵元的方法失效，并且求和规则中前人\cite{sipe_second-order_2000}忽略的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$也不应该忽略。
+
+
+\subsection{Wannier函数插值方法}
+
+通过最大局域化Wannier函数方法，人们可以得到最大局域化Wannier函数空间中的晶体的哈密顿量。这个哈密顿量可以通过布里渊区极少数$k$点的第一性原理的波函数及其能量得到。在得到哈密顿量之后，任意$k$点的布洛赫波及其本征能量都可以轻松通过傅里叶变换求得。通过一阶微扰的理论，最大局域化Wannier函数方法在文献\onlinecite{wang_textitab_2006}中曾经备用来计算贝里联络，贝里曲率以及反常霍尔电导。在这里，我们使用Wannier函数方法计算非线性光学效应。由于非线性光学效应需要贝里联络的导数，我们需要用到更高阶的微扰论，下面我们将要介绍这个方法的细节，解释为什么这个方法不存在相位问题。最后我们通过计算实际材料的非线性光学效应来证明这个方法的可靠性。
+
+我们采用和文献\onlinecite{wang_textitab_2006}一样的符号系统，在这个符号系统中，$|u_{n}^{(\textrm{W})}\rangle$被用来表示Wannier函数的布洛赫波式加和: 
+\[
+|u_{n}^{(\textrm{W})}\rangle=\sum_{\mathbf{R}}e^{-i\mathbf{k}\cdot(\hat{\mathbf{r}}-\mathbf{R})}|\mathbf{R}n\rangle,
+\]
+这里 $|\mathbf{R}n\rangle$ 表示用$\mathbf{R}$标记的元胞中的第$n$个Wannier函数。而$|u^{(\textrm{H})}\rangle$被用来表示整个晶体的布洛赫本征态。
+
+算符既可以在$|u^{(\textrm{W})}\rangle$表示为矩阵，也可以在$|u^{(\textrm{H})}\rangle$下表示为矩阵。这两个不同的表象我们将用上标``(W)'' or ``(H)''区分开来。比如说$H_{nm}^{(\textrm{H})}(\mathbf{k})=\langle u_{n\mathbf{k}}^{(\textrm{H})}|\hat{H}(\mathbf{k})|u_{m\mathbf{k}}^{(\textrm{H})}\rangle=E_{n\mathbf{k}}\delta_{nm}$，而 $H_{nm}^{(\textrm{W})}(\mathbf{k})=\sum_{R}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{H}|\mathbf{R}m\rangle$. 算符在$|u_{n}^{(\textrm{W})}\rangle$和$|u_{n}^{(\textrm{H})}\rangle$这两个表象下的矩阵是由一个幺正矩阵$U$联系在一起的。这样的性质被称为规范协变\cite{wang_textitab_2006}。比如说，哈密顿量矩阵元就是规范协变的：
+\begin{align}
+U^{\dagger}(\mathbf{k})H^{(\textrm{W})}(\mathbf{k})U(\mathbf{k}) & =H^{(\textrm{H})}(\mathbf{k}).\label{eq:H-w-H-h}
+\end{align}
+事实上，这个变换可以认为是量子力学中的从$|u_{n}^{(\textrm{W})}\rangle$到$|u_{n}^{(\textrm{H})}\rangle$的基矢变换。另外一方面，如果我们已经得到了算符$\hat{O}$在最大局域化Wannier函数的基矢下的矩阵$\langle\mathbf{0}n|\hat{O}|\mathbf{R}m\rangle$，我们就可以得到任意$k$点的$\hat{O}$在$|u_{n}^{(\textrm{W})}\rangle$下的表示矩阵，它们仅仅相差一个傅里叶变换：
+\[
+O_{nm}^{(\textrm{W})}(\mathbf{k})=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{O}|\mathbf{R}m\rangle.
+\]
+这样我们可以接着通过幺正变换得到$\hat{O}$对$|u_{n}^{(\textrm{H})}\rangle$在任意$k$点的表示矩阵。通过这种方法， Wannier插值提供了一种迅速得到$O^{(\textrm{H})}(\textbf{k})$的方法。
+
+可是，和普通算符不同，由于$A_{nm}^{a}(\mathbf{k})$中存在着一个对$k$点的导数，它并不是一个相位协变的量。这个性质提示我们，尽管人们经常将$A_{nm}^{a}(\mathbf{k})$看作位置算符在布洛赫波中的矩阵表示，这个看法并不准确，毕竟任何可观测量在基矢变换下都应该是协变的。具体来说，$A_{nm}^{a}(\mathbf{k})$满足\cite{wang_textitab_2006} 
+\begin{equation}
+A^{a(\textrm{H})}=U^{\dagger}A^{a(\textrm{W})}U+iU^{\dagger}\partial_{a}U,\label{eq:A-H-A-W}
+\end{equation}
+这里
+\begin{equation}
+A^{a(\textrm{W})}\equiv i\langle u_{n}^{(\textrm{W})}|\partial_{a}u_{m}^{(\textrm{W})}\rangle=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{r}^{a}|\mathbf{R}m\rangle.
+\end{equation}
+$A^{a(\textrm{H})}$的导数则更加复杂：
+\begin{align}
+\partial_{b}A^{a(\textrm{H})} & =(\partial_{b}U^{\dagger})A^{a(\textrm{W})}U+U^{\dagger}(\partial_{b}A^{a(\textrm{W})})U\\
+& +U^{\dagger}A^{a(\textrm{W})}\partial_{b}U+i(\partial_{b}U^{\dagger})(\partial_{a}U)+iU^{\dagger}\partial_{b}\partial_{a}U.
+\end{align}
+计算$U$的导数同样存在着相位问题。但是，在Wannier插值中，我们不仅仅能够得到$H^{(\textrm{W})}(\mathbf{k})$，而且可以得到$H^{(\textrm{W})}(\mathbf{k})$对$k$的导数。不仅如此，我们还知道$U$的列就是$H^{(\textrm{W})}(\mathbf{k})$的本征矢(见式 \ref{eq:H-w-H-h})。在这样的情况下，我们可以通过微扰论来获得$U$的导数。这个方法本质上就是解析地产生一个平滑地相位规范，然后在这个规范下求导。
+
+具体说来，我们有一个本征值问题
+\begin{equation}
+H(\bk)x_{n\bk} = E_{n\bk}x_{n\bk}.
+\end{equation}
+这里的$H$就是$H^{\mathrm{(W)}}$，而$x$就是$U$的列。我们要求解的是$x$对$\bk$的导数。为了解决这个问题，我们对本征值两边求导，得到
+\begin{align}
+(\partial_\alpha H) x_n+H \partial_\alpha x_n = (\partial_\alpha E_n) x_n + E_n \partial_\alpha x_n.\label{owl:dep}
+\end{align}
+在式\ref{owl:dep}上左乘 $x_n^\dagger$，我们可以得到
+\begin{equation}
+\partial_\alpha E_{n}=x_{n}^{\dagger}(\partial_\alpha H) x_{n}.
+\end{equation}
+在式\ref{owl:dep}上左乘 $x_m^\dagger$ ($n\ne m$)，我们可以得到
+\begin{equation}
+x_{m}^{\dagger}\partial_\alpha x_{n}=\frac{x_{m}^{\dagger}(\partial_\alpha H)x_{n}}{E_n-E_m}.
+\end{equation}
+为了求得
+One again faces gauge problem when calculating derivatives of $U$. However, based on Wannier interpolation method, we know $H^{(\textrm{W})}(\mathbf{k})$ and also the transformation matrix $U$ that is composed of eigenvectors of $H^{(\textrm{W})}(\mathbf{k})$ (see Eq. (\ref{eq:H-w-H-h})) for any $\mathbf{k}$ in the BZ. Thus, instead of doing finite differences, we are able to use perturbation theory to get a smooth gauge for $U$ and calculate derivatives of  $U$ without gauge problem. 
+
+When doing perturbations from $\mathbf{k}_{0}$ to $\mathbf{k}$ ($\mathbf{k}\simeq\mathbf{k}_{0}$), we require $[U^{\dagger}(\mathbf{k})U(\mathbf{k}_{0})]_{nn}$ to be real. In this gauge, the first order derivatives have been derived in Ref.~\onlinecite{wang_textitab_2006}:
+\[
+(U^{\dagger}\partial_{a}U)_{nm}=\begin{cases}
+-\frac{(U^{\dagger}H_{a}^{(\textrm{W})}U)_{nm}}{E_{n}-E_{m}} & n\neq m\\
+0 & n=m
+\end{cases}.
+\]
+The second order derivatives, after some tedious but straightforward algebra, are shown to be 
+
+where $a\ne b$, $H_{a}$ and $H_{ab}$ stand for $\partial_{a}H$ and $\partial_{b}\partial_{a}H$, respectively. In this way, $r_{nm}^{b}$ and $r_{nm;a}^{b}$ can be calculated directly from $\langle\mathbf{0}n|\hat{\mathbf{r}}|\mathbf{R}m\rangle$ and $\langle\mathbf{0}n|\hat{H}|\mathbf{R}m\rangle$, which can be obtained by the wannier90 code~\cite{mostofi_updated_2014}. 
+
+The essence of the present method is the construction of a smooth gauge of $U(\mathbf{k})$ by doing perturbation from $\mathbf{k}_{0}$ to $\mathbf{k}$ ($\mathbf{k}\simeq\mathbf{k}_{0}$), which is realized by requiring $[U^{\dagger}(\mathbf{k})U(\mathbf{k}_{0})]_{nn}$ to be real. Since NLO responses are gauge invariant locally, we can do such kind of perturbations around each $\mathbf{k}$ point and sum the results over the whole BZ. Note that the method might not work for expressions that are only globally gauge invariant, because there is no guarantee that the perturbation theory can provide a smooth gauge across the whole BZ. Indeed there are some failure cases. For instance, a globally smooth gauge can not be constructed by any means for two dimensional systems with nonzero Chern number~\cite{b._andrei_bernevig_topological_2013}.
+
+One can also calculate $r_{nm;a}^{b}$ from Wannier interpolated $r_{nm}^{b}$ by applying the sum rule Eq. (\ref{eq:sum-rule}), without the need of doing the second order perturbation. However, Eq. (\ref{eq:sum-rule}) contains a summation over all occupied and unoccupied bands. While in practice, we can only consider limited number of bands, which will introduce errors when using the sum rule. In contrast, the perturbation theory only requires a summation over relevant (not all) Wannier orbitals, as shown in Eq. (\ref{eq:second-order}). In this sense, the perturbation formula is favored over the sum rule. We will compare the results obtained by both methods in the following.

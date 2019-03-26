@@ -100,19 +100,37 @@ x_{n\boldsymbol{0}}^{\dagger} x_{n\boldsymbol{k}}\in\mathbb{R},\label{owl:phase}
 x_{n}^{\dagger}\partial_\alpha x_n=0.
 \end{equation}
 到这里，我们就解决了本征矢的一阶导数问题，对$U$的一阶导数也就随之得到了。
-One again faces gauge problem when calculating derivatives of $U$. However, based on Wannier interpolation method, we know $H^{(\textrm{W})}(\mathbf{k})$ and also the transformation matrix $U$ that is composed of eigenvectors of $H^{(\textrm{W})}(\mathbf{k})$ (see Eq. (\ref{eq:H-w-H-h})) for any $\mathbf{k}$ in the BZ. Thus, instead of doing finite differences, we are able to use perturbation theory to get a smooth gauge for $U$ and calculate derivatives of  $U$ without gauge problem. 
 
-When doing perturbations from $\mathbf{k}_{0}$ to $\mathbf{k}$ ($\mathbf{k}\simeq\mathbf{k}_{0}$), we require $[U^{\dagger}(\mathbf{k})U(\mathbf{k}_{0})]_{nn}$ to be real. In this gauge, the first order derivatives have been derived in Ref.~\onlinecite{wang_textitab_2006}:
+$U$的二阶导数的求法和上面的一阶导数的求法是一致的，仅仅是将本征方程求二阶导数而已，在这里就不再赘述。值得注意的是，微扰论和对本征方程求导是一致的。这两种方法都假设了求导点$k$附近有一个平滑的相位规范。也都需要相位条件式\ref{owl:phase}来得到一个位移的答案。由于非线性光学效应是局域规范不变的，我们可以在每个需要计算的$\bk$点附近进行这样的操作，然后将每个$k$点的结果加起来。这个方法不一定能够正确的计算全局规范不变的物理量，因为在不同点的微扰论不一定能够得到全布里渊区的平滑的规范。事实上，我们知道在有些情况下二维布里渊区根本不可能得到全局平滑的规范，一个典型的例子就是陈数非零的能带\cite{b._andrei_bernevig_topological_2013}。
+
+
+除了上述的二阶微扰的方法，我们还可以用求和规则式\ref{eq:sum-rule}，利用一阶微扰得到的$r_{nm}^{b}$来求得$r_{nm;a}^{b}$。但是，式\ref{eq:sum-rule}包含了对所有占据带和非占据带的求和。实际计算中我们只会选取有限的能带，着就会带来误差。而基于二阶微扰的方法则仅仅需要对得到的最大局域化Wannier轨道求和。从这个角度，二阶微扰的方法优于求和规则，我们下面会对两种方法得到的结果进行比较。
+
+
+\subsection{紧束缚方法}
+
+从理论研究的角度来讲，计算简单的紧束缚模型的非线性光学效应能够对非线性材料的设计给予指导\cite{fregoso_quantitative_2016,cook_design_2017}。Wannier插值方法可以直接用于紧束缚模型。具体操作就是直接设置$\langle0m|\hat{\mathbf{r}}|\mathbf{R}n\rangle=\delta_{0\mathbf{R}}\delta_{mn}\mathbf{r}_{n}$。这个方法在这里将会称为紧束缚近似。在紧束缚近似中，处在$\mathbf{R}$标记的元胞内坐标为$\mathbf{r}_{n}$的局域轨道$|\mathbf{R}n\rangle$具有如下性质：$\hat{\mathbf{r}}|\mathbf{R}n\rangle=(\mathbf{R} + \mathbf{r}_{n}) |\mathbf{R}n\rangle$。于是，我们定义紧束缚基矢为$|u_{n}^{(\textrm{TB})}\rangle=\sum_{\mathbf{R}}e^{-i\mathbf{k}\cdot(\hat{\mathbf{r}}-\mathbf{R}-\mathbf{r_{n}})}|\mathbf{R}n\rangle$。$|u_{n}^{(\textrm{TB})}\rangle$满足 $|\partial_{a}u_{n}^{(\textrm{TB})}(\mathbf{k})\rangle=0$。在紧束缚近似下，计算非线性光学效应的方法如下所述：
+\begin{enumerate}
+	\item 使用紧束缚基组$|u_{n}^{(\textrm{TB})}\rangle$ 来表示哈密顿量 $H^{(\textrm{TB})}_{nm}(\mathbf{k})$。
+	\item 通过计算 $H^{(\textrm{TB})}_{nm}(\mathbf{k})$ 的导数来计算速度矩阵元。根据定义，我们有\[
+	v_{nm}^{a(\textrm{H})}=\frac{1}{\hbar}\sum_{n'm'}\langle u_{n}^{(\textrm{H})}|u_{n'}^{(\textrm{TB})}\rangle v_{n'm'}^{a(\textrm{TB})}\langle u_{m'}^{(\textrm{TB})}|u_{m}^{(\textrm{H})}\rangle,
+	\]这里 $v_{n'm'}^{a(\textrm{TB})} = \langle u_{n}^{(\textrm{TB})}|\partial_{a}\hat{H}(\mathbf{k})|u_{m}^{(\textrm{TB})}\rangle$. 由于在紧束缚近似中 $|\partial_{a}u_{n}^{(\textrm{TB})}(\mathbf{k})\rangle=0$, $v_{n'm'}^{a(\textrm{TB})} = \partial_{a}H_{n'm'}^{(\textrm{TB})}(\mathbf{k})$。速度矩阵元就如下求得：
+	\begin{equation}
+	v_{nm}^{a(\textrm{H})}=\frac{1}{\hbar}\sum_{n'm'}\langle u_{n}^{(\textrm{H})}|u_{n'}^{(\textrm{TB})}\rangle\partial_{a}H_{n'm'}^{(\textrm{TB})}(\mathbf{k})\langle u_{m'}^{(\textrm{TB})}|u_{m}^{(\textrm{H})}\rangle.\label{eq:v-tight-binding}
+	\end{equation}
+	\item 如上所述，我们指导 $r_{nm}^{b}$ 可以通过速度矩阵元求得, 而 $r_{nm;a}^{b}$ 既可以通过二阶微扰求得，也可以通过求和规则求得。根据我们的计算，这两个方法在紧束缚近似下结果是完全相同的。得到$r_{nm}^{b}$ 和 $r_{nm;a}^{b}$之后，位移电流或者倍频效应就可以直接通过布里渊区积分求得。
+\end{enumerate}
+
+\subsection{技术细节}
+
+我们在计算中用下面的函数作为狄拉克delta函数的近似：
 \[
-(U^{\dagger}\partial_{a}U)_{nm}=\begin{cases}
--\frac{(U^{\dagger}H_{a}^{(\textrm{W})}U)_{nm}}{E_{n}-E_{m}} & n\neq m\\
-0 & n=m
-\end{cases}.
+\delta(x) = \text{lim}_{\epsilon\to0}\frac{1}{\pi}\frac{\epsilon}{\epsilon^{2}+x^{2}},
 \]
-The second order derivatives, after some tedious but straightforward algebra, are shown to be 
+这里$\epsilon$是展宽函数。
 
-where $a\ne b$, $H_{a}$ and $H_{ab}$ stand for $\partial_{a}H$ and $\partial_{b}\partial_{a}H$, respectively. In this way, $r_{nm}^{b}$ and $r_{nm;a}^{b}$ can be calculated directly from $\langle\mathbf{0}n|\hat{\mathbf{r}}|\mathbf{R}m\rangle$ and $\langle\mathbf{0}n|\hat{H}|\mathbf{R}m\rangle$, which can be obtained by the wannier90 code~\cite{mostofi_updated_2014}. 
+大家已经熟知，在构造最大局域化Wannier函数的时候，晶体的对称性，比如点群对称性，并没有能够得到很好的保持。正因为这一点，由于对称性应该简并的能带在Wannier插值中会劈开。目前，我们知道有两种方法来解决这个问题，第一个方法是在得到Wannier函数之后进行对称化，另一个方法是在构造过程中加上对称性约束以得到对称的Wannier函数。前一种方法仅仅是一个临时性的方法，并没有严格的理论依据；后一种方法则需要小心的选择希尔伯特空间，并且目前已有的代码不能够保证能带可以严格重复。为了检验Wannier函数的对称性缺失对结果的影响，我们
 
-The essence of the present method is the construction of a smooth gauge of $U(\mathbf{k})$ by doing perturbation from $\mathbf{k}_{0}$ to $\mathbf{k}$ ($\mathbf{k}\simeq\mathbf{k}_{0}$), which is realized by requiring $[U^{\dagger}(\mathbf{k})U(\mathbf{k}_{0})]_{nn}$ to be real. Since NLO responses are gauge invariant locally, we can do such kind of perturbations around each $\mathbf{k}$ point and sum the results over the whole BZ. Note that the method might not work for expressions that are only globally gauge invariant, because there is no guarantee that the perturbation theory can provide a smooth gauge across the whole BZ. Indeed there are some failure cases. For instance, a globally smooth gauge can not be constructed by any means for two dimensional systems with nonzero Chern number~\cite{b._andrei_bernevig_topological_2013}.
+It is a well known problem that the construction of MLWFs does not preserve symmetries, like point group symmetries. This is reflected in the interpolated band structure, in which some bands should be degenerate but become split because of artificial symmetry breaking. Currently there are two solutions to this problem: One is to impose symmetry after Wannierisation and the other is to impose symmetry during Wannierisation\cite{sakuma_symmetry-adapted_2013}. The former way is just a temporary solution, while the latter one requires carefully selected Hilbert subspaces and is currently implemented in a way that exactly fitted band structure is not guaranteed. To test the influence of the symmetry problem, we calculated materials with inversion symmetry, which should give zero shift current as required by symmetry. Since inversion symmetry is slightly broken when constructing MLWFs, our calculation gives nonzero shift current conductivity, which is about two orders of magnitude smaller that of materials with broken inversion symmetry. Thus, we believe that the slight symmetry broken has negligible influence on the calculated NLO responses.
 
-One can also calculate $r_{nm;a}^{b}$ from Wannier interpolated $r_{nm}^{b}$ by applying the sum rule Eq. (\ref{eq:sum-rule}), without the need of doing the second order perturbation. However, Eq. (\ref{eq:sum-rule}) contains a summation over all occupied and unoccupied bands. While in practice, we can only consider limited number of bands, which will introduce errors when using the sum rule. In contrast, the perturbation theory only requires a summation over relevant (not all) Wannier orbitals, as shown in Eq. (\ref{eq:second-order}). In this sense, the perturbation formula is favored over the sum rule. We will compare the results obtained by both methods in the following.
+Our formalism is based on non-degenerate perturbation theory, which does not work when degeneracy occurs. In calculations of linear responses, degeneracies usually do not cause problems. For instance, when calculating anomalous Hall coefficient, only matrix elements between lower occupied and higher unoccupied bands are relevant to the result (see Eq. (32) of Ref.~\onlinecite{wang_textitab_2006}). Thus there is no need to compute matrix elements between degenerate bands. However, this is not the case in calculations of NLO responses. Previous study proposed to solve the degeneracy problem by diagonalizing velocity matrix along the direction of electric field $\mathbf{E}(t)$. Specifically, when two bands $n$ and $m$ are degenerate, choose a proper basis to satisfy the condition $\mathbf{E}(t)\cdot\mathbf{v}_{nm}=0  \ (n\ne m)$~\cite{sipe_second-order_2000}. Usually the contribution of degeneracy points is negligible, since these points correspond to zero volume in the BZ. Therefore, to avoid divergence in computation, we discard near degeneracy points with energy differences smaller than a threshold. The threshold is varied within wide ranges from $10^{-4}$ to $10^{-6}$ eV, showing no visible differences in NLO responses dispersion curves, proving the convergence of our results.

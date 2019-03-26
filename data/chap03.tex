@@ -79,7 +79,7 @@ $A^{a(\textrm{H})}$的导数则更加复杂：
 \begin{equation}
 H(\bk)x_{n\bk} = E_{n\bk}x_{n\bk}.
 \end{equation}
-这里的$H$就是$H^{\mathrm{(W)}}$，而$x$就是$U$的列。我们要求解的是$x$对$\bk$的导数。为了解决这个问题，我们对本征值两边求导，得到
+这里的$H$就是$H^{\mathrm{(W)}}$，而$x$就是$U$的列。我们要求解的是$x$对$\bk$的导数。出于描述简单，我们假设我们需要计算的点为$\Gamma$点$\bk=0$.为了求得$U$的导数，我们对本征值两边求导，得到
 \begin{align}
 (\partial_\alpha H) x_n+H \partial_\alpha x_n = (\partial_\alpha E_n) x_n + E_n \partial_\alpha x_n.\label{owl:dep}
 \end{align}
@@ -91,7 +91,15 @@ H(\bk)x_{n\bk} = E_{n\bk}x_{n\bk}.
 \begin{equation}
 x_{m}^{\dagger}\partial_\alpha x_{n}=\frac{x_{m}^{\dagger}(\partial_\alpha H)x_{n}}{E_n-E_m}.
 \end{equation}
-为了求得
+但是，我们还需要知道$x_{n}^{\dagger}\partial_\alpha x_{n}$。这里，我们选择一个相位规范：
+\begin{equation}
+x_{n\boldsymbol{0}}^{\dagger} x_{n\boldsymbol{k}}\in\mathbb{R},\label{owl:phase}
+\end{equation}
+我们对式\ref{owl:phase}两边求导，考虑到$x_n$是归一化的，就可以得到
+\begin{equation}
+x_{n}^{\dagger}\partial_\alpha x_n=0.
+\end{equation}
+到这里，我们就解决了本征矢的一阶导数问题，对$U$的一阶导数也就随之得到了。
 One again faces gauge problem when calculating derivatives of $U$. However, based on Wannier interpolation method, we know $H^{(\textrm{W})}(\mathbf{k})$ and also the transformation matrix $U$ that is composed of eigenvectors of $H^{(\textrm{W})}(\mathbf{k})$ (see Eq. (\ref{eq:H-w-H-h})) for any $\mathbf{k}$ in the BZ. Thus, instead of doing finite differences, we are able to use perturbation theory to get a smooth gauge for $U$ and calculate derivatives of  $U$ without gauge problem. 
 
 When doing perturbations from $\mathbf{k}_{0}$ to $\mathbf{k}$ ($\mathbf{k}\simeq\mathbf{k}_{0}$), we require $[U^{\dagger}(\mathbf{k})U(\mathbf{k}_{0})]_{nn}$ to be real. In this gauge, the first order derivatives have been derived in Ref.~\onlinecite{wang_textitab_2006}:

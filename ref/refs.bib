@@ -768,5 +768,421 @@ Study of nonlinear optical responses reveals their quantum topological nature.},
     note = {arXiv: 1707.00200}
 }
 
+@article{souza_maximally-localized_2001,
+  title={Maximally localized Wannier functions for entangled energy bands},
+  author={Souza, Ivo and Marzari, Nicola and Vanderbilt, David},
+  journal={Phys. Rev. B},
+  volume={65},
+  number={3},
+  pages={035109},
+  year={2001},
+  doi = {10.1103/PhysRevB.65.035109},
+  publisher={APS}
+}
+
+@article{marzari_maximally_2012,
+    title = {Maximally localized {Wannier} functions: {Theory} and applications},
+    volume = {84},
+    issn = {0034-6861, 1539-0756},
+    shorttitle = {Maximally localized {Wannier} functions},
+    url = {http://arxiv.org/abs/1112.5411},
+    doi = {10.1103/RevModPhys.84.1419},
+    abstract = {The electronic ground state of a periodic system is usually described in terms of extended Bloch orbitals, but an alternative representation in terms of localized "Wannier functions" was introduced by Gregory Wannier in 1937. The connection between the Bloch and Wannier representations is realized by families of transformations in a continuous space of unitary matrices, carrying a large degree of arbitrariness. Since 1997, methods have been developed that allow one to iteratively transform the extended Bloch orbitals of a first-principles calculation into a unique set of maximally localized Wannier functions, accomplishing the solid-state equivalent of constructing localized molecular orbitals, or "Boys orbitals" as previously known from the chemistry literature. These developments are reviewed here, and a survey of the applications of these methods is presented. This latter includes a description of their use in analyzing the nature of chemical bonding, or as a local probe of phenomena related to electric polarization and orbital magnetization. Wannier interpolation schemes are also reviewed, by which quantities computed on a coarse reciprocal-space mesh can be used to interpolate onto much finer meshes at low cost, and applications in which Wannier functions are used as efficient basis functions are discussed. Finally the construction and use of Wannier functions outside the context of electronic-structure theory is presented, for cases that include phonon excitations, photonic crystals, and cold-atom optical lattices.},
+    number = {4},
+    urldate = {2016-02-01},
+    journal = {Rev. Mod. Phys.},
+    author = {Marzari, Nicola and Mostofi, Arash A. and Yates, Jonathan R. and Souza, Ivo and Vanderbilt, David},
+    month = oct,
+    year = {2012},
+    keywords = {Condensed Matter - Materials Science},
+    pages = {1419--1475},
+    file = {1112.5411v2.pdf:C\:\\Users\\wangc\\Zotero\\storage\\HHTGRABH\\1112.5411v2.pdf:application/pdf}
+}
+
+@article{marzari_maximally_1997,
+    title = {Maximally localized generalized {Wannier} functions for composite energy bands},
+    volume = {56},
+    url = {http://link.aps.org/doi/10.1103/PhysRevB.56.12847},
+    doi = {10.1103/PhysRevB.56.12847},
+    abstract = {We discuss a method for determining the optimally localized set of generalized Wannier functions associated with a set of Bloch bands in a crystalline solid. By “generalized Wannier functions” we mean a set of localized orthonormal orbitals spanning the same space as the specified set of Bloch bands. Although we minimize a functional that represents the total spread ∑n⟨r2⟩n−⟨r⟩2n of the Wannier functions in real space, our method proceeds directly from the Bloch functions as represented on a mesh of k points, and carries out the minimization in a space of unitary matrices U(k)mn describing the rotation among the Bloch bands at each k point. The method is thus suitable for use in connection with conventional electronic-structure codes. The procedure also returns the total electric polarization as well as the location of each Wannier center. Sample results for Si, GaAs, molecular C2H4, and LiCl will be presented.},
+    number = {20},
+    urldate = {2016-01-30},
+    journal = {Phys. Rev. B},
+    author = {Marzari, Nicola and Vanderbilt, David},
+    month = nov,
+    year = {1997},
+    pages = {12847--12865},
+    file = {nm_wann.pdf:C\:\\Users\\wangc\\Zotero\\storage\\USITT3Q2\\nm_wann.pdf:application/pdf}
+}
+
+@article{yates_spectral_2007,
+    title = {Spectral and {Fermi} surface properties from {Wannier} interpolation},
+    volume = {75},
+    url = {http://link.aps.org/doi/10.1103/PhysRevB.75.195121},
+    doi = {10.1103/PhysRevB.75.195121},
+    abstract = {We present an efficient first-principles approach for calculating Fermi surface averages and spectral properties of solids, and use it to compute the low-field Hall coefficient of several cubic metals and the magnetic circular dichroism of iron. The first step is to perform a conventional first-principles calculation and store the low-lying Bloch functions evaluated on a uniform grid of k points in the Brillouin zone. We then map those states onto a set of maximally localized Wannier functions, and evaluate the matrix elements of the Hamiltonian and the other needed operators between the Wannier orbitals, thus setting up an “exact tight-binding model.” In this compact representation the k-space quantities are evaluated inexpensively using a generalized Slater-Koster interpolation. Owing to the strong localization of the Wannier orbitals in real space, the smoothness and accuracy of the k-space interpolation increases rapidly with the number of grid points originally used to construct the Wannier functions. This allows k-space integrals to be performed with ab initio accuracy at low cost. In the Wannier representation, band gradients, effective masses, and other k derivatives needed for transport and optical coefficients can be evaluated analytically, producing numerically stable results even at band crossings and near weak avoided crossings.},
+    number = {19},
+    urldate = {2016-01-11},
+    journal = {Phys. Rev. B},
+    author = {Yates, Jonathan R. and Wang, Xinjie and Vanderbilt, David and Souza, Ivo},
+    month = may,
+    year = {2007},
+    pages = {195121},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\KVKBZBCI\\Yates et al. - 2007 - Spectral and Fermi surface properties from Wannier.pdf:application/pdf}
+}
+
+@article{wang_first-principles_2017,
+    title = {First-principles calculation of nonlinear optical responses by {Wannier} interpolation},
+    volume = {96},
+    url = {https://link.aps.org/doi/10.1103/PhysRevB.96.115147},
+    doi = {10.1103/PhysRevB.96.115147},
+    abstract = {Various nonlinear optical (NLO) responses, like shift current and second harmonic generation (SHG), are revealed to be closely related to topological quantities involving the Berry connection and Berry curvature. First-principles prediction of NLO responses is of great importance to fundamental research and device design, but efficient computational methods are still lacking. The main challenge is that the calculations require a very dense k-point sampling that is computationally expensive and a proper treatment of the gauge problem for topological quantities. Here we present a Wannier interpolation method for first-principles calculation of NLO responses, which overcomes the challenge. This method interpolates physical quantities accurately for any desired k point with little computational cost and constructs a smooth gauge by the perturbation theory. To demonstrate the method, we study shift current of monolayer GeS and WS2 as well as SHG of bulk GaAs, getting good agreements with previous results. We show that the traditional sum rule method converges slowly with the number of bands, whereas the perturbation way does not. Moreover, our method is easily adapted to build tight-binding models for the following theoretical investigations. Last but not least, the method is compatible with most first-principles approaches, including density functional theory and beyond. With these advantages, Wannier interpolation is a promising method for first-principles studies of NLO phenomena.},
+    number = {11},
+    urldate = {2017-10-03},
+    journal = {Phys. Rev. B},
+    author = {Wang, Chong and Liu, Xiaoyu and Kang, Lei and Gu, Bing-Lin and Xu, Yong and Duan, Wenhui},
+    month = sep,
+    year = {2017},
+    pages = {115147},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\W6PJTUKT\\Wang et al. - 2017 - First-principles calculation of nonlinear optical .pdf:application/pdf}
+}
+
+@article{wang_textitab_2006,
+    title = {{\textbackslash}textit\{{Ab} initio\}   calculation of the anomalous {Hall} conductivity by {Wannier} interpolation},
+    volume = {74},
+    url = {http://link.aps.org/doi/10.1103/PhysRevB.74.195118},
+    doi = {10.1103/PhysRevB.74.195118},
+    abstract = {The intrinsic anomalous Hall conductivity in ferromagnets depends on subtle spin-orbit-induced effects in the electronic structure, and recent ab initio studies found that it was necessary to sample the Brillouin zone at millions of k-points to converge the calculation. We present an efficient first-principles approach for computing this quantity. We start out by performing a conventional electronic-structure calculation including spin-orbit coupling on a uniform and relatively coarse k-point mesh. From the resulting Bloch states, maximally localized Wannier functions are constructed which reproduce the ab initio states up to the Fermi level. The Hamiltonian and position-operator matrix elements, needed to represent the energy bands and Berry curvatures, are then set up between the Wannier orbitals. This completes the first stage of the calculation, whereby the low-energy ab initio problem is transformed into an effective tight-binding form. The second stage only involves Fourier transforms and unitary transformations of the small matrices setup in the first stage. With these inexpensive operations, the quantities of interest are interpolated onto a dense k-point mesh and used to evaluate the anomalous Hall conductivity as a Brillouin zone integral. The present scheme, which also avoids the cumbersome summation over all unoccupied states in the Kubo formula, is applied to bcc Fe, giving excellent agreement with conventional, less efficient first-principles calculations. Remarkably, we find that about 99\% of the effect can be recovered by keeping a set of terms depending only on the Hamiltonian matrix elements, not on matrix elements of the position operator.},
+    number = {19},
+    urldate = {2016-01-20},
+    journal = {Phys. Rev. B},
+    author = {Wang, Xinjie and Yates, Jonathan R. and Souza, Ivo and Vanderbilt, David},
+    month = nov,
+    year = {2006},
+    pages = {195118},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\F6GUAH34\\Wang et al. - 2006 - textit Ab initio calculation of the anomalous .pdf:application/pdf;PhysRevB.76.169902.pdf:C\:\\Users\\wangc\\Zotero\\storage\\88BRR29D\\PhysRevB.76.169902.pdf:application/pdf}
+}
+
+@article{lopez_wannier-based_2012,
+    title = {Wannier-based calculation of the orbital magnetization in crystals},
+    volume = {85},
+    url = {https://link.aps.org/doi/10.1103/PhysRevB.85.014435},
+    doi = {10.1103/PhysRevB.85.014435},
+    abstract = {We present a first-principles scheme that allows the orbital magnetization of a magnetic crystal to be evaluated accurately and efficiently even in the presence of complex Fermi surfaces. Starting from an initial electronic-structure calculation with a coarse ab initio k-point mesh, maximally localized Wannier functions are constructed and used to interpolate the necessary k-space quantities on a fine mesh, in parallel to a previously developed formalism for the anomalous Hall conductivity [X. Wang, J. Yates, I. Souza, and D. Vanderbilt, Phys. Rev. B 74, 195118 (2006)]. We formulate our new approach in a manifestly gauge-invariant manner, expressing the orbital magnetization in terms of traces over matrices in Wannier space. Since only a few (e.g., of the order of 20) Wannier functions are typically needed to describe the occupied and partially occupied bands, these Wannier matrices are small, which makes the interpolation itself very efficient. The method has been used to calculate the orbital magnetization of bcc Fe, hcp Co, and fcc Ni. Unlike an approximate calculation based on integrating orbital currents inside atomic spheres, our results nicely reproduce the experimentally measured ordering of the orbital magnetization in these three materials.},
+    number = {1},
+    urldate = {2017-04-15},
+    journal = {Phys. Rev. B},
+    author = {Lopez, M. G. and Vanderbilt, David and Thonhauser, T. and Souza, Ivo},
+    month = jan,
+    year = {2012},
+    pages = {014435},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\7GK8CXAQ\\Lopez et al. - 2012 - Wannier-based calculation of the orbital magnetiza.pdf:application/pdf}
+}
+
+@article{ibanez-azpiroz_ab_2018,
+    title = {Ab initio calculation of the shift photocurrent by {Wannier} interpolation},
+    url = {http://arxiv.org/abs/1804.04030},
+    abstract = {We describe and implement a first-principles algorithm based on maximally-localized Wannier functions for calculating the shift-current response of piezoelectric crystals in the independent-particle approximation. The proposed algorithm presents several advantages over existing ones, including full gauge invariance, low computational cost, and a correct treatment of the optical matrix elements with nonlocal pseudopotentials. Band-truncation errors are avoided by a careful formulation of \$k{\textbackslash}cdot p\$ perturbation theory within the subspace of wannierized bands. The needed ingredients are the matrix elements of the Hamiltonian and of the position operator in the Wannier basis, which are readily available at the end of the wannierization step. If the off-diagonal matrix elements of the position operator are discarded, our expressions reduce to the ones that have been used in recent tight-binding calculations of the shift current. We find that this "diagonal" approximation can introduce sizeable errors, highlighting the importance of carefully embedding the tight-binding model in real space in order to describe the charge-transfer process associated with the shift current.},
+    urldate = {2018-04-18},
+    journal = {arXiv:1804.04030},
+    author = {Ibañez-Azpiroz, Julen and Tsirkin, Stepan S. and Souza, Ivo},
+    month = apr,
+    year = {2018},
+    keywords = {Condensed Matter - Materials Science},
+    file = {arXiv\:1804.04030 PDF:C\:\\Users\\wangc\\Zotero\\storage\\YW4D8MY4\\Ibañez-Azpiroz et al. - 2018 - Ab initio calculation of the shift photocurrent by.pdf:application/pdf}
+}
+
+
+@article{mostofi_updated_2014,
+    title = {An updated version of wannier90: {A} tool for obtaining maximally-localised {Wannier} functions},
+    volume = {185},
+    issn = {0010-4655},
+    shorttitle = {An updated version of wannier90},
+    url = {http://www.sciencedirect.com/science/article/pii/S001046551400157X},
+    doi = {10.1016/j.cpc.2014.05.003},
+    abstract = {wannier90  is a program for calculating maximally-localised Wannier functions (MLWFs) from a set of Bloch energy bands that may or may not be attached to or mixed with other bands. The formalism works by minimising the total spread of the MLWFs in real space. This is done in the space of unitary matrices that describe rotations of the Bloch bands at each k-point. As a result, wannier90  is independent of the basis set used in the underlying calculation to obtain the Bloch states. Therefore, it may be interfaced straightforwardly to any electronic structure code. The locality of MLWFs can be exploited to compute band-structure, density of states and Fermi surfaces at modest computational cost. Furthermore, wannier90  is able to output MLWFs for visualisation and other post-processing purposes. Wannier functions are already used in a wide variety of applications. These include analysis of chemical bonding in real space; calculation of dielectric properties via the modern theory of polarisation; and as an accurate and minimal basis set in the construction of model Hamiltonians for large-scale systems, in linear-scaling quantum Monte Carlo calculations, and for efficient computation of material properties, such as the anomalous Hall coefficient. We present here an updated version of wannier90, wannier90  2.0, including minor bug fixes and parallel (MPI) execution for band-structure interpolation and the calculation of properties such as density of states, Berry curvature and orbital magnetisation. wannier90  is freely available under the GNU General Public License from http://www.wannier.org/.
+New version program summary
+Program title: wannier90
+Catalogue identifier: AEAK\_v2\_0
+Program summary URL:http://cpc.cs.qub.ac.uk/summaries/AEAK\_v2\_0.html
+Program obtainable from: CPC Program Library, Queen’s University, Belfast, N. Ireland
+Licensing provisions: GNU General Public License, version 2
+No. of lines in distributed program, including test data, etc.: 930 386
+No. of bytes in distributed program, including test data, etc.: 47 939 902
+Distribution format: tar.gz
+Programming language: Fortran90, perl.
+Computer: Any architecture with a Fortran 90 compiler.
+Operating system: Linux, Windows, Solaris, AIX, Tru64 Unix, OSX.
+Has the code been vectorised or parallelized?: Yes, parallelized using MPI.
+RAM: 10 Mb
+Classification: 7.3.
+External routines:
+•
+BLAS (http://www/netlib.org/blas)
+•
+LAPACK (http://www.netlib.org/lapack)
+•
+MPI libraries (optional) for parallel execution
+Catalogue identifier of previous version: AEAK\_v1\_0
+Journal reference of previous version: Comput. Phys. Comm. 178(2008)685
+Does the new version supersede the previous version?: Yes
+Nature of problem:
+Obtaining maximally-localised Wannier functions [2] from a set of Bloch energy bands that may or may not be entangled, and using these Wannier functions to calculate electronic properties of materials.
+Solution method:
+In the case of entangled bands, the optimally-connected subspace of interest is determined by minimising a functional which measures the subspace dispersion across the Brillouin zone. The maximally-localised Wannier functions within this subspace are obtained by subsequent minimisation of a functional that represents the total spread of the Wannier functions in real space. For the case of isolated energy bands only the second step of the procedure is required [3, 4].
+Reasons for new version:
+Addition of new functionality, minor bug fixes, and parallel (MPI) execution for parts of the code.
+Summary of revisions:
+Enhancements include:
+•
+Spinor projections
+•
+Improved plotting
+•
+Parallel execution
+•
+Calculation of van der Waals interactions
+•
+Landauer–Buttiker and Boltzmann transport
+Full details are given in the CHANGE.log file, which can be found in the root directory of the distribution.
+Additional comments:
+The distribution file for this program is over 47 MB and therefore is not delivered directly when Download or Email is requested. Instead a html file giving details of how the program can be obtained is sent.
+Running time:
+Example calculations run in a few minutes.
+References:
+[1]
+A.A. Mostofi, J.R. Yates, Y.-S. Lee, I. Souza, D. Vanderbilt and N. Marzari, “wannier90: A Tool for Obtaining Maximally-Localised Wannier Functions”, Comput. Phys. Commun. 178 (2008) 685
+[2]
+N. Marzari, A.A. Mostofi, J.R. Yates, I. Souza and D. Vanderbilt, “Maximally-Localised Wannier Functions: Theory and Applications”, Rev. Mod. Phys. 84 (2012) 1419
+[3]
+N. Marzari and D. Vanderbilt, “Maximally localized generalized Wannier functions for composite energy bands”, Phys. Rev. B 56 (1997) 12847
+[4]
+I. Souza, N. Marzari and D. Vanderbilt, “Maximally localized Wannier functions for entangled energy bands”, Phys. Rev. B 65 (2001) 035109},
+    number = {8},
+    urldate = {2017-05-05},
+    journal = {Comput. Phys. Commun.},
+    author = {Mostofi, Arash A. and Yates, Jonathan R. and Pizzi, Giovanni and Lee, Young-Su and Souza, Ivo and Vanderbilt, David and Marzari, Nicola},
+    month = aug,
+    year = {2014},
+    keywords = {Density-functional theory, Electronic structure, Maximally-localised Wannier function},
+    pages = {2309--2310},
+    file = {ScienceDirect Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\U7RUVQ69\\Mostofi et al. - 2014 - An updated version of wannier90 A tool for obtain.pdf:application/pdf}
+}
+
+
+@article{berry_quantal_1984,
+    title = {Quantal {Phase} {Factors} {Accompanying} {Adiabatic} {Changes}},
+    volume = {392},
+    copyright = {Copyright © 1984 The Royal Society},
+    issn = {0080-4630},
+    url = {http://www.jstor.org/stable/2397741},
+    abstract = {A quantal system in an eigenstate, slowly transported round a circuit C by varying parameters R in its Hamiltonian Ĥ(R), will acquire a geometrical phase factor exp iγ(C) in addition to the familiar dynamical phase factor. An explicit general formula for γ(C) is derived in terms of the spectrum and eigenstates of Ĥ(R) over a surface spanning C. If C lies near a degeneracy of Ĥ, γ(C) takes a simple form which includes as a special case the sign change of eigenfunctions of real symmetric matrices round a degeneracy. As an illustration γ(C) is calculated for spinning particles in slowly-changing magnetic fields; although the sign reversal of spinors on rotation is a special case, the effect is predicted to occur for bosons as well as fermions, and a method for observing it is proposed. It is shown that the Aharonov-Bohm effect can be interpreted as a geometrical phase factor.},
+    number = {1802},
+    urldate = {2015-10-26},
+    journal = {Proc. Royal Soc. Lond. A},
+    author = {Berry, M. V.},
+    month = mar,
+    year = {1984},
+    pages = {45--57},
+    file = {JSTOR Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\3KCHRHX8\\Berry - 1984 - Quantal Phase Factors Accompanying Adiabatic Chang.pdf:application/pdf}
+}
+
+
+@article{von_baltz_theory_1981,
+    title = {Theory of the bulk photovoltaic effect in pure crystals},
+    volume = {23},
+    url = {http://link.aps.org/doi/10.1103/PhysRevB.23.5590},
+    doi = {10.1103/PhysRevB.23.5590},
+    abstract = {A theory is presented for the intrinisic anomalous bulk photovoltaic effect observed in noncentrosymmetric crystals, e.g., BaTiO3. An exact formula is derived for the calculation of the short-circuit photovoltaic current in a pure crystal in terms of its Bloch states and energy bands. Unlike a conventional field or diffusion current, the photovoltaic current is essentially determined by the change of wave functions upon photoexcitation of an electron from the valence to the conduction band. Our theory also reveals that the bulk photovoltaic effect can occur even in pure nonpyroelectric piezoelectric crystals, e.g., Te and GaP, which have no polar axis and therefore no a priori direction for the photovoltaic current.},
+    number = {10},
+    urldate = {2016-03-08},
+    journal = {Phys. Rev. B},
+    author = {von Baltz, Ralph and Kraut, Wolfgang},
+    month = may,
+    year = {1981},
+    pages = {5590--5596},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\ZNGTVXJ7\\von Baltz and Kraut - 1981 - Theory of the bulk photovoltaic effect in pure cry.pdf:application/pdf}
+}
+
+@article{tan_shift_2016,
+    title = {Shift current bulk photovoltaic effect in polar materials—hybrid and oxide perovskites and beyond},
+    volume = {2},
+    copyright = {© 2017 Macmillan Publishers Limited, part of Springer Nature. All rights reserved.},
+    issn = {2057-3960},
+    url = {http://www.nature.com/articles/npjcompumats201626},
+    doi = {10.1038/npjcompumats.2016.26},
+    abstract = {The bulk photovoltaic effect (BPVE) refers to the generation of a steady photocurrent and above-bandgap photovoltage in a single-phase homogeneous material lacking inversion symmetry.},
+    language = {en},
+    urldate = {2017-02-18},
+    journal = {npj Comput. Mater.},
+    author = {Tan, Liang Z. and Zheng, Fan and Young, Steve M. and Wang, Fenggong and Liu, Shi and Rappe, Andrew M.},
+    month = aug,
+    year = {2016},
+    pages = {16026},
+    file = {npjcompumats201626.pdf:C\:\\Users\\wangc\\Zotero\\storage\\Z6KHEVM9\\npjcompumats201626.pdf:application/pdf}
+}
+
+@article{young_first_2012,
+    title = {First {Principles} {Calculation} of the {Shift} {Current} {Photovoltaic} {Effect} in {Ferroelectrics}},
+    volume = {109},
+    url = {http://link.aps.org/doi/10.1103/PhysRevLett.109.116601},
+    doi = {10.1103/PhysRevLett.109.116601},
+    abstract = {We calculate the bulk photovoltaic response of the ferroelectrics BaTiO3 and PbTiO3 from first principles by applying the “shift current” theory to the electronic structure from density functional theory. The first principles results for BaTiO3 reproduce experimental photocurrent direction and magnitude as a function of light frequency, as well as the dependence of current on light polarization, demonstrating that shift current is the dominant mechanism of the bulk photovoltaic effect in BaTiO3. Additionally, we analyze the relationship between response and material properties in detail. Photocurrent does not depend simply or strongly on the magnitude of material polarization, as has been previously assumed; instead, electronic states with delocalized, covalent bonding that is highly asymmetric along the current direction are required for strong shift current enhancements. The complexity of the response dependence on both external and material parameters suggests applications not only in solar energy conversion, but in photocatalysis and sensor and switch type devices as well.},
+    number = {11},
+    urldate = {2016-01-11},
+    journal = {Phys. Rev. Lett.},
+    author = {Young, Steve M. and Rappe, Andrew M.},
+    month = sep,
+    year = {2012},
+    pages = {116601},
+    file = {bpve_supp.pdf:C\:\\Users\\wangc\\Zotero\\storage\\7MDRMACC\\bpve_supp.pdf:application/pdf;Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\WWWV359T\\Young and Rappe - 2012 - First Principles Calculation of the Shift Current .pdf:application/pdf;steve_notes.pdf:C\:\\Users\\wangc\\Zotero\\storage\\NNUU2DZ2\\steve_notes.pdf:application/pdf}
+}
+
+
+@article{sipe_second-order_2000,
+    title = {Second-order optical response in semiconductors},
+    volume = {61},
+    url = {http://link.aps.org/doi/10.1103/PhysRevB.61.5337},
+    doi = {10.1103/PhysRevB.61.5337},
+    abstract = {We present a new general formalism for investigating the second-order optical response of solids, and illustrate it by deriving expressions for the second-order susceptibility tensor χ2(−ωΣ;ωβ,ωγ), where ωΣ=ωβ+ωγ, for clean, cold semiconductors in the independent particle approximation. Based on the identification of a polarization operator P that would be valid even in a more complicated many-body treatment, the approach avoids apparent, unphysical divergences of the nonlinear optical response at zero frequency that sometimes plague such calculations. As a result, it allows for a careful examination of actual divergences associated with physical phenomena that have been studied before, but not in the context of nonlinear optics. These are (i) a coherent current control effect called “injection current,” or “circular photocurrent,” and (ii) photocurrent due to the shift of the center of electron charge in noncentrosymmetric materials in the process of optical excitation, called “shift current.” The expressions we present are amenable for numerical calculations, and we demonstrate this by performing a full band-structure calculation of the shift current coefficient for GaAs.},
+    number = {8},
+    urldate = {2016-02-20},
+    journal = {Phys. Rev. B},
+    author = {Sipe, J. E. and Shkrebtii, A. I.},
+    month = feb,
+    year = {2000},
+    pages = {5337--5352},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\7XX3D6K7\\Sipe and Shkrebtii - 2000 - Second-order optical response in semiconductors.pdf:application/pdf}
+}
+
+@article{blum_ab_2009,
+    title = {Ab initio molecular simulations with numeric atom-centered orbitals},
+    volume = {180},
+    issn = {0010-4655},
+    url = {http://www.sciencedirect.com/science/article/pii/S0010465509002033},
+    doi = {10.1016/j.cpc.2009.06.022},
+    abstract = {We describe a complete set of algorithms for ab initio molecular simulations based on numerically tabulated atom-centered orbitals (NAOs) to capture a wide range of molecular and materials properties from quantum-mechanical first principles. The full algorithmic framework described here is embodied in the Fritz Haber Institute “ab initio molecular simulations” (FHI-aims) computer program package. Its comprehensive description should be relevant to any other first-principles implementation based on NAOs. The focus here is on density-functional theory (DFT) in the local and semilocal (generalized gradient) approximations, but an extension to hybrid functionals, Hartree–Fock theory, and MP2/GW electron self-energies for total energies and excited states is possible within the same underlying algorithms. An all-electron/full-potential treatment that is both computationally efficient and accurate is achieved for periodic and cluster geometries on equal footing, including relaxation and ab initio molecular dynamics. We demonstrate the construction of transferable, hierarchical basis sets, allowing the calculation to range from qualitative tight-binding like accuracy to meV-level total energy convergence with the basis set. Since all basis functions are strictly localized, the otherwise computationally dominant grid-based operations scale as O(N) with system size N. Together with a scalar-relativistic treatment, the basis sets provide access to all elements from light to heavy. Both low-communication parallelization of all real-space grid based algorithms and a ScaLapack-based, customized handling of the linear algebra for all matrix operations are possible, guaranteeing efficient scaling (CPU time and memory) up to massively parallel computer systems with thousands of CPUs.},
+    number = {11},
+    urldate = {2016-10-14},
+    journal = {Comput. Phys. Commun.},
+    author = {Blum, Volker and Gehrke, Ralf and Hanke, Felix and Havu, Paula and Havu, Ville and Ren, Xinguo and Reuter, Karsten and Scheffler, Matthias},
+    month = nov,
+    year = {2009},
+    keywords = {Density-functional theory, Ab initio molecular simulations, Atom-centered basis functions, GW self-energy, Hartree–Fock, MP2, O(N) DFT},
+    pages = {2175--2196},
+    file = {ScienceDirect Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\CAJDHH46\\Blum et al. - 2009 - Ab initio molecular simulations with numeric atom-.pdf:application/pdf}
+}
+
+@article{bilbao,
+    title = {Crystallography online: {Bilbao} crystallographic server},
+    volume = {43},
+    number = {2},
+    journal = {Bulg. Chem. Commun.},
+    author = {Aroyo, M.I. and Perez-Mato, J.M. and Orobengoa, D. and Tasci, E. and De, La Flor and Kirov, A.},
+    year = {2011},
+    pages = {183}
+}
+
+@article{perdew_generalized_1996,
+    title = {Generalized {Gradient} {Approximation} {Made} {Simple}},
+    volume = {77},
+    url = {https://link.aps.org/doi/10.1103/PhysRevLett.77.3865},
+    doi = {10.1103/PhysRevLett.77.3865},
+    abstract = {Generalized gradient approximations (GGA's) for the exchange-correlation energy improve upon the local spin density (LSD) description of atoms, molecules, and solids. We present a simple derivation of a simple GGA, in which all parameters (other than those in LSD) are fundamental constants. Only general features of the detailed construction underlying the Perdew-Wang 1991 (PW91) GGA are invoked. Improvements over PW91 include an accurate description of the linear response of the uniform electron gas, correct behavior under uniform scaling, and a smoother potential.},
+    number = {18},
+    urldate = {2017-05-05},
+    journal = {Phys. Rev. Lett.},
+    author = {Perdew, John P. and Burke, Kieron and Ernzerhof, Matthias},
+    month = oct,
+    year = {1996},
+    pages = {3865--3868},
+    file = {Full Text PDF:C\:\\Users\\wangc\\Zotero\\storage\\AA7BHCBN\\Perdew et al. - 1996 - Generalized Gradient Approximation Made Simple.pdf:application/pdf}
+}
+
+@article{lee_tight-binding_2018,
+    title = {Tight-binding calculations of optical matrix elements for conductivity using non-orthogonal atomic orbitals: {Anomalous} {Hall} conductivity in bcc {Fe}},
+    shorttitle = {Tight-binding calculations of optical matrix elements for conductivity using non-orthogonal atomic orbitals},
+    url = {http://arxiv.org/abs/1805.08918},
+    abstract = {We present a general formula for the tight-binding representation of momentum matrix elements needed for calculating the conductivity based on the Kubo-Greenwood formula using atomic orbitals, which are in general not orthogonal to other orbitals at different sites. In particular, the position matrix element is demonstrated to be important for delivering the exact momentum matrix element. This general formula, applicable to both orthonormal and non-orthonormal bases, solely needs the information of the position matrix elements and the ingredients that have already contained in the tight-binding representation. For a benchmark calculation, we study the anomalous Hall conductivity in the standard example, ferromagnetic bcc Fe, by a first-principles tight-binding Hamiltonian. By assuming the commutation relation \${\textbackslash}hat\{{\textbackslash}vec\{p\}\} = (i m\_e/{\textbackslash}hbar) [{\textbackslash}hat\{H\},{\textbackslash}hat\{{\textbackslash}vec\{r\}\}]\$, the obtained frequency-dependent Hall conductivity is found to be in good agreement with existing theoretical and experimental results. Since a tight-binding Hamiltonian can be straightforwardly obtained after finishing a first-principles calculation using atomic basis functions that are generated before the self-consistent calculation, the derived formula is particularly useful for those first-principles calculations.},
+    urldate = {2018-05-24},
+    journal = {arXiv:1805.08918},
+    author = {Lee, Chi-Cheng and Lee, Yung-Ting and Fukuda, Masahiro and Ozaki, Taisuke},
+    month = may,
+    year = {2018},
+    keywords = {Condensed Matter - Materials Science}
+    
+}
+@article{van2007computation,
+  title={Computation of eigenvalue and eigenvector derivatives for a general complex-valued eigensystem},
+  author={Van Der Aa, NP and Ter Morsche, HG and Mattheij, RRM},
+  journal={Electron. J. Linear Al.},
+  volume={16},
+  number={1},
+  pages={26},
+  year={2007}
+}
+@article{andrew1998computation,
+  title={Computation of derivatives of repeated eigenvalues and the corresponding eigenvectors of symmetric matrix pencils},
+  author={Andrew, Alan L and Tan, Roger CE},
+  journal={SIAM J. Matrix Anal. Appl.},
+  volume={20},
+  number={1},
+  pages={78--100},
+  year={1998},
+  publisher={SIAM}
+}
+
+
+@article{sylvester,
+  author={Sylvester, J.},
+  journal={Comptes Rendus Acad. Sci.},
+  volume={99},
+  number={2},
+  pages={67},
+  year={1884}
+}
+
+@BOOK{laug,
+      AUTHOR = {Anderson, E. and Bai, Z. and Bischof, C. and
+                Blackford, S. and Demmel, J. and Dongarra, J. and
+                Du Croz, J. and Greenbaum, A. and Hammarling, S. and
+                McKenney, A. and Sorensen, D.},
+      TITLE = {{LAPACK} Users' Guide},
+      EDITION = {Third},
+      PUBLISHER = {Society for Industrial and Applied Mathematics},
+      YEAR = {1999},
+      ADDRESS = {Philadelphia, PA},
+      ISBN = {0-89871-447-8 (paperback)}
+}
+
+@article{julia,
+  title={Julia: A fresh approach to numerical computing},
+  author={Bezanson, Jeff and Edelman, Alan and Karpinski, Stefan and Shah, Viral B},
+  journal={SIAM review},
+  volume={59},
+  number={1},
+  pages={65--98},
+  year={2017},
+  publisher={SIAM}
+}
+
+@article{tokura_nonreciprocal_2018,
+    title = {Nonreciprocal responses from non-centrosymmetric quantum materials},
+    volume = {9},
+    copyright = {2018 The Author(s)},
+    issn = {2041-1723},
+    url = {https://www.nature.com/articles/s41467-018-05759-4},
+    doi = {10.1038/s41467-018-05759-4},
+    abstract = {A variety of directional electronic transport phenomena can occur in materials with broken inversion-symmetry. Here, Tokura and Nagaosa review the underlying mechanisms and emergent phenomena of nonreciprocal responses in noncentrosymmetric quantum materials.},
+    language = {En},
+    number = {1},
+    urldate = {2019-03-07},
+    journal = {Nature Communications},
+    author = {Tokura, Yoshinori and Nagaosa, Naoto},
+    month = sep,
+    year = {2018},
+    pages = {3740}
+}
+
 
 

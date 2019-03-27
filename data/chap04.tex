@@ -1,1 +1,96 @@
-\chapter{非正交的Wannier函数方法}
+\chapter{非正交的Wannier插值方法}
+
+Wannier函数包含了一个能带的所有信息。不仅如此，由于Wannier函数非常局域，它们可以仅仅用倒空间的很少的一部分$\bk$点构造出来\cite{souza_maximally-localized_2001,marzari_maximally_1997}。在得到Wannier函数之后，任意$\bk$点的本征布洛赫波函数都可以通过一个简单的傅里叶变换求得，这个过程叫做Wannier插值\cite{marzari_maximally_2012}。Wannier插值抓住了布洛赫电子的本质，是一个计算各种物理可观测量的高效的方法。之前的研究将Wannier插值应用在了反常霍尔电导\cite{wang_textitab_2006}，介电常数\cite{yates_spectral_2007}，轨道磁矩\cite{lopez_wannier-based_2012}以及包括位移电流\cite{wang_first-principles_2017,ibanez-azpiroz_ab_2018}和倍频效应\cite{wang_first-principles_2017}的二阶光学效应中。
+
+
+目前的构造Wannier函数的流行算法是最大局域化Wannier函数算法，这个算法将能带混合在一起，通过调整混合的方式将Wannier函数的展宽尽量减小\cite{marzari_maximally_2012}。这个方法非常普适，经常被作为各种第一性原理计算软件包的后处理工具\cite{mostofi_updated_2014}，并且处理方法和第一性原理软件的实现方式几乎无关。但是，由于最大局域化Wannier函数算法本质上是最优化算法，为了避免居于最小，初始的猜测Wannier函数以及很多其他参数都需要小心的测试。这个过程不可避免的需要人的参与，因此在高通量计算中不太适用。而且，在优化Wannier函数的过程中对称性一般会被破坏，这些对称性在材料性质，比如非线性光学效应和拓扑性质中，往往起着重要的作用。一个解决这些问题的方案是采用基于实空间局域基组的密度泛函计算方法，很多的第一性原理计算软件包已经采用了这样的计算方法。但是，一个非常重要的事实是绝大部分采用实空间局域基组的第一性原理计算软件包都用的是非正交的局域基组。这个做法主要有两个原因：（一）非正交局域基组一本而言没有长尾效应，能够做得更加局域。（二）构造大量得非正交局域基组更加容易。目前的Wannier插值方法都是假设Wannier函数是正交的，因此不能够直接用于非正交局域基组。因此，将Wannier插值方法推广到非正交局域基组就显得非常必要。
+
+本章我们将发展一个基于非正交局域基组的广义的Wannier插值方法。这个方法可以计算能带能量和相应布洛赫波函数的任意阶导数。因此，这个方法适合用来计算多种线性和非线性响应函数。我们以WS$_2$的介电常数和位移电导为例，作为这个方法可以计算线性和非线性响应的例子。我们得到的结果和之前的工作是完全一致的。最后，我们讨论了这个方法的性能和对称性相关的性质。
+
+\section{计算方法}\label{sec:method}
+
+贝里联络\cite{berry_quantal_1984} $\boldsymbol{A}_{nm}(\boldsymbol{k})=i\langle u_{n\boldsymbol{k}}|\nabla_{\boldsymbol{k}}u_{m\boldsymbol{k}}\rangle$及其导数$\nabla_{\boldsymbol{k}}\boldsymbol{A}$是计算响应函数的核心。但是，由于矩阵对角化会引入随机相位，直接的有限差分方式并不适用。Wannier插值方案通过选择一个确定的相位规范来解决这个问题。这里，我们将这个方案推广到非正交局域基组。
+
+我们用 $|\boldsymbol{R}n\rangle$来标记局域轨道，这里$n$是元胞内的轨道的标记，$\boldsymbol{R}$是元胞的标记。 $n$取值从$1$到$N$, 这里$N$是一个元胞内的轨道数目。这些轨道的布洛赫求和就构成了哈密顿量在一个$\bk$点的一组完备基，
+\[
+|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle\equiv\sum_{\boldsymbol{R}}e^{i\boldsymbol{k}\cdot\boldsymbol{R}}|\boldsymbol{R}n\rangle
+\]
+布洛赫波的周期性部分是 
+\[
+|u_{n\boldsymbol{k}}^{(\text{W})}\rangle\equiv e^{-i\boldsymbol{k}\cdot\hat{\boldsymbol{r}}}|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle=\sum_{\boldsymbol{R}}e^{i\boldsymbol{k}\cdot(\boldsymbol{R}-\hat{\boldsymbol{r}})}|\boldsymbol{R}n\rangle.
+\]
+在这组基下，哈密顿量的表示矩阵元是
+\begin{align}
+\begin{split}
+H_{nm}(\boldsymbol{k}) & \equiv\langle\psi_{n\boldsymbol{k}}^{(\text{W})}|\hat{H}|\psi_{m\boldsymbol{k}}^{(\text{W})}\rangle\\
+& =\sum_{\boldsymbol{R}}e^{i\boldsymbol{k}\cdot\boldsymbol{R}}\langle\boldsymbol{0}n|\hat{H}|\boldsymbol{R}m\rangle,
+\end{split}
+\end{align}
+和普通的Wannier插值方法不一样的是，$|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle$一般而言既不相互正交，也没有归一化。因此，需要一个交叠矩阵来描述这个行为，
+\begin{align}
+\begin{split}
+S_{nm}(\boldsymbol{k}) & \equiv\langle\psi_{n\boldsymbol{k}}^{(\text{W})}|\psi_{m\boldsymbol{k}}^{(\text{W})}\rangle\\
+& =\sum_{\boldsymbol{R}}e^{i\boldsymbol{k}\cdot\boldsymbol{R}}\langle\boldsymbol{0}n|\boldsymbol{R}m\rangle.\label{S}
+\end{split}
+\end{align}
+哈密顿量$\hat{H}$的本征态是$|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle$的线性叠加，
+\begin{align}
+|\psi_{n\boldsymbol{k}}\rangle & =\sum_{m}V_{mn}(\boldsymbol{k})|\psi_{m\boldsymbol{k}}^{(\text{W})}\rangle,\\
+\hat{H}|\psi_{n\boldsymbol{k}}\rangle & =E_{n\boldsymbol{k}}|\psi_{n\boldsymbol{k}}\rangle,
+\end{align}
+这里$V$和$E$可以通过计算一个广义的本征值问题来求得，
+\begin{equation}
+H(\boldsymbol{k})v_{n\boldsymbol{k}}=E_{l\boldsymbol{k}}S(\boldsymbol{k})v_{n\boldsymbol{k}}.\label{eq:gep}
+\end{equation}
+上式仅仅薛定谔方程在非正交基$|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle$下的表示。 $v_{n\boldsymbol{k}}$ 是一个列向量，有$N$个线性独立的解，这些解构成了$V$的列。值得注意的是$V$不是一个幺正矩阵。我们假设非正交局域基是线性无关的，那么$S$既是正定的，也是厄米的。这样的广义本征值问题的行为很好，并且本征矢可以按下面的式子归一。
+\begin{equation}
+v_{n}^{\dagger}Sv_{m}=\delta_{nm}.\label{eq:norm}
+\end{equation}
+
+贝里联络可以用$V$表示出来，
+\begin{equation}
+A^{\alpha}=iV^{\dagger}S\partial_{\alpha}V+V{}^{\dagger}A^{\alpha(\text{W})}V,\label{eq:A}
+\end{equation}
+这里
+\begin{align}
+\begin{split}
+A_{nm}^{\alpha(\text{W})} & \equiv i\langle u_{n\boldsymbol{k}}^{(\text{W})}|\partial_{\alpha}u_{m\boldsymbol{k}}^{(\text{W})}\rangle\\
+& =\sum_{\boldsymbol{R}}e^{i\boldsymbol{k}\cdot\boldsymbol{R}}(\langle\boldsymbol{0}n|\hat{r}^{\alpha}|\boldsymbol{R}m\rangle-R^{\alpha}\langle\boldsymbol{0}n|\boldsymbol{R}m\rangle)
+\end{split}
+\end{align}
+$\hat{r}$ 是位置算符，$\partial_{\alpha}\equiv\partial_{k^{\alpha}}$，$\alpha$是笛卡尔指标。对非正交局域基，位置算符可以写为
+\begin{align}
+\begin{split}
+\langle\boldsymbol{0}m|\hat{r}^{\alpha}|\bar{\boldsymbol{R}}n\rangle & =(\langle\bar{\boldsymbol{R}}n|\hat{r}^{\alpha}|\boldsymbol{0}m\rangle)^{*}\\
+& =(\langle\boldsymbol{0}n|\hat{r}^{\alpha}|\boldsymbol{R}m\rangle)^{*}-R^{\alpha}\langle\boldsymbol{0}m|\bar{\boldsymbol{R}}n\rangle,
+\end{split}
+\end{align}
+这里$\bar{\boldsymbol{R}}=-\boldsymbol{R}$。
+与此相反的是，在基于最大局域化Wannier函数的Wannier插值方法中，$\langle\boldsymbol{0}m|\hat{r}^{\alpha}|\boldsymbol{R}n\rangle$ （在固定 $\boldsymbol{R}$的情况）下是一个厄米矩阵。 
+
+但是，计算$V^{\dagger}S\partial_{\alpha}V$仍然会遇到随机相位的问题，因为$V$仍然是对角化得到的。幸运的是，由于$\langle\boldsymbol{0}n|\hat{H}|\boldsymbol{R}m\rangle$,
+$\langle\boldsymbol{0}n|\boldsymbol{R}m\rangle$和$\langle\boldsymbol{0}n|\hat{r}^{\alpha}|\boldsymbol{R}m\rangle$这三个矩阵可以从第一性原理求得，$H$, $S$ 和 $A^{(\text{W})}$的任意阶导数都可以得到。这样，计算 $V^{\dagger}S\partial_{\alpha}V$ \cite{van2007computation}便成为了可能耐。这里，我们在$\Gamma$点 ($\boldsymbol{k}=\boldsymbol{0}$)计算
+$V^{\dagger}S\partial_{\alpha}V$作为一个例子。对式\ref{eq:gep}两边微分，可以得到
+\begin{align}
+\begin{split}
+(\partial_\alpha H)v_n+H\partial_\alpha v_n = & (\partial_\alpha E_n)Sv_n+\\
+& E_n(\partial_\alpha S)v_n+E_n S(\partial_\alpha v_n).\label{eq:dgep}
+\end{split}
+\end{align}
+将式\ref{eq:dgep}左乘$v_{n}^{\dagger}$，可以得到
+\[
+\partial_\alpha E_{n}=v_{n}^{\dagger}(\partial_\alpha H) v_{n}-E_{n}v_{n}^{\dagger}(\partial_\alpha S)v_{n}.
+\]
+将式(\ref{eq:dgep})左乘$v_{m}^{\dagger}$ ($m\ne n$)，可以得到
+\[
+v_{m}^{\dagger}S\partial_\alpha v_{n}=\frac{v_{m}^{\dagger}(\partial_\alpha H)v_{n}-E_{n}v_{m}^{\dagger}(\partial_\alpha S)v_{n}}{E_n-E_m}.
+\]
+但是，由于$v_{n}$存在着本征的相位不确定性，我们需要引入一个相位规范来得到$v_{n}^{\dagger}S \partial_\alpha v_{n}$，
+\begin{equation}
+v_{n\boldsymbol{0}}^{\dagger}S(\boldsymbol{0})v_{n\boldsymbol{k}}\in\mathbb{R}。\label{eq:phase}
+\end{equation}
+由于$v_{n\boldsymbol{0}}^{\dagger}S(\boldsymbol{0})v_{n\boldsymbol{0}}=1\in\mathbb{R}$，这个规范在$\Gamma$点是平滑的。将式\ref{eq:norm}和式\ref{eq:phase}都微分,可以得到
+\[
+v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha S)v_n.
+\]
+在上面的推导中，我们假设了$n$不是简并的。原则上简并的能级也可以处理\cite{andrew1998computation}，但是这个在我们当前的计算中并不重要。

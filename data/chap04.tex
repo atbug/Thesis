@@ -110,48 +110,37 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 
 既然我们已经得到了线性和非线性响应函数的所需要矩阵元，我们下面以单层WS$_2$的介电常数和位移电导进行计算，并且和之前的工作进行对比。
 
-\section{Shift Current of Monolayer WS$_2$}
+\section{单层WS$_2$的位移电流}
 
-\subsection{Background and Computation Details}
+\subsection{计算方法}
 
-Shift current\cite{von_baltz_theory_1981,sipe_second-order_2000,young_first_2012,tan_shift_2016} is a second-order bulk photovoltaic effect arising from the difference of real space positions of Bloch electrons between valence band and conduction band,
-\begin{equation}
-J^{\alpha}=\sigma^{\alpha\beta\beta}(\omega)E^{\beta}(\omega)E^{\beta}(-\omega),\label{eq:shift_current-def}
-\end{equation}
-where shift current conductivity $\sigma^{\alpha\beta\beta}$ is given by\cite{von_baltz_theory_1981,sipe_second-order_2000,young_first_2012,tan_shift_2016}
-\begin{equation}
-\sigma^{\alpha\beta\beta}(\omega)=\frac{2g_s\pi e^3}{\hbar^2}\int\frac{d^3\boldsymbol{k}}{(2\pi)^3}\sum_{n,m}f_{nm}I_{nm}^{\alpha\beta\beta}\delta(\omega_{nm}-\omega),\label{eq:shift-current}
-\end{equation}
-where $g_{s}$ is the spin degeneracy, $\hbar\omega_{nm}=E_{n}-E_{m}$ represents photon energy,  $f_{nm} = f(E_{n}) - f(E_{m})$ and $f$ is Fermi-Dirac distribution. The integrand $I_{nm}^{\alpha\beta\beta}$ is composed of transition rate from band $m$ to band $n$ and shift vector between the two bands. $I_{nm}^{\alpha\beta\beta}$ can be written out with Berry connections and derivatives of Berry connections:
-\begin{equation}
-I_{nm}^{\alpha\beta\beta}=\text{Im}[A_{mn}^{\beta}A_{nm;\alpha}^{\beta}],
-\end{equation}
-where $A_{nm;\alpha}^{\beta}=\partial_\alpha A_{nm}^{\beta}-i(A_{nn}^{\alpha}-A_{mm}^{\alpha})A_{nm}^{\beta}$.
-These quantities can be calculated using the method described in Sec.\ref{sec:method}. Then an numerical integration would produce the result of $\sigma^{\alpha\beta\beta}$. Since a $\delta$ function is present in the expression of $\sigma^{\alpha\beta\beta}$, a very fine $k$ mesh is needed to achieve convergence.
-
-Since monolayer WS$_2$ has the point group $D_{6h}$, there's only one independent shift current conductivity component $\sigma^{yyy}$\cite{bilbao,wang_first-principles_2017}. Following the convention of Ref. \onlinecite{wang_first-principles_2017}, we choose a two dimensional (2D) definition of current. All \emph{ab initio} calculations are performed with a full-potential, all-electron \textsc{fhi-aims} package\cite{blum_ab_2009} with Perdew-Burke-Ernzerhof (PBE) exchange-correlation functional\cite{perdew_generalized_1996}. Slab model is used to characterize monolayer WS$_2$ with a vacuum layer thicker than 15\AA. A $k$ grid $12\times12\times1$ is used to sample the Brillouin Zone in self consistent calculations and a much finer $k$ grid $400\times400\times1$ is used to perform the numerical integration in the expression of shift current conductivity. In FHI-aims calculations, the so-called ``tight" numerical settings are used to ensure a sufficiently large atom basis set to expand Kohn-Sham wave functions and an accurate real-space grid integrations\cite{blum_ab_2009}. Spin-orbit interaction is not included and $\delta$ function is simulated using the following numerical approximation 
+由于单层 WS$_2$的点群是$D_{6h}$，位移电导只有一个独立的，不为零的分量 $\sigma^{yyy}$\cite{bilbao,wang_first-principles_2017}。根据文献\onlinecite{wang_first-principles_2017}的惯例，我们采用二维电流密度的定义。我们的第一性原理计算采用了一个全电子的软件包\textsc{fhi-aims}。电子的交换关联作用采用了PBE泛函\cite{perdew_generalized_1996}来处理。我们采用一个层状模型来模拟单层WS$_2$，其中真空层的厚度超过了15\AA。在自洽计算中，我们采用了$12\times12\times1$的$\bk$点来进行布里渊区的积分。但是在计算位移电流的时候，我们采用了密得多的$400\times400\times1$的$\bk$点进行数值积分。在\textsc{fhi-aims}数值积分中，我们采用了“tight”的数值设定，这个设定足以保证原子轨道基矢能够充分地展开Kohn-Sham波函数，并且实空间积分的格点也能够收敛\cite{blum_ab_2009}。我们没有引入自旋轨道耦合。在几分钟，我们采用了$\delta$函数的近似
 \[
 \delta(x)=\lim_{\epsilon\to0}\frac{1}{\pi}\frac{\epsilon}{\epsilon^2+x^2},
 \]
-where the broadening factor $\epsilon$ is chosen to be $0.04$eV.
+这里展宽因子$\epsilon$取为$0.04$eV.
 
-\subsection{Results}
 
-The shift current conductivity of monolayer WS$_2$ is presented in Fig. \ref{fig:WS2}(a), compared with shift current conductivity calculated using methods and software packages introduced in Ref. \onlinecite{wang_first-principles_2017} with the same parameters. Despite using different software packages and DFT schemes, the two shift current conductivity curves are almost the same. Optical absorptions, represented by imaginary part of dielectric constant calculated by both MLWF- and NoLO-based Wannier interpolation, are plotted in Fig. \ref{fig:WS2}(b). Both dielectric constant and shift current conductivity have two peaks at 2.75eV and 3.05eV respectively. While for dielectric constant, the peak at 3.05eV is higher than that at 2.75eV. An opposite feature is shown for shift current conductivity. This difference should be attributed to the difference of shift vector. The contribution of these two peaks can be decomposed to bands and is shown in Fig. \ref{fig:WS2}(c). Sizes of red and blue dots represent contributions to the 2.75eV peak and 3.05eV absorption peak respectively. It is obvious that both peaks are mainly contributed by the highest valence band and lowest
-four conduction bands around $\Gamma$ and $K$ points.
+\subsection{结果}
 
-\begin{figure}
-	\includegraphics[width=0.9\columnwidth]{performance.png}
-	\caption{Test of NoLO-based Wannier interpolation. (a) Calculation of symmetry forbidden components of shift current conductivity of monolayer WS$_2$. (b) The computational time of NoLO-based Wannier interpolation with respect to number of NoLOs ($N$). Black dots are actual data. Slope of the fitting line is roughly 2.\label{fig:performance}}
-\end{figure}
+\textbf{图}里展示了单层WS$_2$的位移电导。这个结果和之前工作\onlinecite{wang_first-principles_2017}中基于最大局域化Wannier函数的Wannier插值结果在相同参数情况下进行了对比。我们可以看到，尽管我们采用了不同的软件包，不同的DFT实现方式，两种方式计算得到的位移电导的曲线几乎完全重合。除此之外，我们还采用基于最大局域化Wannier函数和基于非正交局域函数的Wannier插值方法计算了光学吸收，也就是介电函数的虚部，这个结果战士在\textbf{图}中。介电函数和位移电导的曲线都有两个峰，一个峰在2.75eV，另外一个峰在3.05eV。尽管介电函数在3.05eV处的峰高于2.75eV处的峰，位移电导的特征却正好相反。这个差别应该是有位移矢量的不同导致的。在\textbf{图}中，我们将这两个峰的贡献分解在了能带上，红色和蓝色的点的大小体现了这个点对2.75eV和3.05eV处的峰的贡献大小。我们从图中可以看出这两个峰都是由最高的价带和最低的四条导带在$\Gamma$和$K$点附近贡献的。
 
-\subsection{Discussion of the Method}
 
-MLWFs are known to break symmetry slightly, which is revealed by small avoid crossings in the interpolated band structure where they should have been direct crossings. This behavior results in a small but nonvanishing value for symmetry forbidden components of shift current conductivity even for well convergent MLWFs. This problem does not arise for NoLO-based Wannier interpolation since symmetry is enforced in \emph{ab initio} calculations by only sampling irreducible Brillouin Zone in the calculation. Fig. \ref{fig:performance}(a) shows a forbidden component of shift conducitivity of WS$_2$ ($\sigma^{xxx}$) calculated by current method and MLWF-based Wannier interpolation. It can be observed that while MLWF-based Wannier interpolation gives a value around 1$\mu$A$\cdot$\AA/V$^2$ for this component, results of NoLO-based Wannier interpolation are vanishing small (no more than $10^{-4}\mu$A$\cdot$\AA/V$^2$). Therefore, NoLO-based Wannier interpolation preserves symmetry properties quite well.
+\subsection{关于方法的讨论}
 
-Compared to MLWF-based Wannier interpolation, NoLO-based Wannier interpolation is computationally heavier, since \emph{ab initio} packages, especially all-electron full-potential packages, need to use many NoLOs to span the Hilbert space, while MLWFs are usually constructed for bands near the Fermi surface only. Therefore, it is necessary to test the scaling behavior of this method with respect to the number of NoLOs. This scaling behavior is presented in Fig. \ref{fig:performance}(b). It is observed that computation time roughly scales as $\text{O}(N^2)$, where $N$ is the number of NoLOs. This is quite unexpected since diagonalization scales as $\text{O}(N^3)$. A closer analysis of the performance reveals that the computation is dominated by Fourier transformations in calculating $H$, $S$, $A^{(\text{W})}$ and their derivatives. Therefore, for common bulk materials, we can safely assume the time complexity is $\text{O}(N^2)$.
+我们已经知道，最大局域化Wannier函数在构造过程中一般会轻微破坏对称性，这一点体现在本应简并的能带在Wannier差值的时候出现一个很小的带隙。在位移电导上，这个特征体现在即使Wannier函数构造的时候收敛良好，被对称性禁戒的分量计算的时候也会得到不为零的值。但是，由于仅仅不可约布里渊区中的点才会被积分，基于非正交局域函数的第一性原理软件不会出现这样的问题。我们在\textbf{图}中展示了用最大局域化Wannier函数和非正交局域基组计算的单层WS$_2$的$\sigma^{xxx}$分量，这个分量是被对称性禁戒的。我们可以看到基于最大局域化Wannier函数的方法有一个1$\mu$A$\cdot$\AA/V$^2$左右的值，而基于非正交局域基组的Wannier插值则基本为零（不大于）$10^{-4}\mu$A$\cdot$\AA/V$^2$。从这个角度看，基于非正交局域基组的Wannier插值能够很好的保持对称性。
 
-\section{Alternative scheme by orthogonalization\label{sec:orthogonalization}}
+第一性原理计算，尤其是全电子的第一性原理计算，一般需要采用大量的轨道来展开希尔伯特空间，与此相反，最大局域化Wannier函数则仅仅需要在费米面附近构造，因此，计算中我们非正交局域基组的数量往往远超Wannier函数的数目。从这个角度来讲，本章提出的方法计算量更加大一些。在这样的情况下，我们测试了计算时间和非正交局域基组数量的关系。我们发现，计算时间基本上和非正交局域基组的数目的关系是$\text{O}(N^2)$，这里$N$是非正交局域基组的数目（见\textbf{图}）。这一点是比较奇怪的，因为对角化的计算复杂度往往是$\text{O}(N^3)$。进一步的分析表明，绝大部分计算计算时间用在了变换，也就是计算$H$, $S$, $A^{(\text{W})}$及其导数上。因此，对于正常大小的体系，我们可以简单的认为计算复杂度就是是$\text{O}(N^2)$。
+
+
+\section{正交化方案}
+
+尽管$|\psi^{(\text{W})}_{n\boldsymbol{k}}\rangle$不是正交的，我们可以利用正交化得到一组正交的基:
+\begin{equation}
+|\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle=
+\sum_m |\psi^{(\text{W})}_{m\boldsymbol{k}}\rangle S^{-1/2}_{mn}(\boldsymbol{k}).
+\end{equation}
+在这组正交基组的
 
 Although $|\psi^{(\text{W})}_{n\boldsymbol{k}}\rangle$ are not orthogonal to each other by definition, an orthogonalization can bring it to an orthogonal basis
 \begin{equation}

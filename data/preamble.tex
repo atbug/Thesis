@@ -1,12 +1,612 @@
-\newcommand{\bk}{\boldsymbol{k}}
-\newcommand{\br}{\boldsymbol{r}}
-\newcommand{\bK}{\boldsymbol{K}}
+%\newcommand{\bk}{\boldsymbol{k}}
+%\newcommand{\br}{\boldsymbol{r}}
+%\newcommand{\bK}{\boldsymbol{K}}
 
-
-
-\newcommand{\inv}{\mathfrak{i}}
-
-
+%\newcommand{\inv}{\mathfrak{i}}
 
 \newcommand{\berry}{\mathfrak{X}}
 \newcommand{\orb}{\mathfrak{A}}
+
+\setlength{\intextsep}{10pt}
+\setlength{\textfloatsep}{5pt}
+
+%adjust height of rows in a table
+\setlength\extrarowheight{2.5pt}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+%% ultimate commands
+
+% align environment
+\newcommand{\e}[1]{\begin{align}{#1}\end{align}}	
+
+% fraction
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\tf}[2]{\tfrac{#1}{#2}}
+
+% partial differentiation
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pf}[3]{\frac{\partial #1}{\partial #2}\bigg|_{#3}}
+\newcommand{\pa}[1]{\partial_{#1}}
+
+% label equations/sections
+\newcommand{\la}[1]{\label{#1}}
+
+% refer to equation, section, figure, appendix
+\newcommand{\q}[1]{Eq.\ (\ref{#1})}
+\newcommand{\qq}[2]{Eqs.\ (\ref{#1}-\ref{#2})}
+\newcommand{\s}[1]{Sec.\ \ref{#1}}
+\newcommand{\fig}[1]{Fig.\ \ref{#1}}		
+\newcommand{\app}[1]{App.\ \ref{#1}}				
+\newcommand{\tab}[1]{Tab.\ \ref{#1}}
+\newcommand{\ocite}[1]{Ref.\ \onlinecite{#1}}
+
+
+% brackets
+\newcommand{\brac}[1]{\left(\;#1\;\right)}
+\newcommand{\sq}[1]{\left[\;#1\;\right]}
+\newcommand{\cu}[1]{\left\{\;#1\;\right\}}
+
+% insert words in equation environment
+
+\newcommand{\iwith}{\ins{with}}
+\newcommand{\where}{\ins{where}}		
+\newcommand{\iand}{\ins{and}}
+\newcommand{\ior}{\ins{or}}
+\newcommand{\ifor}{\ins{for}}
+\newcommand{\st}{\ins{s.t.}}
+
+% sign functions
+\newcommand{\sgn}{\text{sgn}}
+
+% equal, approximate, proportional signs, limits
+\newcommand{\eq}{=&\;}
+\newcommand{\condeq}[1]{\as \substack{\sma{#1}\\=}\as}
+\newcommand{\condprop}[1]{\as \substack{\sma{#1}\\ \propto}\as}
+\newcommand{\limit}[1]{\substack{\text{lim}\\#1}\as}		
+\newcommand{\appr}{\approx &\;}
+\newcommand{\prop}{\propto&\;}
+
+% mathbb symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\I}{\mathbb{I}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbs}{\mathbb{S}}
+\newcommand{\bbt}{\mathbb{T}}
+
+
+% plane wave
+\newcommand{\eikr}{e^{i\bk \cdot \br}}
+\newcommand{\eikR}{e^{i\bk \cdot \bR}}
+\newcommand{\emikr}{e^{-i\bk \cdot \br}}
+\newcommand{\emikR}{e^{-i\bk \cdot \bR}}	
+
+% divergence,curl,laplacian
+\newcommand{\diverge}{\nabla \cdot}
+\newcommand{\curl}{\nabla \times}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\nabr}{\nabla_{\boldsymbol{r}}}
+\newcommand{\nabk}{\nabla_{\boldsymbol{k}}}
+\newcommand{\nabkp}{\nabla_{\boldsymbol{k}'}}
+
+%fundamental constants
+\newcommand{\bohr}{\mu_{\sma{B}}}
+\newcommand{\gfac}{g_{\sma{0}}}
+\newcommand{\lmt}{l^{\mt}}
+\newcommand{\lmf}{l^{\text{-}4}}
+\newcommand{\lmo}{l^{\mo}}
+
+
+
+
+% specific to geometric_orbital
+\newcommand{\om}{orbital magnetization }
+\newcommand{\omm}{orbital magnetization}
+\newcommand{\zf}{Zilberman-Fischbeck }
+\newcommand{\checkgp}{\check{g}^{\sma{\perp}}}
+\newcommand{\bt}{$BT_{\sma{\perp}}$}
+\newcommand{\bts}{$BT_{\sma{\perp}}$ }
+\newcommand{\bise}{Bi$_2$Se$_3$}
+\newcommand{\bises}{Bi$_2$Se$_3$ }
+
+
+
+% c creation operators
+
+\newcommand{\cdagk}{\dg{c}_{\bk}}
+\newcommand{\ck}{\pdg{c}_{\bk}}
+\newcommand{\cdagksig}{\dg{c}_{\bk,\sigma}}
+\newcommand{\cksig}{\pdg{c}_{\bk,\sigma}}
+\newcommand{\cdagkup}{c^\dagger_{\boldsymbol{k}\uparrow}}
+\newcommand{\cdagkdo}{c^\dagger_{\boldsymbol{k}\downarrow}}
+\newcommand{\ckup}{\pdg{c}_{\boldsymbol{k} \uparrow}}
+\newcommand{\ckdo}{\pdg{c}_{\boldsymbol{k} \downarrow}}
+
+\newcommand{\cdag}[1]{c^{\scriptscriptstyle{\dagger}}_{\scriptstyle{#1}}}
+\newcommand{\cnod}[1]{c_{\scriptstyle{#1}}}
+
+
+\newcommand{\cdj}{c^{\scriptscriptstyle{\dagger}}_{\scriptstyle{j \sigma}}}
+\newcommand{\cnj}{c_{\scriptstyle{j' \sigma'}}}
+
+
+% f creation operator
+
+\newcommand{\fsig}{\pdg{f}_{\sigma}}
+\newcommand{\fdagsig}{\dg{f}_{\sigma}}
+\newcommand{\fup}{\pdg{f}_{\uparrow}}
+\newcommand{\fdagup}{\dg{f}_{\uparrow}}
+\newcommand{\fdo}{\pdg{f}_{\downarrow}}
+\newcommand{\fdagdo}{\dg{f}_{\downarrow}}
+
+
+%levi Cevita
+\newcommand{\levi}[1]{\epsilon_{#1}}
+
+
+%spin symbols
+\newcommand\nup{\hat{n}_{f\uparrow}}
+\newcommand\ndo{\hat{n}_{f\downarrow}}
+\newcommand\avenup{{n}_{f\uparrow}}
+\newcommand\avendo{{n}_{f\downarrow} }
+
+% energies with varepsilon
+\newcommand{\var}{\varepsilon}
+%\newcommand{\var}[1]{\varepsilon_{#1}}
+\newcommand{\efu}{\varepsilon_{\scriptscriptstyle{F}}^{\scriptscriptstyle{\uparrow}}}
+\newcommand{\efd}{\varepsilon_{\scriptscriptstyle{F}}^{\scriptscriptstyle{\downarrow}}}
+\newcommand{\ef}{\varepsilon_{\scriptscriptstyle{f}}}
+\newcommand{\EF}{E_{\scriptscriptstyle{F}}}
+\newcommand{\ek}{\varepsilon_{\boldsymbol{k}}}
+\newcommand{\eF}{\varepsilon_{\scriptscriptstyle{F}}}
+\newcommand{\enk}{\varepsilon_{n,\bk}}
+
+
+
+
+% space
+
+\newcommand\as{\;\;\;\;}
+\newcommand\ass{\;\;\;\;\;\;\;\;}
+
+
+\newcommand\Wline[2]{ \pdg{\W}_{\sma{#1 \leftarrow #2}}}
+
+
+%hat operators
+
+\newcommand{\hp}{\hat{p}}
+\newcommand{\hbp}{\hat{\bp}}
+\newcommand{\hbr}{\hat{\br}}
+\newcommand{\hq}{\hat{q}}
+\newcommand{\hH}{\hat{H}}
+%\newcommand{\hv}{\hat{\bv}}
+\newcommand{\hx}{\hat{\bx}}
+\newcommand{\hbpi}{\hat{\boldsymbol{\pi}}}
+\newcommand{\hbPi}{\hat{\boldsymbol{\Pi}}}
+\newcommand{\hPi}{\hat{{\Pi}}}
+
+
+
+%bold symbols
+
+\newcommand{\ba}{\boldsymbol{a}}
+\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bc}{\boldsymbol{c}}
+\newcommand{\bd}{\boldsymbol{d}}
+\newcommand{\be}{\boldsymbol{e}}
+\newcommand{\bff}{\boldsymbol{f}}
+\newcommand{\bg}{\boldsymbol{g}}
+\newcommand{\bh}{\boldsymbol{h}}
+\newcommand{\bi}{\boldsymbol{i}}
+\newcommand{\bj}{\boldsymbol{j}}
+\newcommand{\bk}{\boldsymbol{k}}
+\newcommand{\bkp}{\boldsymbol{k}^{{\sma{\perp}}}}
+\newcommand{\bkone}{\boldsymbol{k_1}}
+\newcommand{\bktwo}{\boldsymbol{k_2}}
+\newcommand{\bp}{\boldsymbol{p}}
+\newcommand{\bq}{\boldsymbol{q}}
+\newcommand{\br}{\boldsymbol{r}}
+\newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\bu}{\boldsymbol{u}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bz}{\boldsymbol{z}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bG}{\boldsymbol{G}}
+\newcommand{\bK}{\boldsymbol{K}}
+\newcommand{\bM}{\boldsymbol{M}}
+\newcommand{\bL}{\boldsymbol{L}}
+\newcommand{\bO}{\boldsymbol{O}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bQ}{\boldsymbol{Q}}
+\newcommand{\bR}{\boldsymbol{R}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bze}{\boldsymbol{0}}
+\newcommand{\bxi}{\boldsymbol{\xi}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\bPi}{\boldsymbol{\Pi}}
+\newcommand{\bomega}{\boldsymbol{\omega}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\bcalf}{\boldsymbol{\calf}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bkappa}{\boldsymbol{\kappa}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\btau}{\boldsymbol{\tau}}
+\newcommand{\bdeltapar}{\boldsymbol{\delta}_{\sma{\parallel}}}
+
+%\mathfrak
+\newcommand{\frake}{\mathfrak{e}}
+\newcommand{\frako}{\mathfrak{o}}
+\newcommand{\frakt}{\mathfrak{t}}
+\newcommand{\fraks}{\mathfrak{s}}
+\newcommand{\frakr}{\mathfrak{r}}
+\newcommand{\mx}{\mathfrak{X}}
+\newcommand{\mxx}{\mathfrak{X}^x}
+\newcommand{\mxy}{\mathfrak{X}^y}
+\newcommand{\bmx}{\boldsymbol{\mathfrak{X}}}
+
+
+%\newcommand{\orb}{\boldsymbol{\mathfrak{A}}}
+\newcommand{\lutt}{\boldsymbol{\mathfrak{L}}}
+
+
+
+%tilde
+\newcommand{\tbPi}{\tilde{\bPi}}
+\newcommand{\tPi}{\tilde{\Pi}}
+\newcommand{\tbv}{\tilde{\bv}}
+\newcommand{\tv}{\tilde{v}}
+\newcommand{\tbmx}{\tilde{\bmx}}
+\newcommand{\tmxx}{\tilde{\mx}^x}
+\newcommand{\tmxy}{\tilde{\mx}^y}
+\newcommand{\tmx}{\tilde{\mx}}
+\newcommand{\tH}{\tilde{H}}
+\newcommand{\tbsigma}{\tilde{\bsigma}}
+\newcommand{\tsigma}{\tilde{\sigma}}
+\newcommand{\tilu}[1]{\tilde{u}_{#1}}
+\newcommand\tilX{\tilde{X}}
+\newcommand\tilZ{\tilde{Z}}
+\newcommand\tilGamma{\tilde{\Gamma}}
+\newcommand\tilU{\tilde{U}}
+
+%calligraphic
+\newcommand{\calL}{{\cal L}}
+\newcommand{\W}{{\cal W}}
+\newcommand{\A}{{\cal A}}
+
+
+% equal signs
+\newcommand\kzeq{\;\stackrel{\mathclap{\normalfont\mbox{$\sma{\bar{k}_z}$}}}{=}\;}
+
+%breve 
+\newcommand{\breveg}{\breve{g}}
+
+
+% symmetry operators
+\newcommand{\inv}{\mathfrak{i}}
+\newcommand{\mir}{\mathfrak{r}}
+\newcommand\glide{\mathfrak{g}}
+\newcommand\rot{\mathfrak{c}}
+\newcommand\scr{\mathfrak{s}}
+\newcommand\tra{\mathfrak{t}}
+
+
+\newcommand{\calti}{{\cal T}_{\sma{\cal I}}}
+\newcommand{\gdel}{g_{\boldsymbol{\delta}}}
+\newcommand{\pgdel}{\pdg{g}_{\boldsymbol{\delta}}}
+\newcommand{\bmz}{\bar{M}_z}
+\newcommand{\calbmx}{{\cal \bar{M}}_x}
+\newcommand{\calgdel}{\pdg{\breve{g}}_{\sma{\bdelta}}}
+\newcommand{\brevegdel}{\pdg{\breve{g}}_{\sma{\bdelta}}}
+\newcommand{\brevebmx}{\breve{\bar{M}}_x}
+\newcommand{\uit}{U_{\sma{\cali T}}}
+\newcommand{\utg}{U_{\sma{Tg \bdelta}}}
+\newcommand{\ut}{U_{\sma{T}}}
+\newcommand{\ug}{U_{\sma{g \bdelta}}}
+\newcommand{\ubmx}{U_{\sma{\bmx}}}
+\newcommand{\utbmz}{U_{\sma{T\bmz}}}
+\newcommand{\calug}{\calg_{\sma{\bdelta}}}
+\newcommand{\caluit}{\calu_{\sma{\cali T}}}
+\newcommand{\caltgdel}{\breve{T}_{\sma{g \bdelta}}}
+\newcommand{\brevetgdel}{\breve{T}_{\sma{g \bdelta}}}
+\newcommand{\brevetbmx}{\breve{T}_{\sma{\bmx}}}
+\newcommand{\hattbmx}{\hat{T}_{\sma{\bmx}}}
+\newcommand{\brevetbmz}{\breve{T}_{\sma{\bmz}}}
+\newcommand{\breveti}{\breve{T}_{\sma{\cali}}}
+\newcommand{\caltbmz}{\calt_{\sma{\bmz}}}
+\newcommand{\caltbmx}{\calt_{\sma{\bmx}}}
+\newcommand{\calut}{\calu_{\sma{T}}}
+\newcommand{\hatgdel}{\pdg{\hat{g}}_{\sma{\bdelta}}}
+\newcommand{\hatTg}{\pdg{\hat{T}}_{\sma{g\bdelta}}}
+\newcommand\csixdel{C_{\sma{6,\bdelta}}}
+\newcommand\brevecsixdel{\breve{C}_{\sma{6,\bdelta}}}
+\newcommand\cthreedel{C_{\sma{3,\bdelta}}}
+\newcommand\brevecthreedel{\breve{C}_{\sma{3,\bdelta}}}
+\newcommand\hatcthreedel{\hat{C}_{\sma{3,\bdelta}}}
+\newcommand\cthreetwodel{C_{\sma{3,2\bdelta}}}
+\newcommand\brevecthreetwodel{\breve{C}_{\sma{3,2\bdelta}}}
+\newcommand\brevectwothreedel{\breve{C}_{\sma{2,3\bdelta}}}
+\newcommand\ctwothreedel{C_{\sma{2,3\bdelta}}}
+\newcommand\hatcsixdel{\hat{C}_{\sma{6,\bdelta}}}
+\newcommand\ucsixdel{U_{\sma{C_6,\bdelta}}}
+\newcommand\cndel{C_{\sma{n,\bdelta}}}
+\newcommand\cbarndel{C_{\sma{\bar{n},\bdelta}}}
+\newcommand\ucndel{U_{\sma{C_n,\bdelta}}}
+\newcommand\hatcndel{\hat{C}_{\sma{n,\bdelta}}}
+\newcommand\brevecndel{\breve{C}_{\sma{n,\bdelta}}}
+\newcommand\brevectwotwodel{\breve{C}_{\sma{2,2\bdelta}}}
+\newcommand\brevecfourdel{\breve{C}_{\sma{4,\bdelta}}}
+\newcommand\brevectwodel{\breve{C}_{\sma{2,\bdelta}}}
+
+
+% vectors and matrices
+\newcommand{\vectwo}[2]{\begin{pmatrix} {#1}\\{#2} \end{pmatrix}}
+\newcommand{\matrixtwo}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}}
+\newcommand{\diagmatrix}[2]{\begin{pmatrix} #1 & 0 \\ 0 & #2 \end{pmatrix}}
+
+% Pauli matrices
+\newcommand{\szero}{\sigma_{\sma{0}}}
+\newcommand{\sx}{\sigma_{\sma{1}}}
+\newcommand{\sy}{\sigma_{\sma{2}}}
+\newcommand{\sz}{\sigma_{\sma{3}}}
+\newcommand{\tzero}{\tau_{\sma{0}}}
+\newcommand{\tx}{\tau_{\sma{1}}}
+\newcommand{\ty}{\tau_{\sma{2}}}
+\newcommand{\tz}{\tau_{\sma{3}}}
+
+
+
+% parafermion operators
+\newcommand{\gt}{\gamma_{\sma{2}}}
+\newcommand{\gth}{\gamma_{\sma{3}}}
+\newcommand{\gfo}{\gamma_{\sma{4}}}
+\newcommand{\gfi}{\gamma_{\sma{5}}}
+\newcommand{\gj}{\gamma_{\sma{j}}}
+\newcommand{\gtj}{\gamma_{\sma{2j}}}
+\newcommand{\gtjpo}{\gamma_{\sma{2j+1}}}
+\newcommand{\gtjpt}{\gamma_{\sma{2j+2}}}
+\newcommand{\gtjmo}{\gamma_{\sma{2j-1}}}
+\newcommand{\gtL}{\gamma_{\sma{2L}}}
+\newcommand{\gtLpo}{\gamma_{\sma{2L+1}}}
+\newcommand{\gtLpt}{\gamma_{\sma{2L+2}}}
+\newcommand{\gtLmo}{\gamma_{\sma{2L-1}}}
+\newcommand{\gtLmt}{\gamma_{\sma{2L-2}}}
+\newcommand{\gtLmth}{\gamma_{\sma{2L-3}}}
+\newcommand{\gtLmfo}{\gamma_{\sma{2L-4}}}
+
+
+% insert text in equation
+\newcommand{\ins}[1]{\;\;\;\;\text{#1}\;\;\;\;}
+
+
+%momentum parallel and perpendicular
+\newcommand{\kpar}{\boldsymbol{k}_{{\shortparallel}}}
+\newcommand{\Dpar}{D^{g}_{{\shortparallel}}}
+\newcommand{\kper}{k_{\perp}}
+
+
+% Cnv 
+\newcommand{\ctv}{C_{3v}}
+\newcommand{\cfv}{C_{4v}}
+\newcommand{\csv}{C_{6v}}
+\newcommand{\cnv}{C_{nv}}
+
+
+%C_n Time-reversal
+\newcommand{\cnt}{C_n {\cal T}}
+\newcommand{\cn}{C_n}
+\newcommand{\cf}{C_4}
+%\newcommand{\cs}{C_6}
+\newcommand{\ct}{C_3}
+\newcommand{\cst}{C_6{\cal T}}
+\newcommand{\cft}{C_4{\cal T}}
+\newcommand{\ctt}{C_2{\cal T}}
+
+
+% average 
+\newcommand{\ave}[1]{\langle\,#1\,\rangle}
+
+
+
+%inverse Angstroms and Angstroms
+\newcommand{\invA}{\text{\AA^{\scriptscriptstyle{-1}}}}
+\newcommand{\ang}{\text{\AA}}
+
+% Lagrangian
+\newcommand{\lag}{{\mathscr{L}}}
+
+
+% green's function
+\newcommand{\green}{{\mathscr{G}}}
+
+% Cauchy principal value
+\newcommand{\prin}{{\mathscr{P}}}
+
+% imaginary and real parts
+\newcommand{\imag}{{\mathscr{I}}}
+\newcommand{\real}{{\mathscr{R}}}
+
+
+%total differentiation
+\newcommand{\totaldif}[2]{\frac{ d #1}{d #2}}
+
+% Berry field
+\newcommand{\cala}{{\cal A}}
+\newcommand{\calb}{{\cal B}}
+\newcommand{\calc}{{\cal C}}
+\newcommand{\cald}{{\cal D}}
+\newcommand{\cale}{{\cal E}}
+\newcommand{\calf}{{\cal F}}
+\newcommand{\calg}{{\cal G}}
+\newcommand{\calh}{{\cal H}}
+\newcommand{\tcalh}{\tilde{\cal H}}
+\newcommand{\cali}{{\cal I}}
+\newcommand{\calj}{{\cal J}}
+\newcommand{\calk}{{\cal K}}
+\newcommand{\call}{{\cal L}}
+\newcommand{\calm}{{\cal M}}
+\newcommand{\caln}{{\cal N}}
+\newcommand{\calo}{{\cal O}}
+\newcommand{\calp}{{\cal P}}
+\newcommand{\calq}{{\cal Q}}
+\newcommand{\calr}{{\cal R}}
+\newcommand{\cals}{{\cal S}}
+\newcommand{\calt}{{\cal T}}
+\newcommand{\calu}{{\cal U}}
+\newcommand{\calv}{{\cal V}}
+\newcommand{\calw}{{\cal W}}
+\newcommand{\calx}{{\cal X}}
+\newcommand{\caly}{{\cal Y}}
+\newcommand{\calz}{{\cal Z}}
+
+
+
+%Gamma matrices
+\newcommand{\gam}[1]{\Gamma_{#1}}
+
+%determinant
+\newcommand{\de}[1]{\text{det}[\;#1\;]}
+
+%trace
+\newcommand{\tr}[1]{\text{Tr}[\;#1\;]}
+
+
+
+
+\newcommand{\noi}[1]{\noindent (#1)}
+\newcommand{\imp}{\;\;\Rightarrow\;\;}
+\newcommand{\mo}{\text{-}1}
+\newcommand{\mt}{\text{-}2}
+\newcommand{\minus}{\text{-}}
+\newcommand{\oneover}[1]{\tfrac{1}{#1}}
+
+
+% A command for inner product and bras and kets
+\newcommand{\braket}[2]{\big\langle #1 \big| #2 \big\rangle}
+\newcommand{\ketbra}[2]{\big|  #1  \big\rangle \big\langle #2 \big| }
+\newcommand{\braopket}[3]{\big\langle #1 \big| #2 \big| #3 \big\rangle}
+\newcommand{\bra}[1]{\big\langle#1\big|}
+\newcommand{\ket}[1]{\big|#1\big\rangle}
+\newcommand{\bigket}[1]{\bigl|#1\bigr\rangle}
+\newcommand{\textket}[1]{|#1\rangle}
+
+% Various bracketing commands
+\newcommand{\of}[1]{\!\left(#1\right)}
+\newcommand{\sqof}[1]{\left[#1\right]}
+\newcommand{\cuof}[1]{\left\{#1\right\}}
+
+% commutator and anticommutator
+\newcommand{\comm}[2]{\left[#1,#2\right]}
+\newcommand{\anticomm}[2]{\left\{#1,#2\right\}}
+% sum on nearest neighbor bonds
+\newcommand{\bond}{\left\langle i, j \right\rangle}
+%\newcommand{\bondsum}{\sum_{\left\langle i, j \right\rangle}}
+\newcommand{\nbond}{\left\langle\left\langle i, j \right\rangle\right\rangle}
+% 1/2
+\newcommand{\half}{\frac{1}{2} }
+\newcommand{\thalf}{\tfrac{1}{2} }
+% simplifies using the up and down arrows to denote spin
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+% Absolute value  
+\newcommand{\abs}[1]{\left|#1\right|}
+
+% Roman functions for real and imaginary parts
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\im}{\mathrm{Im}}
+
+
+%Expectation values
+\newcommand{\expect}[1]{\left\langle#1\right\rangle}
+\newcommand{\pdag}{\phantom{\dagger}}
+\newcommand{\pdg}[1]{{#1}^{\phantom{\dagger}}}
+
+\newcommand{\bkap}{\bar{\glide}}
+\newcommand{\bchi}{\bar{\chi}}
+\newcommand{\baeta}{\bar{\eta}}
+\newcommand{\lin}{\notag \\}
+\newcommand{\ex}{\text{exp}}
+\newcommand{\ab}{\alpha\beta}
+\newcommand{\deli}{\Delta^{-1}}
+
+
+\newcommand{\ra}{{R\,\alpha}}
+\newcommand{\rax}{{R+\vec{x}\,\alpha}}
+
+\newcommand{\rb}{{R'\,\beta}}
+\newcommand{\rarb}{{R\,\alpha};R'\,\beta}
+\newcommand{\zth}{\mathbb{Z}_3}
+
+
+\newcommand{\xin}{x_{\tex{inv}}}
+\newcommand{\low}{L$\ddot{\text{o}}$wdin\;}
+\newcommand{\tex}[1]{\sma{\text{#1}}}
+
+
+\newcommand{\kf}{k_{\scriptscriptstyle{F}}}
+
+\newcommand{\bfk}{\boldsymbol{k}}
+\newcommand{\bfq}{\boldsymbol{q}}
+
+
+
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\nk}{n_{\boldsymbol{k}'}}
+\newcommand{\dk}{\Delta_{\boldsymbol{k}'}}
+\newcommand{\Dk}{\Delta_{\boldsymbol{k}}}
+\newcommand{\tk}{\tilde{k}}
+\newcommand{\tkp}{\tilde{k}'}
+\newcommand{\bal}{\begin{align}}
+
+
+\newcommand{\V}{V_{\text{eff}}}
+\newcommand{\si}{\;\text{sin}\,}
+\newcommand{\ta}{\;\text{tan}\,}
+\newcommand{\co}{\;\text{\text{cos}}\,}
+\newcommand{\te}{t_{\text{eff}}}
+\newcommand{\ep}{\bar{\epsilon}}
+
+
+
+\newcommand{\braa}[1]{\left\langle#1\right|_{\scriptscriptstyle{A}}}
+\newcommand{\brab}[1]{\left\langle#1\right|_{\scriptscriptstyle{B}}}
+
+\newcommand{\dg}[1]{#1^{\scriptstyle{\dagger}}}
+\newcommand{\bof}[1]{\boldsymbol{#1}}
+\newcommand{\sma}[1]{\scriptscriptstyle{#1}}
+\newcommand{\po}{{\sma{+}} 1}
+
+
+
+\newcommand{\noc}{n_{\sma{{occ}}}}
+\newcommand{\ntot}{n_{\sma{{tot}}}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\zpar}{Z_{\sma{\parallel}}}
+\newcommand{\zper}{Z_{\sma{\perp}}}
+\newcommand{\lper}{l_{\sma{\perp}}}
+\newcommand{\bper}{B_{\sma{\perp}}}
+\newcommand{\bpar}{B_{\sma{\parallel}}}
+
+\newcommand{\order}{\text{O}}
+
+% for review
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+% important quantities
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\barmu}{\bar{\mu}}
+\newcommand{\barphi}{\bar{\varphi}}
+\newcommand{\effH}{\mathfrak{H}}
+\providecommand{\tabularnewline}{\\}

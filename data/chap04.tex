@@ -140,39 +140,34 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 |\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle=
 \sum_m |\psi^{(\text{W})}_{m\boldsymbol{k}}\rangle S^{-1/2}_{mn}(\boldsymbol{k}).
 \end{equation}
-在这组正交基组的
-
-Although $|\psi^{(\text{W})}_{n\boldsymbol{k}}\rangle$ are not orthogonal to each other by definition, an orthogonalization can bring it to an orthogonal basis
-\begin{equation}
-|\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle=
-\sum_m |\psi^{(\text{W})}_{m\boldsymbol{k}}\rangle S^{-1/2}_{mn}(\boldsymbol{k}).
-\end{equation}
-The Hamiltonian in the basis of $|\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle$ is therefore related to $H^{(\text{W})}(\boldsymbol{k})$ as
+在这组正交基组下，哈密顿量$|\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle$和$H^{(\text{W})}(\boldsymbol{k})$的关系是
 \begin{equation}
 H^{(\text{O})}(\boldsymbol{k})=S^{1/2}(\boldsymbol{k})H^{(\text{W})}(\boldsymbol{k})S^{-1/2}(\boldsymbol{k}).\label{HO-HW}
 \end{equation}
-Notice that the square root of $S(\boldsymbol{k})$ is well defined since $S(\boldsymbol{k})$ is positive definite. In this way, MWLF-based Wannier interpolation method can be directly applied to calculate nonlinear optical responses.
+由于$S(\boldsymbol{k})$是正定的，因此$S(\boldsymbol{k})$的开根号是有着良好定义的。通过以上的变换，基于最大局域化Wannier函数的方法就可以直接用在非正交局域基组上。
 
-However, one key ingredient of MWLF-based Wannier interpolation is the derivative of $H^{(\text{O})}(\boldsymbol{k})$ with respect to $\boldsymbol{k}$. By Eq. (\ref{HO-HW}), this issue reduces to the calculation of derivatives of arbitrary order of $S^{-1/2}(\boldsymbol{k})$ with respect to $\boldsymbol{k}$ . This can be done as follows. By differentiating $S^{-1/2}S^{-1/2}=S^{-1}$, we obtain
+但是，在基于最大局域化Wannier函数的Wannier插值中，哈密顿量$H^{(\text{O})}(\boldsymbol{k})$对$\bk$的任意阶导数是一个非常重要的组成部分。从式\ref{HO-HW}中，我们可以看出这个问题简化为求解$S^{-1/2}(\boldsymbol{k})$对$\bk$的任意阶导数。这个导数可以如下求得。通过两边求导$S^{-1/2}S^{-1/2}=S^{-1}$，我们得到
 \begin{equation}
 (\partial_{\alpha}S^{-1/2})S^{-1/2}+S^{-1/2}\partial_{\alpha}S^{-1/2}=\partial_{\alpha}S^{-1}.\label{dS1/2-1}
 \end{equation}
-$\partial_{\alpha}S^{-1}$, on the other hand, can be calculated by differentiating $SS^{-1}=I$,
+其中的$\partial_{\alpha}S^{-1}$可以通过对$SS^{-1}=I$两边求导得到，
 \begin{align}
 (\partial_{\alpha}S)S^{-1}+S\partial_{\alpha}S^{-1}=0
 \end{align}
-and getting
+结果是
 \begin{align}
 \partial_{\alpha}S^{-1} = -S^{-1}(\partial_{\alpha}S)S^{-1}.
 \end{align}
 
-Eq. (\ref{HO-HW}) is in the form of a Sylvester equation\cite{sylvester}. Sylvester equation, with positive definite $S$ here, has one and only one solution. This solution, accessible from existing code\cite{laug}, is the desired first order derivative of $S^{-1/2}(\boldsymbol{k})$. By differentiating $S^{-1/2}S^{-1/2}=S^{-1}$ and $SS^{-1}=I$ to second order, the second order derivative of $S^{-1/2}(\boldsymbol{k})$ can be obtained in a similar manner. In a similar way, arbitrary derivative of $S^{-1/2}(\boldsymbol{k})$ can be obtained through a recursive calculation.
+式\ref{dS1/2-1}是一个Sylvester方程\cite{sylvester}，在$S$是正定的情况下，这个方程有且仅有一个解。这个解可以用已有的代码得到\cite{laug}，它就是所需要求得的$S^{-1/2}(\boldsymbol{k})$的一阶导数。如果我们将$S^{-1/2}S^{-1/2}=S^{-1}$求导到二阶，也可以通过类似的方法求得$S^{-1/2}(\boldsymbol{k})$的二阶导数。不难想象，通过类似的方法，$S^{-1/2}(\boldsymbol{k})$的任意阶导数都可以求得。
 
-Orthogonalization method presented in this section has the advantage of being directly connected to previous Wannier interpolation methods. However, the pervasive usage of matrix inversion makes this method slightly slower and less accurate than the method presented in Sec. \ref{sec:method}. 
 
-\section{Conclusion}
+这一节所述的正交化的方法的优势是和已有的基于最大局域化Wannier函数的插值方法存在着直接联系。但是，由于这个方法大量的用到了矩阵的求逆，这个方法的计算量略大于\ref{sec:method}的方法，数值稳定性也稍微差一些。
 
-Real space localized orbital-based \emph{ab initio} packages have the potential of achieving $\text{O}(N)$ computational resource scaling with respect to number of atoms. In addition, vacuum can be treated without extra computational cost in these packages, making them competitive tools in research for low dimensional materials. Here we demonstrate these packages can be more powerful by extending Wannier interpolation to NoLOs. 
 
-Although computationally heavier compared to MLWF-based Wannier interpolation, NoLO-based Wannier interpolation scheme avoids human intervention and can be used in high throughput material discovery. The correctness of this scheme is proved by calculating shift current conductivity of monolayer WS$_2$. This NoLO-based Wannier interpolation scheme is quite general and can be used to calculate different kinds of linear responses and nonlinear responses in different research fields\cite{tokura_nonreciprocal_2018}, including anomalous Hall effect (see also Ref. \onlinecite{lee_tight-binding_2018}), nonlinear Hall effect, orbital magnetization and second harmonic generation.
+\section{总结}
+
+基于实空间局域基组的第一性原理计算软件有潜力能够实现$\text{O}(N)$的计算量和基组数目的渐进关系。除此之外，这些计算软件中真空层的处理相对简单，不需要增加额外的计算量，在低维材料的计算中用途很大。这里，我们证明了这些软件通过基于非正交局域基组的Wannier插值，可以变得更加强大。
+
+和基于最大局域化Wannier函数的Wannier插值相比，尽管基于非正交基组的Wannier插值的计算量相对较大，但是这个方法可以避免人工干预，可以应用于材料的高通量计算。我们通过计算单层WS$_2$的位移电流，证明了这个方法的正确性和有效性。这个基于非正交局域基的Wannier插值方法非常普适，可以计算各种领域的各种线性和非线性的响应函数\cite{tokura_nonreciprocal_2018}，包括反常电导（关于反常电导，可以参见文献\onlinecite{lee_tight-binding_2018}），非线性霍尔效应，轨道磁矩和倍频效应。
 

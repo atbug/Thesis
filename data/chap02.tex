@@ -3,4 +3,212 @@
 
 \section{密度泛函理论}
 
-\section{最大局域化Wannier函数方法}
+\section{最大局域化Wannier方法}
+\subsection{引言}
+凝聚态物理学中，常用的近似是近独立粒子近似。在这个近似下，可以用一系列单粒子波函数的集合以及其占据数来描述固体系统的基态，
+在周期势场下，单粒子波函数通常取作布洛赫波函数$\psi_{n\bm{k}}$，其中n是能带的带序，$\bm{k}$是布里渊区的晶格准动量。虽然，布洛赫波表象是电子结构计算中最常用，但是由于布洛赫波函数具有延展性会带来计算的难度，另外一种表象—瓦尼尔表象通常被采用。瓦尼尔(Wanier)表象中的瓦尼尔函数$w_{n\bm{R}}$可以通过一个幺正变换和布洛赫波函数联系，是由瓦尼尔最早提出的。瓦尼尔函数由晶格矢量$\bm{R}$和能带带序的n来标记。
+
+虽然瓦尼尔函数一直被提到，但是真正植入用于第一性原理计算却经历了很大的困难。一个主要的原因是由于洛赫波函数$\psi_{n\bm{k}}$在每个$\bm{k}$点的相位随机性带来的瓦尼尔函数不唯一，或者说是由于对各个$\bm{k}$点的布洛赫波函数作幺正变换的时候规范不确定性带来的瓦尼尔函数的不唯一。这种规范不确定性的困难尤其在碰到简并能带的时候尤为棘手，因为当把简并的能带划分成分开的能带变换到瓦尼尔函数时，是很有问题的。一个非常重要的发展是	Marzari 和Vanderbilt 在1997年提出在给定一个绝缘体后用“最大局域化”的标准来唯一决定一组瓦尼尔函数。紧接着，Souza,Marzari 和Vanderbilt 又提出一种办法来解决构造一组可以张成一个子空间的瓦尼尔函数的问题，这个方法可以处理具有部分占据能带的金属。
+
+在这个重大的发展后，一大批从事电子结构计算的研究者把最大局域化瓦尼尔函数方法用于计算各种各样的性质，并且他们为此发展了一系列后处理程序。更有趣的是，瓦尼尔函数的中心电荷和布洛赫波函数的贝里曲率紧紧联系在一起，这个联系在现代极化理论中被提出，使得人们更好地理解了材料的介电性质和极化。凝聚态物理中更常用的是用瓦尼尔函数来构造关联电子系统和磁性系统的模型哈密顿量。其他的应用还包括在弹道输运理论中用瓦尼尔基组来构造格林函数以及其自能，或者用瓦尼尔基组在化学精度上来精确构造第一性紧束缚计算哈密顿量。最后，值得一提的是，瓦尼尔函数还被用于声子，声子晶体，冷原子晶格以及绝缘体的局域介电响应的理论分析。
+
+\subsection{基础理论}
+在对周期性体系进行电子结构的计算的时候，单电子有效哈密顿量$H$和晶格矢量平移算符$T_{R}$对易,因此布洛赫波函数可以被表示为一个周期性函数$u_{n\bm{k}}$加上一个相位调制:
+\begin{equation}
+[H,T_{R}]=0\Rightarrow \psi_{n\bm{k}}=u_{n\bm{k}}e^{i \bm{k} \cdot \bm{r}}
+\end{equation}
+我们用$\bm{R}n$来标记局域在晶胞$\bm{R}$的第n调带的瓦尼尔函数$w_{n\bm{R}}$，采用狄拉克符号标记，瓦尼尔函数可以用以下方式来构造
+\begin{equation}
+|\bm{R}n \rangle= \frac{V}{(2\pi)^3}\int_{BZ}d\bm{k}e^{-i\bm{k}\cdot\bm{R}}|\psi_{n\bm{k}}\rangle
+\end{equation}
+显而易见，所有的$|\bm{R}n \rangle$构成了一个正交集。等式(3)是一个傅里叶变换，它的逆傅里叶变换是：
+\begin{equation}
+|\psi_{n\bm{k}}\rangle= \sum_{\bm{R}}e^{i\bm{k}\cdot\bm{R}}|\bm{R}n \rangle
+\end{equation}
+瓦尼尔函数和布洛赫函数通过等式(2)和(3)相互联系，因此在某一个能带子空间内这两种描述方法是等价的，这种等价性也体现在投影算符上：
+\begin{equation}
+P= \frac{V}{(2\pi)^3} \int_{BZ}d\bm{k}  |\psi_{n\bm{k}}\rangle \langle\psi_{n\bm{k}} |=\sum_{\bm{R}}|\bm{R}n \rangle \langle \bm {R}n |
+\end{equation}
+\subsubsection{规范问题}
+我们可以改写布洛赫波函数
+\begin{equation}
+|\widetilde \psi_{n\bm{k}}\rangle= e^{i \varphi_{n}(\bm{k})} |\psi_{n\bm{k}}\rangle
+\end{equation}
+或者等效得，
+\begin{equation}
+|\widetilde u_{n\bm{k}}\rangle= e^{i \varphi_{n}(\bm{k})} |u_{n\bm{k}}\rangle
+\end{equation}
+但是不会对系统的课观测量有任何的转变，这在前文已经提到，即布洛赫函数具有随机性，即给布洛赫函数加一个相位并不改变物理观察量。结合等式(6)和(7)就可以发现，这样的规范不确定性使得得到的瓦尼尔函数不唯一，不同的规范会得到不同的瓦尼尔函数。值得一提的是，对于从薛定谔方程解得的布洛赫函数来说，其并没有一个所谓的最佳规范，因此相位的选择是随机的，这就不可避免地造成了瓦尼尔函数的不唯一性。
+\subsubsection{多带问题}
+在讨论如何解决瓦尼尔函数的不确定性之前，我们先讨论多带的情况，比如由J条能带组成的一个流形，流形内的能带和流形外的能带是分开的。不失一般性的，流形内的能带可以存在简并或者交叉。在这个有J条带构成的流形内，我们依然可以通过规范变换来改写波函数：
+\begin{equation}
+|\widetilde \psi_{n\bm{k}}\rangle= \sum_{m=1}^{J}U^{(\bm{k})}_{mn} |\psi_{n\bm{k}}\rangle
+\end{equation}
+其中，$U^{(\bm{k})}_{mn}$ 是一个J维的在$\bm{k}$空间具有周期性的幺正矩阵。$\bm{k}$的投影算符在这个能带流型下是规范不变的：
+\begin{equation}
+P_{\bm{k}}= \sum_{n=1}^{J}|\psi_{n\bm{k}}\rangle \langle\psi_{n\bm{k}} |= \sum_{n=1}^{J}|\widetilde\psi_{n\bm{k}}\rangle \langle\widetilde \psi_{n\bm{k}} |
+\end{equation}
+我们要再次强调在多带情况下，规范不确定性更加加剧了瓦尼尔函数的不唯一性。更严重的问题是，当简并能带存在时，布洛赫波函数在简并点附近是不解析的，这种情况下继续利用等式(2)作傅里叶变换会得到局域性很差的瓦尼尔函数。
+总的来说，得到瓦尼尔函数有这么几个步骤：首先得到本身不平滑的哈密顿量的本征态$|\psi_{n\bm{k}}\rangle$,然后通过规范变换$U^{(\bm{k})}_{mn}$得到$|\widetilde\psi_{n\bm{k}}\rangle$来消除不连续性以保持其平滑性。然后把$|\widetilde\psi_{n\bm{k}}\rangle$代入到等式(2)来得到瓦尼尔函数。更具体地说，这样得到的瓦尼尔函数具有如下形式：
+\begin{equation}
+|\bm{R}n \rangle=\frac{V}{(2\pi)^3} \int_{BZ}d\bm{k} e^{-i\bm{k}\cdot\bm{R}} \sum_{m=1}^{J}U^{(\bm{k})}_{mn}|\psi_{m\bm{k}}\rangle
+\end{equation}
+剩下的问题就是如何选择$U^{(\bm{k})}_{mn}$来完成这个任务。
+
+\subsection{投影瓦尼尔函数}
+一个简单的常见消除不连续性得到平滑规范的方法是通过投影得到的瓦尼尔函数。Marzari 和Vanderbitz提出，可以在初始的时候猜一些轨道$g_{n}(\bm{r})$。在每个$\bm{k}$点，这些 初始轨道$g_{n}(\bm{r})$可以被投影到一个布洛赫流形：
+\begin{equation}
+|\phi_{n\bm{k}}\rangle=\sum_{m=1}^{J}|\phi_{m\bm{k}}\rangle \langle \phi_{m\bm{k}}|g_{n}\rangle
+\end{equation}
+这样得到的波函数$|\phi_n\bm{k}\rangle$虽然不正交，但是在$\bm{k}$空间是平滑的。我们通常定义内积$(A_{\bm{k}})_{mn}=\langle \phi_{m\bm{k}}|g_{n}\rangle$,然后代入等式(10)。利用交叠矩阵$(S_{\bm{k}})_{mn}=\langle \phi_{m\bm{k}}| \phi_{m\bm{k}}\rangle_V=(A^\dagger_{\bm{k}}A_{\bm{k}})_{mn}$(其中V代表对一个原胞进行积分)，我们得到
+\begin{equation}
+|\widetilde\psi_{n\bm{k}}\rangle=\sum_{m=1}^{J}|\phi_{m\bm{k}}\rangle (S^{-1/2}_{\bm{k}})_{mn}
+\end{equation}
+这些和$|\widetilde\psi_{n\bm{k}}\rangle$同过幺正变换相联系的波函数$|\widetilde\psi_{n\bm{k}}\rangle$在$\bm{k}$空间是平滑的。这样我们就消除了规范不确定性问题。
+
+需要强调的是，一开始猜测的波函数不需要很接近目标瓦尼尔函数，一开始选择一些简单的轨道就已经足够了，只要他们大致局域在原子位置上。只要我们得到的内积矩阵$(A_{\bm{k}})_{mn}$在任何$\bm{k}$点没有奇点，这个方法就是成功的。关于$(A_{\bm{k}})_{mn}$有没有奇点，我们可以通过$(S_{\bm{k}})_{mn}$最大值和最小值得比例是否过大来检查。
+
+\subsection{最大局域化瓦尼尔函数}
+上一节提到的投影瓦尼尔函数有着广泛地应用，但是最受欢迎的一种用法是所谓的最大局域化瓦尼尔波函数。最大局域化瓦尼尔波函数通过设定一个有良好定义的局域化判据来构造瓦尼尔波函数的时候，具体体现在重新定义$U^{(\bm{k})}_{mn}$来满足这个判据。
+
+首先，我们定义一个局域化函数来衡量J个瓦尼尔函数的速度的平方和：
+\begin{equation}
+\Omega=\sum_n [\langle\bm{0} n | r^2 | \bm{0}n \rangle -\langle \bm{0}n|\bm{r}|\bm{0}n\rangle^2]=\sum_n[\langle r^2\rangle_n-\bm{\overline r}^2_n]
+\end{equation}
+下一步是用布洛赫波函数来表达$\Omega$.
+
+一旦$\bm{k}$空间的$\Omega$的表达式得到后，就可以选择$U^{(\bm{k})}_{mn}$来最小化$\bm{k}$空间的$\Omega$以得到最大局域化的瓦尼尔波函数。这一步是在通常的电子结构的自洽计算已经完成的基础上后处理得到。
+
+
+\subsubsection{实空间表示}
+我们把等式(12)的$\Omega$分为规范不变的部分和规范依赖的部分：
+\begin{equation}
+\Omega=\Omega_I+\widetilde\Omega
+\end{equation}
+其中
+\begin{equation}
+\Omega_I=\sum_n [\langle\bm{0} n | r^2 | \bm{0}n \rangle -\sum_{\bm{R}m}|\langle \bm{R}m|\bm{r}|\bm{0}n\rangle|^2] 
+\end{equation}
+
+\begin{equation}
+\widetilde \Omega=\sum_n \sum_{\bm{R}m\neq \bm{0}m}|\langle \bm{R}m|\bm{r}|\bm{0}n\rangle|^2
+\end{equation}
+可以看到，$\Omega_I$和$ \widetilde \Omega$都是正定的，其中$\Omega_I$是规范不变的，即无论等式(7)取什么样的规范，它都是不变了。通过在等式(8)定义的投影算符$P$重写等式(13)是十分直接的，我们定义$Q=1-P$，然后我们又有：
+\begin{equation}
+\Omega_I=\sum_{n\alpha} \langle\bm{0} n | r_\alpha Q  r_\alpha  | \bm{0}n \rangle=\sum_\alpha Tr_c[P r_\alpha Q r_\alpha]
+\end{equation}
+其中下指标“c” 表示对每一个单位原胞求迹。很显然的，$\Omega_I$是规范不变的，因为它可以通过投影算符表达出来，而投影算符是不依赖于规范的选取的。既然$\Omega_I$是规范不变的，那么所谓的最小化进程就是通过规范选取来最小化规范依赖的$ \widetilde \Omega$部分。
+
+\subsubsection{倒空间表示}
+位置算符在瓦尼尔表象下的形式：
+\begin{equation}
+\langle \bm{R}n |\bm{r}|\bm{0}m\rangle=i \frac{V}{(2\pi)^3}\int d\bm{k} e^{i \bm{k} \cdot \bm{R}} \langle u_{n \bm{k}}| \nabla_{\bm{k}}| u_{m \bm{k}}\rangle
+\end{equation}
+位置算符的平方在瓦尼尔表象下的表现形式：
+\begin{equation}
+\langle \bm{R}n |\bm{r^2}|\bm{0}m\rangle=- \frac{V}{(2\pi)^3}\int d\bm{k} e^{i \bm{k} \cdot \bm{R}} \langle u_{n \bm{k}}| \nabla^2_{\bm{k}}| u_{m \bm{k}}\rangle
+\end{equation}
+由于这两个关系式把局域化函数的矩阵元用$\nabla_{\bm{k}}$和$ \nabla^2_{\bm{k}}$表达，所以它们是联系瓦尼尔表象和布洛赫表象的重要的桥梁。另外，它们还使得计算$|u_{n\bm{k}}\rangle$在任意幺正变换下的局域性效应不需要进行任何昂贵的标量积计算。我们可以在一个规则的网格上撒$\bm{k}$点，计算每个$\bm{k}$点上的布洛赫轨道$|u_{m\bm{k}}\rangle$以及通过差分的办法来得到上式中的微分项。
+
+对于在$\bm{k}$空间上平滑的任何函数$f(\bm{k})$，它的梯度可以用有限差分的方法表现为：
+
+\begin{equation}
+\nabla f(\bm{k})=\sum_{\bm{b}}\omega_b\bm{b}[f(\bm{k}+\bm{b})-f(\bm{k})]+\mathcal{O}(b^2)
+\end{equation}
+这里$\bm{b}$是连接$\bm{k}$和其邻近点的矢量，$\omega_b$是一个几何因子。类似的：
+\begin{equation}
+|\nabla f(\bm{k})|^2=\sum_{\bm{b}}\omega_b[f(\bm{k}+\bm{b})-f(\bm{k})]^2+\mathcal{O}(b^3)
+\end{equation}
+有了等式(19)和等式(20)以后，计算等式(17)和(18)就变得十分直接。所有需要的关于倒格矢空间的微分项的信息都包含在一个描述相邻$\bm{k}$点布洛赫波的交叠矩阵里面：
+\begin{equation}
+M^{(\bm{k},\bm{b})}_{mn}=\langle u_{m \bm{k}}|u_{n,\bm{k}+\bm{b}} \rangle
+\end{equation}
+这个交叠矩阵在瓦尼尔方法中是十分重要的，因为所有的对局域化函数的贡献都可以用这个交叠矩阵来表达。因此，一旦得到这个交叠矩阵$(M^{\bm{k},\bm{b}}_{mn})$被得到以后，额外的用电子结构计算软件计算基态波函数的步骤都是不必要的，这就使得瓦尼尔化进程是一个不依赖于特定程序或者代码的后处理的进程。
+用局交叠矩阵表达局域化函数的方式并不唯一，因为我们有很多种可以选择的方法来写下$\bm{\overline r_n}$和$\langle r^2\rangle_n$的有限差分的表达式。这里我们给出Marzari 和Vandervilt在1997年提出的满足在移动$|\bm{0}n \rangle$一个波矢的规范变换下的有正确变换的表达式:
+\begin{equation}
+\overline r_{n}=-\frac{1}{N}\sum_{\bm{k},b}\omega_b\bm{b}\ln M^{(\bm{k},b)}_{nn}
+\end{equation}
+以及
+\begin{equation}
+\langle r^2\rangle_{n}=\frac{1}{N}\sum_{\bm{k},b}\omega_b{[1-|M^{(\bm{k},b)}_{nn}|^2]+[Im \ln M^{(\bm{k},b)}_{nn} ]^2}
+\end{equation}
+相应的规范不变的和规范依赖的伸展函数的表达式为：
+\begin{equation}
+\omega_I=\frac{1}{N}\sum_{\bm{k},\bm{b}}\omega_b(J-\sum_{mn}|M^{(\bm{k},b)}_{nn}|^2)
+\end{equation}
+和
+\begin{equation}
+\widetilde \omega=\frac{1}{N}\sum_{\bm{k},\bm{b}}\omega_b\sum_{m \neq n}|M^{(\bm{k},b)}_{nn}|^2+\frac{1}{N}\sum_{\bm{k},\bm{b}}\omega_b\sum_{n}(-Im \ln M^{(\bm{k},b)}_{nn}-\bm{b} \cdot \bm{\overline r_n})
+\end{equation}
+
+\subsection{局域化进程}
+为了最小化局域化函数，我们考虑做一个来自于无穷小的规范变换对伸展函数$\Omega$的一阶效应的改变，这个无穷小的规范变换为$U^(\bm{k})_{mn}=\delta_{mn}+dW_{mn}^{\bm{k}}$。其中$dW_{mn}^{\bm{k}}$是一个无穷小的反厄米的矩阵，即$dW^\dagger=-dW$，所以有$|u_{n\bm{k}}\rangle\rightarrow |u_{n\bm{k}}\rangle+\sum_mdW_{mn}^{\bm{k}}|u_{m\bm{k}}\rangle$。这里我们约定：
+\begin{equation}
+(\frac{d\Omega}{dW})_{nm}=\frac{\Omega}{dW_{mn}}
+\end{equation}
+注意等式两边的m和n的指标互换了。我们引入$\mathcal{A}$和$\mathcal{S}$和相应的超算符 $\mathcal{A}[B]=(B-B^\dagger)/2$以及$\mathcal{S}[B]=(B+B^\dagger)/2i$。我们定义：
+\begin{equation}
+q^(\bm{k},\bm{b})_n=Im \ln M^(\bm{k},\bm{b})_{nn}+\bm{b} \cdot \overline r_n
+\end{equation}
+
+\begin{equation}
+q^(\bm{k},\bm{b})_n=Im \ln M^(\bm{k},\bm{b})_{nn}+\bm{b} \cdot \overline r_n
+\end{equation}
+
+\begin{equation}
+R^{(\bm{k},\bm{b})}_{mn}= M^{(\bm{k},\bm{b})}_{mn}M^{(\bm{k},\bm{b})\ast}_{nn}
+\end{equation}
+\begin{equation}
+T^{(\bm{k},\bm{b})}_{mn}= \frac{M^{(\bm{k},\bm{b})}_{mn}}{M^{(\bm{k},\bm{b})}_{nn}}q^{(\bm{k},\bm{n})}_n
+\end{equation}
+参考Marzari和Vanderbilt在1997年写的文章，我们可以得到伸展函数$\Omega$的梯度$G^{(\bm{k})}=d\Omega /dW^{(\bm{k})}$的具体表达式：
+\begin{equation}
+G^{(\bm{k})}=4\sum_{\bm{b}}\omega_b(\mathcal{A}[R^{(\bm{k},\bm{b})}]-\mathcal{S}[T^{(\bm{k},\bm{b})}])
+\end{equation}
+这个梯度在选取合适的$U_{mn}^{k}$得到$\Omega$的最小值的过程中有重要作用，一个简单的最速下降法是通过朝着梯度$G$的反方向进行有限的步骤直到达到$\Omega$的最小值。
+
+在这里，我们指出，所有的算符都可以用在小矩阵上做不昂贵的矩阵代数运算得到，最消耗计算资源部分的程序是最开始的典型的自洽计算得到布洛赫波函数$|u^{(0)}_{n\bm{k}}$部分，以及之后对一系列交叠矩阵的计算：
+\begin{equation}
+M_{mn}^{(0)(\bm{k},\bm{b})}=\langle u_{m\bm{k}}^{(0)}|u^{(0)}_{n,\bm{k+b}}\rangle
+\end{equation}
+这个交叠矩阵只要在布洛赫波函数$|u^{(0)}_{n\bm{k}}$得到后立刻计算出来。之后每进行一次幺正矩阵$U^{(k)}$的选择，这个交叠矩阵只要做相应的不太消耗计算资源的矩阵代数来更新即可：
+\begin{equation}
+M^{(\bm{k},\bm{b})}=U^{(k)\dagger}M_{mn}^{(0)(\bm{k},\bm{b})}U^{\bm{(k+b)}}
+\end{equation}
+而不需要任何的布洛赫波函数的计算过程。这种做法不仅使得这个算法在计算上更快更有效，也使得其并不依赖于布洛赫表象中基矢的选取。换句话说，任何电子结构计算的软件包都可以提供一系列的交叠矩阵$M^{(\bm{k},\bm{b})}$和常用的瓦尼尔最大局域化代码很容易得对接。
+\subsection{纠缠能带}
+前面章节提到的方法都是处理一组隔离的能带，它们和其它能带通过贯穿整个布里渊区的能隙来分离开。但是，很多情况下，我们感兴趣的能带不是分离的，它们和其它能带纠缠在一起。比如说，研究电子输运的时候，起主导作用的是费米面附近部分占据的能带，或者在处理形如四面体结构半导体的四条低能级的反键带的空带（通常是在较高的导带）的时候。另外一个感兴趣的情况是部分占据的能带在瓦尼尔函数表象下实现降维以构造模型哈密顿量。在这些例子里面，虽然感兴趣的能带在一个有限的能量窗口里面但是和窗口外的能带交叠杂化在一起，我们称之为纠缠能带。
+
+处理纠缠能带最大的困难在于我们不知道选取多大的J是合适的，特别是某些$\bm{k}$点我们想要的能带和我们不想要的能带纠缠很严重的时候。在瓦尼尔局域化进程开始之前，在更大的流形中通过态的线性组合来构造每个$\bm{k}$点的J个态的方法是需要的。只要每个$\bm{k}$点的合适的J维的布洛赫流形被得到以后，我们就可以依然用和前面处理隔离能带一样的程序来得到广义的张成所想要流形的局域瓦尼尔函数。
+
+从纠缠态出发得到良好定义的瓦尼尔函数的困难在于两点：子空间的选取和规范的选取。我们可以用同样的指导原则来做两步，那就是实现在$\bm{k}$空间的平滑性。在选取子空间一步，在$\bm{k}$空间平滑的J维的布洛赫流形被构造出来。在规范选取步，采用在子空间选取一步中本身在$\bm{k}$空间平滑的J 个布洛赫波函数构成的子空间，因此，相应的瓦尼尔函数是良好定义的。
+
+\subsubsection{通过投影选取子空间}
+我们从J个局域的平凡的轨道$g_n(\bm{r})$构成的集合出发，在给定$\bm{k}$点把它们投影到改$\bm{k}$点张成的空间上：
+\begin{equation}
+|\phi_{n\bm{k}} \rangle=\sum_{m=1}^{\mathcal{J}_{\bm{k}}}|\psi_{m\bm{k}} \rangle \langle\psi_{m\bm{k}}|g_n \rangle
+\end{equation}
+这种情况下，交叠矩阵$(A_k)_{mn}=\psi_{m\bm{k}}|g_n \rangle$ 变成了$\mathcal{J}_{\bm{k}} \times J $维的长方形矩阵。然后我们构造
+\begin{equation}
+|\widetilde\psi_{n\bm{k}}\rangle=\sum_{m=1}^{\mathcal{J}}|\phi_{m\bm{k}} \rangle(S^{-1/2}_{\bm{k}})_{mn}
+\end{equation}
+以上过程自动实现了子空间的选取和规范选取两步，虽然这样做并不是最理想化的。在规范选取一步还可以进一步选择规范来实现投影子空间的$\widetilde \Omega$的最小化。
+
+\subsubsection{通过最理想平滑选取子空间}
+为了优化子空间选择的进程，一个有用的做法是引入具体衡量在$\bm{k}$空间的布洛赫流形的平滑性的标准吗，寻找一个最理想的平滑的子空间可以定义成一个最小化的问题，这和寻找最优化的平滑规范势类似的。
+
+事实上，布洛赫态空间在$\bm{k}$空间的平滑性可以用之前介绍的$\Omega_I$来衡量。前文提到的$\Omega$由规范不变的$\Omega_I$和规范变化的$\widetilde \Omega$组成，给定一个布洛赫空间，我们发现最理想的平滑规范可以通过最小化$\widetilde \Omega$来得到。
+我们先得到离散$\bm{k}$空间的$\Omega_I$的表达式
+\begin{equation}
+\Omega_I=\frac{1}{N}\sum_{\bm{k},\bm{b}}w_bT_{\bm{k},\bm{b}}
+\end{equation}
+其中
+\begin{equation}
+T_{\bm{k},\bm{b}}=Tr[P_{\bm{k}}Q_{\bm{k+b}}]
+\end{equation}
+$P_{\bm{k}}=\sum_{n=1}^{J}|\widetilde u_{n \bm{k}}\rangle \langle\widetilde u_{n \bm{k}}|$是投影到布洛赫子空间的规范不变的算子，$Q_{\bm{k}}=1-P){\bm{k}}$，“Tr”表示在全希尔伯特空间求迹。$T_{\bm{k},\bm{b}}$描述了在$\bm{k}$和$\bm{k+b}$的相邻布洛赫子空间的不匹配性，如果它们一样，那么$T_{\bm{k},\bm{b}}$这一项就会消失。
+
+主要的理想化的子空间选择过程如下：在一定能带范围内确定大于等于$J$的$\mathcal{J}_{\bm{k}}$个布洛赫态的集合。我们把这个能量范围叫做“非纠缠窗口”。然后通过一个自洽的叠代程序来得到最小值$\Omega_I$。在叠代的最小化过程中，最后得到的布洛赫波子空间就是理想化平滑的。通常来说，这个最小化过程从一个初始猜测开始。
+
+\subsection{总结}
+本章中我们主要介绍了最大局域化的瓦尼尔方法。最大瓦尼尔方法先通过投影算符的办法得到在$\bm{k}$空间上平滑的布洛赫波函数，再通过最小局域化函数来得到最局域的瓦尼尔函数。如果要处理纠缠带的问题，这可以通过投影或者理想平滑化的方法选择子空间和规范。最大局域化瓦尼尔函数在凝聚态的各个领域都有着重要的应用。

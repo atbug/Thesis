@@ -279,5 +279,187 @@ H_{RD}(\bk)=\frac{{\hbar^2}k^2}{2m}+\hbar\alpha(k_{x}\sigma_{y}-k_{y}\sigma_{x})
 
 另外一方面，$\A{=}{-}I$当且仅当$\br{=}(0,{\pm} 1,0)$。这两个点映射到\q{parameter2}成为了$\alpha{=}0$和$\beta{=}0$的平面上的两条线【参见\fig{fig:dgn}(b)】：这个余维数的不同来自于这两个面满足$\mathfrak{c}_{\infty}$对称性【参见\s{sec:ctsrot}】，这一点在分析\q{proprashba}的$\mathfrak{c}_2$对称性的时候没有考虑在内。
 
+\subsection{旋转对称磁隧穿的余维度}\label{sec:rotsymmbreakdown}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{../figures/Cn-breakdown.png}
+\centering
+\caption{(a-b) $\mathfrak{c}_2$对称【(a)】和$\mathfrak{c}_3$对称【（b）】的磁隧穿的磁振子轨道。(a)图的右上方展示了磁隧穿点附近的放大图，其中紫色的长方形的面积是$S_{\sma{\square}}$。 (c) $\mathfrak{c}_2$对称（上）和$\mathfrak{c}_3$对称（下）磁隧穿的Klein透射极限下的磁振子轨道。(d) 经过一次隧穿，改变了能带带标的费曼路径。(e) 经过零次或者两次隧穿，最终能带带标没有改变的费曼路径。(f) $\mathfrak{c}_3$对称的磁隧穿的朗道能级在能量固定的情况下相对$\tau$的色散图。在图中的$1/B$的区间，在$\tau=1$的时候有三个朗道能级简并点。当$\tau\ne 1$的时候，只有其中两个是稳定的，这两个朗道能级简并点在$\tau=0.5$的时候融合在了一起。\label{fig:Cn-breakdown}}
+\end{figure}
+
+对于近简并的能带，在绝热近似极限下，我们已经知道【参见\s{sec:introducecodimension}】$\cala{=}{\pm} I$的余维数为1。这里，我们要研究如果绝热近似被Landau-Zener隧穿破坏，但是仍然保持$N$重旋转对称性，余维数会有什么变化。由于第二类狄拉克点有一个确定的倾斜方向，它不可能作为旋转中心；因此，最简单的$\mathfrak{c}_N$对称并且含有第二类狄拉克点的模型需要由$N$个第二类狄拉克点。对于$N=2$，我们将要看到$\cala{=}I$（但是不是$\cala{=}-I$）的余维数是1，和前面\q{proprashba}的结果是一致的；这个结论可以从费曼路径的相干和相消的干涉现象理解。对于$N=3$，我们将要看到三个朗道能级准简并中的两个在微扰地加入Landau-Zener隧穿的时候是稳定的，但这两个在隧穿强度达到一定值的时候也会消失。
 
 
+首先我们研究一个最简单的$\mathfrak{c}_2$对称的模型：
+\e{H=\f{{\hbar^2}k^2}{2m_1}+ \bigg(\f{{\hbar^2}k^2}{2m_2}-\mu\bigg)\sigma_z +wk_y\sigma_x,\label{modelC2breakdown}}
+其中$0{<}m_1{\ll}m_2$并且$\mu$是正的。$\mathfrak{c}_2$对称性体现在$\sigma_z H(\bk)\sigma_z{=}H({-}\bk)$上，并且将 
+\e{\bar{k}_x = \pm\sqrt{2m_2\mu}/{\hbar},\;\bar{k}_y=0,\;\epsilon_{0}=\frac{m_2}{m_1}\mu.}
+处的两个狄拉克点联系在一起。在这两个点附近，哈密顿量可以线性化为：
+\e{H_{\pm} =\pm {\hbar}\sqrt{\f{2\mu}{m_2}}\bigg(\frac{m_2}{m_1}+\sz\bigg)\delta k_x+w\delta k_{y}\sx+\epsilon_0, \label{linearHam2}}
+从这里我们可以看出如果$m_1{<}m_2$，那么两个狄拉克点都是第二类的。我们进一步假定$m_1{\ll}m_2$，这样近简并的条件（$\delta S/S{\ll}1$）就能够得到满足。
+
+在狄拉克点的能量（$E{-}\epsilon_0 {\ll} wm_2(2\epsilon_0/m_1)^{\sma{1/2}}$）附近，磁振子轨道是两个共心的轨道，这两个轨道在两个狄拉克点处接近相交，图\ref{fig:Cn-breakdown}(a)中展示了这一点。在磁场足够小的情况下，带间的隧穿仅仅在第二类狄拉克点附近发生，其概率为
+\e{\rho^2=e^{-2\pi\bar{\mu}}, \; \bar{\mu}=\f{\big(Z_{\perp}^2+(m_1/m_2)^2(E-\epsilon_0)^2\big)l^2}{2w\sqrt{2E/m_1}}. \label{landauzenerc2}}
+另一中表达方式是$\bar{\mu}{=}S_{\sma{\square}}l^2/8$，其中$S_{\sma{\square}}$是两个双曲渐近线之间包围的正方形的面积【参见图\ref{fig:Cn-breakdown}(a)】。除了这两个狄拉克点，电子将会经历绝热（也就是保持能带不变的）演化。由于$\mathfrak{c}_2$对称性，整个磁振子轨道的传播子仅仅是半个磁振子轨道传播子的的平方：
+\e{\A=\left(\matrixtwo{\tau e^{i\bar{\varphi}}}{-\rho}{\rho}{\tau e^{-i\bar{\varphi}}}{\diagmatrix{e^{i\tilde{\lambda}_-}}{e^{i\tilde{\lambda}_+}}} \right)^2. \label{propC2breakdown}}
+半个磁振子轨道的传播子可以从\qq{scattmat}{propinplanezeeman}得到，其中$\bar{\mu}$由\q{landauzenerc2}给出，而$\tilde{\lambda}_{\pm}{=}{\pm}l^2\delta S/4$加上一个与磁场无关的相位修正。.
+
+$\cala$简并的充要条件是 
+\begin{align}
+\Delta:= \tilde{\lambda}_-{-}\tilde{\lambda}_{+}{+}2\bar{\varphi},\;\;
+\tau\cos\f{\Delta}{2}= \begin{cases} 0, & {\A}=+I \\
+                 \pm 1, & \A =-I\end{cases}.\label{c2breakdowndgncondition}
+\end{align}
+$\tau{=}1$和$\bar{\varphi}{=}0$的极限能够给出绝热演化的极限，此时\q{c2breakdowndgncondition}成立的条件就是$l^2$等于$2\pi/\delta S$加上一些和磁场无关的相位。
+
+当绝热演化被破坏的时候，我们从\q{c2breakdowndgncondition}式中可以推断出$\A{=}I$仍然可以通过调节$B$得到，但是由于$\tau{<}1$，$\A{=}{-}I$不可能得到满足；这一点和\q{proprashba}的余维度分析是一致的。$\A{=}I$和$\rho{>}0$的条件可以理解为两个不同的隧穿一次的费曼路径的相消干涉【参见图 \ref{fig:Cn-breakdown}(d)】；与此同时，隧穿零次和隧穿两次的费曼路径则发生相干干涉【参见\ref{fig:Cn-breakdown}(e)】，因此朗道能级是准简并的。这样一个准简并在$\Delta$变化$2\pi$的时候重复发生，因此朗道能级准简并相对$l^2$的周期是$4\pi/\delta S$。这个周期并不会因为$\Delta$中$2\bar{\phi}$的存在而发生显著变化，因为$\bar{\phi}$只有$l^2$大致变化达到$2\pi/S_{\sma{\square}}$的时候才会发生显著变化，而$2\pi/S_{\sma{\square}}$要远大于$4\pi/\delta S$。综上所述，在引入磁隧穿之后，一般的朗道能级准简并小时，而另一半则保持稳定。如果$(\tau{=}0)$等于0【参见图\ref{fig:Cn-breakdown}(c)的上半部分】，那么这两个由$\mathfrak{c}_2$联系在一起，发生Klein隧穿的轨道是相同的，因此其朗道能级是简并的。
+
+
+在文献\onlinecite{yakovenko_angular_2006}和文献\onlinecite{pershoguba_effects_2015}中，一个和本节模型完全不同的$\mathfrak{c}_2$的磁隧穿模型被提出，用以描述倾斜磁场中的双层金属。如果双层金属中的两层之间没有耦合，那每一层都有独立的磁振子轨道；从这个角度来看，层的自由度可以看成自旋1/2的自由度。如果两层之间有耦合，那么朗道能级仅仅在磁场方向取为特定的“魔角”的时候才会发生简并；这一点在文献\onlinecite{gusev_interlayer_2008}中得到了实验验证。不过在这些工作中，人们并没有认识到$\mathfrak{c}_2$对称性的作用。 
+
+
+我们本节最后一个示例是$\mathfrak{c}_3$对称的第二类狄拉克点模型，这个模型画在图\ref{fig:Cn-breakdown}(b)中。在绝热近似满足的时候（$\tau{\approx}1$），朗道能级准简并是周期性发生的；但是，在Klein-tunneling透射的极限，整个磁振子轨道是一个三叶草形的轨道【参见图\ref{fig:Cn-breakdown}(c)的下半部分】，因此所有的朗道能级都是非简并的，其间隔由这个三叶草轨道的有效质量决定。以上的特性对于任意奇数$N$的$\mathfrak{c}_N$对称的第二类狄拉克点模型都成立。
+
+为了解决如上的矛盾，我们写出$\A$，其形式和\q{propC2breakdown}相似，仅仅是$(\cdot)^2$改为
+$(\cdot)^3$，$\tilde{\lambda}_\pm{=}{\pm} l^2\delta S/4$改为$\pm l^2\delta S/6$（当然有可能由磁场无关的相位）。此时的准简并条件成为$\tau\cos[(\tilde{\lambda}_+{-}\tilde{\lambda}_-)/2{+}\bar{\varphi}]{=}{\pm} 1,{\pm} 1/2$。当磁隧穿发生的时候（$1/2{<}\tau {<}1$），只有$\pm 1/2$是上式中可以取到的值。而在$\tau{=}1/2$的时候，所有的准简并全部两两湮灭。图\ref{fig:Cn-breakdown}(f)中展示了这一现象。
+
+
+最后，我们提出，对于任意的正整数$N{\geq}2$，绝热极限下的每$N$个朗道能级准简并，在微扰地引入$\mathfrak{c}_N$对称的磁隧穿之后，$N{-}1$能够保持稳定，我们在附录\ref{app:codimension}中证明了这一点。
+
+\subsection{余维数的对称性分类}\label{sec:tenfold}
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline 
+轨道的变换 & $\boldsymbol{k}$的变换 & $u$ & $s$  & 标识 & $g$ & 余维数\tabularnewline
+\hline 
+\multirow{5}{*}{$|g\circ\mathfrak{o}_{0}|=|\mathfrak{o}_{0}|$} & \multirow{2}{*}{$\forall\boldsymbol{k}\in\mathfrak{o}_{0},g\circ\boldsymbol{k}=\boldsymbol{k}$} & \multirow{2}{*}{0} & \multirow{2}{*}{0} & \multirow{2}{*}{I-1} & $\breve{g}\propto I$  & 3\tabularnewline
+\cline{6-7} 
+ &  &  &  &  & $\breve{g}\not\propto I$  & 1\tabularnewline
+\cline{2-7} 
+ & \multirow{3}{*}{$\exists\boldsymbol{k}\in\mathfrak{o}_{0},g\circ\boldsymbol{k}\neq\boldsymbol{k}$} & 0 & 0 & II-1 & - & 1\tabularnewline
+\cline{3-7} 
+ &  & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{II-2} & $g^{2}=1$  & 2\tabularnewline
+\cline{6-7} 
+ &  &  &  &  & $g^{2}=-1$  & 0\tabularnewline
+\hline 
+\multirow{2}{*}{$|g\circ\mathfrak{o}_{0}|\neq|\mathfrak{o}_{0}|$ } & \multirow{2}{*}{-} & 0 & 0 & III-1 & - & 3\tabularnewline
+\cline{3-7} 
+ &  & 1 & 1 & III-2 & - & 3\tabularnewline
+\hline 
+\end{tabular}
+\centering
+\caption{近简并能带的对称性限制的余维数，在这里，对称性被分为五类，名字写在第五列。
+这个表格也适用于严格简并的能带，严格简并的能带中还由另外五类的对称性，另外五类在\tab{table:codimension-exactlydegen}中。第一列和第二列定义了对称性是怎么作用在磁振子轨道上的。下面的两列表征了$\bk{\rightarrow}g{\circ}\bk$【参见\q{gmapk}】保持（$u{=}0$）或者没有保持（$u{=}1$）磁振子轨道的方向，以及$g$含有（$s{=}1$）或者不含有（$s{=}0$）时间反演对称性。第六列对对称性的表示提出了一些额外的要求。$\breve{g}$是对角化过的近简并能带空间中$g$幺正表示。为了方便读者，我们在表格\ref{table:sewing-matrix}中列出了常见的对称性的表示矩阵。最后一列列出了对称性限制的余维数【参见第\ref{sec:introducecodimension}节】。\label{table:codimension-nearlydegen}}
+\end{table}
+
+\begin{table}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+	\hline 
+	轨道的变换 & $\boldsymbol{k}$的变换  & $u$ & $s$  & 标识 & $g$  & 余维度\tabularnewline
+	\hline 
+	\multirow{5}{*}{$|g\circ\mathfrak{o}_{0}|=|\mathfrak{o}_{0}|$} & \multirow{2}{*}{$\forall\boldsymbol{k}\in\mathfrak{o}_{0},g\circ\boldsymbol{k}=\boldsymbol{k}$} & \multirow{2}{*}{0} & \multirow{2}{*}{1} & \multirow{2}{*}{I-2} & $g^{2}=1$  & 1\tabularnewline
+	\cline{6-7} 
+	 &  &  &  &  & $g^{2}=-1$  & 3\tabularnewline
+	\cline{2-7} 
+	 & \multirow{3}{*}{$\exists\boldsymbol{k}\in\mathfrak{o}_{0},g\circ\boldsymbol{k}\neq\boldsymbol{k}$} & 0 & 1 & II-3 & - & 1\tabularnewline
+	\cline{3-7} 
+	 &  & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{II-4} & $\breve{g}\propto\sigma_{z}$  & 2\tabularnewline
+	\cline{6-7} 
+	 &  &  &  &  & $\breve{g}\propto\sigma_{z}$  & 0\tabularnewline
+	\hline 
+	\multirow{2}{*}{$|g\circ\mathfrak{o}_{0}|\neq|\mathfrak{o}_{0}|$ } & \multirow{2}{*}{-} & 0 & 1 & III-3 & - & 3\tabularnewline
+	\cline{3-7} 
+	 &  & 1 & 0 & III-4 & - & 3\tabularnewline
+	\hline 
+	\end{tabular}
+	\centering
+	\caption{五类适用于严格简并能带的对称性限制的余维度；另外五类在\tab{table:codimension-nearlydegen}中。我们采用和\tab{table:codimension-nearlydegen}一样的符号。在II-4类中, $\breve g$指的是$g$不变的$\bk$ （$g\circ\bk=\bk$）处的表示矩阵。对于I-2, II-3的II-4严格简并的轨道，假设自旋轨道耦合可以连续地去除，并且不会影响轨道地简并度，那么$\A$地行列式为1\cite{topoferm}。\label{table:codimension-exactlydegen}}
+\end{table}
+
+我们在本节将要推广第\ref{sec:singleparameterrashba}节到第\ref{sec:rotsymmbreakdown}节的内容，将对称性对余维度的限制推广到十类对称性上\cite{topoferm}。这十类对称性对应的余维数为$0,1,2$或者$3$。下面，我们首先在\s{sec:reviewtenfold}简要回顾一下磁振子轨道的十重对称性分类。然后，我们要在\s{sec:codimquasideg}中研究其中五类，这五类和近简并的能带相关。和严格简并的能带相关的另外五类将要在\s{sec:codimexactdeg}中研究。
+
+\subsubsection{磁振子轨道的十重分类}\label{sec:reviewtenfold}
+
+任意一个和没有磁场，具有离散平移对称性的哈密顿量$\hat{H}$的对称性$g$在时间和空间里作用为
+\begin{align}
+&g: \vectwo{\br}{t} \rightarrow \matrixtwo{\check{g}}{0}{0}{ (-1)^{s(g)}}\vectwo{\br}{t}+\vectwo{\bdelta}{0}, \label{definesg}
+\end{align}
+其中$s(g){=}0$（$1$）对应着$g$保持（不保持）时间的方向。$\check{g}$是$g$在实空间的矩阵表示，$g$在晶体动量上的作用为
+\e{\bk \rightarrow g\circ\bk := (-1)^{s(g)}\check{g}\bk. \label{gmapk}}
+对于给定的$\hat{H}$以及给定的磁场方向，电子跟随着磁振子轨道进行回旋运动，磁振子轨道垂直于磁场。给定一个$\bk$空间的磁振子轨道，我们只关注能够保持磁振子轨道所在的$\bk$空间平面不变的对称性。这些对称性或者保持磁振子轨道不变（记为$|g\circ\frako|{=}|\frako|$）或者将磁振子轨道映射到另外一个磁振子轨道（$|g\circ\frako|{\ne}|\frako|$）。前一种情况还可以分为两类：(a)$g$将磁振子轨道上的每个$\bk$都映射到自己；(b)磁振子轨道上至少有一个$\bk$没有被$g$映射到自己。
+
+最后，我们还需要区分【参见\q{gmapk}】保持磁振子轨道方向或【$u(g){=}0$】者不保持磁振子轨道方向【$u(g){=}1$】的对称性。比如旋转轴在沿着磁场方向的旋转就能够保持轨道的方向，而镜面反射则会改变磁振子的方向。上述的所有的对$g$的描述将对称性分为十类，这十重分类是文献\onlinecite{topoferm}首次提出的。这十类对应着表格\ref{table:codimension-nearlydegen}和表格\ref{table:codimension-exactlydegen}的十行。
+
+\subsubsection{近简并轨道的对称性限制的余维数}\label{sec:codimquasideg}
+
+在近简并轨道中，哈密顿量$\hat{H}{=}\hat{H}_0{+}\delta \hat{H}$是具有简并能带的零阶哈密顿量和破坏对称性的扰动哈密顿量的和。给定一个$\hat{H}_0$的零阶轨道$\frako_0$，我们现在关注$\hat{H}$的对称性中，能够将$\frako_0$变为自己或者另一个零阶轨道的那些对称性。
+
+
+在\s{sec:reviewtenfold}所述的十重对称性分类中，只有五类是和近简并轨道相关的，这是因为我们的量子化条件中的$\lambda_a$是由$\A$决定的【参见\q{eq:prop}】，而$\A$则是由$\H{=}\delta\epsilon{+}B \mathcal{M}$【参见\q{eq:H1}】的演化子构成的。$\H$包含了$\frako_0$上的$\delta H$和塞曼作用项。由于$g$是$\delta \hat{H}$的对称性，$\delta\epsilon$在$g$的作用下是不变的。另一方面$\mathcal{M}$ 是平行于磁场方向的的赝矢量，在时间反演对称性\cite{sakurai1995modern}下会反号，因此在$g$的变换下是变为$(-1)^{u+s}\mathcal{M}$（加上一项和规范相关的项\cite{100p}），只有$u{+}s{=}0$或者$2$才能够保证$\H$在$g$下有一个相容的变换，这个条件就给出了表格\ref{table:codimension-nearlydegen}中的五类。
+
+对于这五类，我们将其对应的余维度写在表格\ref{table:codimension-nearlydegen}的最后一列，这些结果的推导再附录\ref{app:codimension}里。我们在这里要强调余维数就是找到$\A$的简并点需要调整的参数的个数。我们在表格中列出的余维数在任何保持对应的对称性（并且保持磁振子轨道的拓扑形状）的扰动下都不会发生变化。
+ 
+在这五类对称性中，只有第I-1, II-1和II-2的余维度可能小于3，因为只有这三类对称性能够将磁振子轨道映射到自己。这三类对称性将$\A$和它自己或者它自己的逆联系在一起，因此可以降低其简并流形的余维数。
+
+I-1类包含了所有让磁振子轨道上的点$\bk$映射到自己的所有空间对称性。最简单的例子是镜面对称性$\mathfrak{m}_z$，其中$-z$是磁场的方向，并且磁振子轨道在$\mathfrak{m}_z$不变的平面内。要确定对称性限制的余维数，我们需要知道两条近简并的能带对应的是$g$的相同的表示还是不同的表示。如果是不同的表示，那么能级排斥就不会存在，此时余维度为1。
+
+II-1类则对应着保持磁振子轨道方向不变的空间对称性，其中一个重要的例子就是旋转对称性，另一个例子是空间反演对称性，对于空间反演对称性，我们要求$\frako_0$在空间反演不变的面上：$k_z=0$或者$\pi$。正如我们在第\ref{sec:singleparameterrashba}节到第\ref{sec:rotsymmbreakdown}节描述的那样，此时的余维数是1。对于一个确定的II-1类中的$\frako_0$，不同的简并流形可能有着不同的余维数，此外我们列出的余维数是最小的余维数。比如说，我们发现二重旋转对称性将$\A{=}{+}I$的余维数限制为1，而$\A{=}{-}I$的余维数还是3【参见\fig{fig:dgn}和\q{proprashba}】，我们就在表格中II-1的最后一列填上3。
+
+
+II-2反转了时间的方向，也反转了磁振子轨道的方向。此时，如果$g$的平方是$+1$，那么余维数是2，而如果$g$的平方是$-1$，那么余维数是0。一个前者的例子是时间反演和镜面反射的联合操作（镜面反射轴垂直于磁场方向）；Rashba-Dresselhaus哈密顿量就有这样的对称性【参见\q{hamRD}】：
+\e{g H_{RD}(k_x,k_y)g^{-1} = H(k_y,k_x),\;\; g = e^{i\sigma_z\pi/4}K,}
+其中$K$是复共轭。这个对称性也可以解释图\ref{fig:dgn}(b)中的简并流形并不是点，而是线，这一点我们之前是用连续旋转对称性解释的。
+
+
+一个$g^2{=}-1$的例子则是一个时间反演和滑移面的组合$T\mathfrak{r}_{x,\boldsymbol{c}/2}$；滑移面$\mathfrak{r}_{x,\boldsymbol{c}/2}$是一个镜面反射（轴垂直于磁场方向）和半个晶格矢的平移（平行于磁场方向）的组合。这种情况下布里渊区边界（$k_z{=}\pi$平面）上的磁振子轨道对应的朗道能级就是简并的（其原因与Kramers类似），此时余维度为0。
+
+最后，我们指出，在第\ref{sec:inplanezeeman}节中研究的倾斜磁场中的Rashba二维电子气，同样属于II-2类轨道，其对称性为
+\begin{equation}
+\sigma_z K H_{RZ}(k_x, k_y) K \sigma_z=H_{RZ}(k_x, -k_y).
+\end{equation}
+因此，简并流形在参数空间$(\alpha, B_\parallel, g_{s\perp})$表现为线。我们数值上确定了这些线是在 $B_\parallel=0$和$\alpha=0$平面内。这两个面内的朗道能级都是精确可解的。对于$B_\parallel=0$，$H_{RZ}$就退化为Rashba哈密顿量，其简并流形是一系列的共心圆【对应图\ref{fig:dgn}(b)中$\beta=0$的平面】。对于$\alpha=0$，简并流形则在
+\begin{equation}
+    \f{g_s}{4} \frac{ m}{ m_0}\text{sec}(\theta)=n,\;\;(n\in\mathbb{Z}),
+\end{equation}
+处，其中$\theta$是磁场的倾斜角：$\cos(\theta)=B_\perp/\sqrt{B_\perp^2+B_\parallel^2}$。
+
+
+\subsubsection{严格简并的轨道的对称性限制的余维数}\label{sec:codimexactdeg}
+
+我们的工作主要集中在近简并轨道的量子化条件里，此时没有磁场的哈密顿量写为$\hat{H}_0{+}\delta \hat{H}$。在这一小节，我们关注对称性更高的晶体，这些晶体的$\delta \hat{H}$被禁戒。$\hat{H}_0$有可能包含自旋轨道耦合也有可能不包含自旋轨道耦合，如果包含自旋轨道耦合，那么能带在每个$\bk$点的简并需要一些对称性来保护（比如$T\inv$对称性）。
+
+
+给定了$\hat{H}_0$以及磁场的方向，不同自旋的电子遵循着严格相同的轨道（还是用$\frako_0$）标记。这样的轨道我们成为严格简并的磁振子轨道，而近简并的磁振子轨道在$\bk$空间则会劈开。尽管轨道是简并的，朗道能级一般而言由于塞曼相互作用$B\calm$是劈开的。对于严格简并的轨道，我们同样要研究，多少个实的参数可以调节到一个朗道能级的准简并。
+
+
+我们的研究方式和近简并的轨道的研究方式是基本相同的：
+
+We answer this question in nearly the same vein as for nearly-degenerate orbits: the quantization rule for exactly-degenerate orbits\cite{topoferm} has the same form as \qq{eq:rule}{berryconn} with $\delta \var{=}\delta S{=}0.$ An eigenvalue-degeneracy of $\A$ would also imply a Landau-level quasidegeneracy, since the analysis of \s{sec:relatedegeneracies} applies to the special case $\delta S{=}0$. 
+
+There is, however, a difference in the possible symmetry classes that apply to exactly-degenerate vs quasidegenerate orbits.  In \s{sec:codimquasideg}, we restricted ourselves to symmetries  that map the magnetic moment  $\calm$ to itself (plus a gauge-dependent term\cite{100p}), so that both terms in $\calh{=}\delta \var{+}B\calm$ transform consistently as scalars. In the present context, this restriction is void because $\delta\var{=}0$, hence we \textit{also} allow for symmetries that invert the sign of $\calm$. 
+
+Some $\calm$-inverting symmetries also exhibit reduced symmetry-constrained codimensions, as listed in the five classes of \tab{table:codimension-exactlydegen}. As a case in point, class II-2 symmetries invert time and $\calm$, and map every wavevector (in $\frako_0$) to itself. The corresponding codimension is three (resp.\ one) if $g$ squares to $-1$ (resp.\ $+1$). The former is exemplified by $T\inv$ symmetry, and the latter by $T\rot_{2z}$ (the composition of time reversal with a two-fold rotation about the field direction). For an exactly-degenerate orbit $\frako$ confined to a $\rot_{2z}$-invariant plane, the associated propagator $\A$ is unitarily equivalent to a special orthogonal matrix\cite{100p,alexandradinata_berry-phase_2016} with a single, tunable angle of rotation -- this provides an intuitive explanation for the unit codimension.
+
+The simplest example of codimension reduction by a $\calm$-preserving symmetry is that of continuous spin rotation in class I-1. This is a symmetry of any solid with negligible spin-orbit coupling, and results in the absence of Landau-level repulsion between different spin species -- this implies codimension is 1 [cf.\ class I-1 in \tab{table:codimension-nearlydegen}, with non-identical symmetry eigenvalues].
+
+The detailed modelling of all ten classes of exactly-degenerate orbits is left to future work. We conclude this section by commenting on the tunable experimental parameters that are relevant to exactly-degenerate orbits. The absence of $\delta\var$  implies that the eigenvalues of $\cala$ are independent of the magnitude of $B$ [cf.\ \q{eq:Rashba-lambda} with $\delta S{=}0$]. However, the generic anisotropy of the Zeeman interaction suggests that we may sweep the orientation of $B$; the generic energy-dependence of $\calm$ suggests that we may tune the Landau-level index, e.g., by varying a bias voltage in tunneling spectroscopy.
+
+\begin{table}
+\begin{tabular*}{\columnwidth}{c@{\extracolsep{\fill}}ccc}
+\hlineB{2.0}
+class No. & symmetry  & origin of degeneracy & $\breve{g}\propto$ \\
+\hline 
+\multirow{2}{*}{1} & \multirow{2}{*}{$\mathfrak{r}_z$, $\mathfrak{r}_{z,\boldsymbol{a(b)}/2}$} & $T\mathfrak{i}$, spin $\text{SU}(2)$ & $\sigma_z$ \\
+\cline{3-4}
+ & & $T\mathfrak{c}_{2z,\boldsymbol{c}/2}$ & $I$ \\
+\hline
+\multirow{3}{*}{5} & $\mathfrak{r}_{x(y),\boldsymbol{c}/2}$ & $T\mathfrak{i}$, spin $\text{SU}(2)$, $T\mathfrak{c}_{2z,\boldsymbol{c}/2}$ & $\sigma_z$ \\
+\cline{2-4}
+& $\mathfrak{r}_{x(y)}$,$\mathfrak{r}_{x(y),\boldsymbol{b(a)}/2}$, & $T\mathfrak{i}$, spin $\text{SU}(2)$ & $\sigma_z$ \\
+\cline{3-4}
+& $\mathfrak{c}_{2x(y)}$, $\mathfrak{c}_{2x(y),\boldsymbol{b(a)}/2}$ & $T\mathfrak{c}_{2z,\boldsymbol{c}/2}$ & $I$\\
+\hlineB{2.0}
+\end{tabular*}
+\caption{Matrix representations of reflections (e.g., $\mathfrak{r}_x$), rotations (e.g. $\mathfrak{c}_{2y}$), glide reflections (e.g., $\mathfrak{r}_{x,\ba/2}$) and screw rotations (e.g., $\mathfrak{c}_{2y,\ba/2}$). The latter two nonsymmorphic elements involve  half a lattice translation in the $x,~y,$ or $z$ direction (labeled by $\boldsymbol{a,~b,~c}$ respectively). The $z$ axis of our Cartesian coordinate system is aligned parallel to the  magnetic field. This table is applicable to exactly-degenerate orbits whose degeneracy is protected by either spacetime inversion symmetry ($T\mathfrak{i}$), the composition of time reversal and nonsymmorphic two fold rotation symmetry ($T\mathfrak{c}_{2z,\boldsymbol{c}/2}$) [for orbits confined to the $k_z=\pi$ plane] or spin $\text{SU}(2)$ symmetry (i.e., negligible spin-orbit coupling). \label{table:sewing-matrix}}
+\end{table}

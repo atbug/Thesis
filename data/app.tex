@@ -1,5 +1,88 @@
 \begin{appendices}
-\chapter{准简并轨道的量子化条件的证明}
+\chapter{近简并能带的朗道量子化条件的证明}\label{app:quantizationruleproof}
+
+在本附录里，我们将要导出近简并能带的朗道能级的量子化条件。我们假设能带在每个$\bk$点都是$D$重近简并的。对于$D=2$，我们已经在\qq{eq:rule}{berryconn}给出了量子化条件；这里，我们要把这样的量子化条件扩展到$D>2$。尽管$D>2$比$D=2$罕见一些，一些具有非点式对称性的材料往往存在着$D>2$的近简并的能带。比如说在具有螺旋轴和时间反演对称性，并且自旋轨道耦合较弱的材料中，高对称面（比如对于螺旋轴$\mathfrak{c}_{2z,\boldsymbol{c}/2}$而言的$k_z=\pi$平面）往往存在着四重近简并。
+
+量子化条件的推导基于一个有效的哈密顿量的WKB近似解。在推导期间，我们需要理解近似所带来的误差，在这里，我们采用大O和小o来量化误差，这两个符号在这里的定义是： 
+\begin{itemize}
+    \item 
+    \begin{equation}
+        f(\boldsymbol{x})\sim\text{O}(\{g_i(\boldsymbol{x}), i\in 1..N\})
+    \end{equation}
+    当 $\boldsymbol{x}\to\boldsymbol{0}$ 定义为 $\exists C>0$ 并且 $\exists \delta>0$ 对于所有的 $\boldsymbol{x}$ 以及 $||\boldsymbol{x}||_\infty<\delta$ 都有
+    \begin{equation}
+        |f(\boldsymbol{x})|<C\text{max}\{|g_i(\boldsymbol{x})|, i\in 1..N\};
+    \end{equation}
+    \item 
+    \begin{equation}
+        f(\boldsymbol{x})\sim\text{o}(\{g_i(\boldsymbol{x}), i\in 1..N\})
+    \end{equation}
+    当 $\boldsymbol{x}\to\boldsymbol{0}$ 定义为 $\forall \epsilon>0,~\exists \delta>0$ 对于所有的 $\boldsymbol{x}$ 以及 $||\boldsymbol{x}||_\infty<\delta$,
+    \begin{equation}
+        |f(\boldsymbol{x})|<\epsilon\text{max}\{|g_i(\boldsymbol{x})|, i\in 1..N\}.
+    \end{equation}
+\end{itemize}
+这里, $||\boldsymbol{x}||_\infty=\text{max}\{|x_i|\}$。
+
+正如\s{sec:qtznrules}中所述，我们首先需要先将哈密顿量$\hat{H}$分解为$\hat{H}_0$和一个微扰$\delta\hat{H}=\eta\hat{H}_1$。这里的$\eta$是无量纲的小量。我们假设$\eta\hat{H}$微扰地破坏了$\hat{H_0}$的$D$重能带简并。对于二重近简并，正如正文中所述，$\eta$可以选择为$\delta S/S$。
+
+为了近似求解薛定谔方程，我们采用有效哈密顿量理论\cite{rotheffham,100p}。有效哈密顿量是在一组经过磁场修正过的$\hat{H}_0$的本征布洛赫函数展开的\cite{rotheffham}$\{\tilde{\psi}_{n\boldsymbol{k}}\}_{n=1}^D$。如果将本征函数$\phi$写在这组基下（$\phi=\sum_{n=1}^D\sum_{\boldsymbol{k}}f_{n\boldsymbol{k}}\tilde{\psi}_{n\boldsymbol{k}}$），那么薛定谔方程就成为
+\begin{equation}
+(\mathfrak{H}(\boldsymbol{K})-E)\boldsymbol{f}_{\boldsymbol{k}}=0,\label{eq:schrodinger}
+\end{equation}
+其中$\mathfrak{H}(\boldsymbol{K})$ （也就是有效哈密顿量）是一个 $D\times D$ 的矩阵微分算符。 
+
+In general, the effective Hamiltonian has an asymptotic expansion in powers of the  parameters $a/l^2 (\propto B)$ and $\eta$, which are both assumed small with finite ratio $l^2\eta/a^2$; $a$ here is a crystalline lattice period, which we henceforth set to one for convenience.
+To the leading order in $l^{-2}$ and $\eta$, the effective Hamiltonian  is the Peierls-Onsager Hamiltonian: $\mathfrak{H}_{0}(\boldsymbol{K}):=\epsilon(\boldsymbol{K})$. This is just the Weyl-symmetric Peierls substitution $\bk \rightarrow \bK$ for the dispersion ($\epsilon(\boldsymbol{k})$) of the $D$-fold degenerate band of $\hat{H}_0(\bk)$, and $\boldsymbol{K}=\boldsymbol{k}+(e/\hbar)\boldsymbol{A}(i\nabla_{\boldsymbol{k}})$ here are the kinematic quasimomentum operators.
+
+The subleading term $\mathfrak{H}_{1}(\boldsymbol{K})$ (denoted $\H$ in the main text) of the effective Hamiltonian has two additive components: the first is obtained by Peierls substitution of the generalized Zeeman interaction (in the absence of $\delta \hat{H}$), which includes the Zeeman coupling to orbital and spin moments, as well as a geometric Berry contribution. The second component is the Peierls-substitution of   $\delta \epsilon(\bk)$, which is the projection of $\hat{H}_1$ to the $D$-fold degenerate bands of $\hat{H}_0$. In combination,
+\begin{equation}
+\effH_1(\bk) = \eta\delta \epsilon(\bk)+B(M_{z}-g_s\mu_{B}s_{z}/\hbar+e\epsilon_{\alpha\beta}\mathfrak{X}_{\beta}v_{\alpha}). \label{effham1}
+\end{equation}
+$M_z$, $s_z$, $\mathfrak{X}$ and $v$ in Eq. (\ref{effham1}) should be evaluated with wavefunctions in the degenerate subspace of $\hat{H}_0$. The above equation presupposes that the  magnetic field $B$ lies in the $-z$ direction.
+
+Employing the Landau gauge for Eq. (\ref{eq:schrodinger}) with $k_x$ a good quantum number, we seek a semiclassical solution in the WKB approximation. To the leading order (i.e., with $\mathfrak{H}_0(\bK)$ only), solutions of Eq. (\ref{eq:schrodinger}) are Zil'berman functions\cite{zilberman} labelled by the wavevector $k_x^0$:
+\begin{equation}
+g_{\bk}^\nu=\frac{1}{\sqrt{|v_x^\nu|}}e^{il^2k_x^0k_y}e^{-il^{2}\int k_x^\nu dk_y}\delta_{k_x^0 k_x},\la{zilberman}
+\end{equation}
+where $k_x^\nu$ is a function of $k_y$ satisfying   $\epsilon(k_x^\nu,k_y)=E$. The multiple solutions to $\epsilon(k_x^\nu,k_y)=E$ are indexed by $\nu$. Quantities   with the superscript $\nu$ (e.g., $v_x^\nu(\bk)$ in \q{zilberman}) should be evaluated at  $\bk = (k_x^\nu, k_y)$.
+
+Similar to what is done in Ref. \onlinecite{100p}, we seek the solution to the Schr\"odinger equation using the following multicomponent wave function ansatz
+\begin{equation}
+\boldsymbol{f}^\nu=\A^\nu\boldsymbol{g}^\nu,\label{wkb-wf}
+\end{equation}
+where 
+\begin{equation}
+g_a^\nu=c_{a}^\nu\frac{1}{\sqrt{|v_x^\nu|}}e^{ik^{0}_{x}k_{y}l^{2}}e^{-il^{2}\int k_{x}^\nu dk_{y}}\delta_{k^{0}_{x}k_{x}},~a\in{1..D}
+\end{equation}
+and $c_a^\nu$ is $\bk$ independent. $\A^\nu$ is a $k_y$ dependent square matrix with the assumption $\A_{ab}^\nu$ is of order $\order(1, \eta l^2):=\order(\{1,\eta l^2\})$. Following section V A 2 of Ref. \onlinecite{100p},:
+\e{
+[\effH_{0}(\boldsymbol{K})]_{ab}\A_{bc}^\nu g_{c}^\nu=&\A_{ac}^\nu\epsilon_0(\bK)g_{c}^\nu+i\hbar l^{-2} v_{x}^\nu(\partial_{y}\A_{ac}^\nu)g_{c}^\nu\nonumber\\
+&+\text{o}(l^{-2}, \eta),
+}
+and
+\begin{equation}
+[\effH_{1}(\bK)]_{ab}\A_{bc}^\nu g_{c}^\nu=[\effH_{1}]_{ab}\A_{bc}^\nu g_{c}^\nu+\text{o}(l^{-2}, \eta).\label{effH1onA}
+\end{equation}
+One term omitted in Eq. (\ref{effH1onA}) in $\text{o}(l^{-2},\eta)$ is $i l^{-2}(\partial_{y}A_{ac}^\nu)g_{c}^\nu d\effH_1/dk_x$. This omission can be justified if terms in Eq. ({\ref{effham1}}), including the change of velocity due to $\delta\hat{H}$, are not anomalously large.
+
+Sch\"rodinger equation then reads 
+\begin{equation}
+i\hbar l^{-2} v_{x}^\nu (\partial_{y}\A_{ac}^\nu)  g_{c}^\nu+[\effH_{1}]_{ab}\A_{bc}^\nu g_{c}^\nu=\text{o}(l^{-2}, \eta).
+\end{equation}
+For the above equation to hold for any $\mathbf{c}$,
+\begin{equation}
+\hbar\partial_{y}\A_{ac}^\nu=il^{2}[v_{x}^\nu]^{-1}[\effH_{1}]_{ab}\A_{bc}^\nu+{\text{o}(1, \eta l^2)}.
+\end{equation}
+The solution to this differential equation is a path-ordered exponential:
+\begin{equation}
+\A^\nu=\overline{\exp}[il^{2}\int\frac{\effH_{1}}{\hbar v_{x}^\nu}dk_{y}]+{\text{o}(1, \eta l^2)},
+\end{equation}
+
+By imposing a hard-wall boundary condition at classical turning points, and requiring that the wavefunction in Eq. (\ref{wkb-wf}) be single-valued,\cite{100p} we obtain the quantization rule  stated in \qq{eq:rule}{berryconn}; in \q{eq:rule}, $a$ now runs from $1$ to $D$. Due to the geometric Berry term, Eq. ({\ref{eq:prop}}) transforms covariantly under basis transformations within the degenerate subspace of $\hat{H}_0$ [See Eq. (133) of Ref. \onlinecite{100p}], and as a consequence $\{\lambda_a\}_{a=1}^D$ is well-defined modulo $2\pi$.
+
+Since $\lambda_a$ is the eigenphase of $\A$ over a full cyclotron orbit, it carries the same uncertainty $\text{o}(1, \eta l^2)$. For example, in the Rashba model with an out-of-plane field, a comparison with the exact solution shows that our quantization rule misses terms of the order $\eta^2 l^2$; precisely, the missed terms are each proportional to  $l^2\delta S^2/S$ in Eq. (\ref{eq:Rashba-exact})]. These missed terms are small under our assumption of small $\eta$ and small $l^{-2}$ with finite ratio $l^2\eta$. We remark that $l^2\delta S^2/S\ll 1$, along with the standard semiclassical condition, sets a double-sided constraint on the magnetic field: $S^{-1} \ll l^2 \ll S/(\delta S)^2$. 
 
 
+Besides the effective-Hamiltonian approach described here, semiclassical wave packet theory has been developed for multiple coupled bands\cite{culcer_coherent_2005}. It is possible that quantization rule [of \qq{eq:rule}{berryconn}] can be alternatively derived by a `requantization' of the wave packet theory\cite{xiao_berry_2010}; we leave this for future investigation.  
 \end{appendices}

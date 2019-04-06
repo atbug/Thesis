@@ -7,7 +7,7 @@
 \begin{equation}
 H_R=\frac{{\hbar^2} k^2}{2m}+\hbar\alpha  (k_{x}\sigma_{y}-k_{y}\sigma_{x}).\label{eq:Rashba-Hamiltonian}
 \end{equation}
-考虑加上一个$-z$方向的磁场，我们主要关注能量远大于$m\alpha^2$的地方。这里，磁振子轨道【见图\fig{fig:orbits}(a)】在$\bk$空间被自旋轨道耦合劈开，其面积之差为$\delta S$，其中$\delta S$远小于两个轨道的面积的平均值$S$\footnote{式\ref{deltaSvsS}中 $\delta S$ 和 $S$ 的表达式在$E{\gg}m\alpha^2$时渐进正确。}：
+考虑加上一个$-z$方向的磁场，我们主要关注能量远大于$m\alpha^2$的地方。这里，磁振子轨道【见\fig{fig:orbits}(a)】在$\bk$空间被自旋轨道耦合劈开，其面积之差为$\delta S$，其中$\delta S$远小于两个轨道的面积的平均值$S$\footnote{式\ref{deltaSvsS}中 $\delta S$ 和 $S$ 的表达式在$E{\gg}m\alpha^2$时渐进正确。}：
 \e{\delta S = 4\pi m \alpha k_E/\hbar\ll S =\pi k_E^2; \;\; k_{E}:=\f{\sqrt{2m E}}{\hbar}.\label{deltaSvsS}}
 $S$ 也是在没有自旋轨道耦合的时候的磁振子的面积（$\alpha{=}0$）。
 
@@ -23,6 +23,12 @@ $1/l^2|\delta S|$量化了由塞曼能导致的近简并的轨道的耦合。在
 
 
 在章节\ref{sec:Rashba}中，我们利用具有Rashba和Dresselhaus自旋轨道耦合的二维电子气，证明了我们的量子化能级的有效性。如果给具有Rashba自旋轨道耦合的二维电子气加上足够强的面内磁场，能带中的Dirac点不仅仅会移动，而且会倾斜，成为一个第二类的狄拉克点\cite{soluyanov_type-ii_2015, muechler_tilted_2016, bergholtz_topology_2015}。在章节\ref{sec:inplanezeeman}中，我们研究了第二类狄拉克点附近的Landau-Zener隧穿现象。特别的，我们将要证明我们的量子化条件囊括了近简并能带之间的量子隧穿，这个现象被称为带间的磁隧穿\cite{kaganov_coherent_1983,slutskin_dynamics_1968,AALG,100p}。我们将要认真研究一个最近提出的二类狄拉克点附近的完美Klein隧穿的现象\cite{obrien_magnetic_2016}，我们发现如果考虑了塞曼效应的话，这个完美隧穿永远不会发生。
+
+\s{sec:llquasideg}应用上述的量子化条件来计算需要多少个参数才能够找到一个朗道能级的（准）简并。如果两个朗道能级在对称性下具有不同表示，那么他们的交叉可能是严格的，即使没有这样的情况，朗道能级之间的距离可能仍然非同寻常地小，我们称之为朗道能级准简并【参见\s{sec:relatedegeneracies}】。和Wigner-von Neumann不相交规则\cite{neumann2000behaviour}一致，我们发现没有任何对称性的情况下需要三个参数才能找到朗道能级的准简并。对于有对称性的情况，我们的结果总结在表格\ref{table:codimension-nearlydegen}-\ref{table:codimension-exactlydegen}中。值得一提的是，如果有旋转对称性的存在，那么仅仅需要一个参数就可以调节到朗道能级的准简并。这个参数可以是磁场的大小和方向，也可以是朗道能级的指标。
+
+在\s{sec:quantosc_quasideg}中，我们提出了在低温Shubnikov-de Haas震荡\cite{SdH}中观测到单参数调节的朗道能级的准简并的方法。在\s{sec:quantosc_equidis}中，我们提出了一个推广的Lifshitz-Kosevich公式，使得量子振荡可以直接从我们的量子化条件中得出。特别的，我们提出最低阶量子震荡的相消现象总可以通过调节一个参数获得，从而产生非周期性的拍。
+
+我们在\s{sec:discussion}总结了本章的内容，并展望了未来的研究方向。
 
 
 \section{量子化条件\label{sec:qtznrules}}

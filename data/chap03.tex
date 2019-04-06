@@ -7,6 +7,16 @@
 
 我们在这里将Wannier插值方法推广，用以计算非线性光学效应。这个方法通过二阶微扰构建了一个平滑的相位规范，可以准确计算任何$k$点的波函数的导数和二阶导数。作为示例，我们计算了单层GeS和WS$_2$的位移电流，以及GaAs的倍频效应，得到了和前人一致的结果\cite{rangel_giant_2016,nastos_scissors_2005}。我们同时证明了基于微扰的Wannier插值方法优于传统基于波函数的计算方法。传统方法利用了一些近似的求和规则\cite{sipe_second-order_2000,cook_design_2017}，需要对所有能带进行求和，其收敛相对较慢。最后我们提出Wannier插值可以很容易地被用来构建紧束缚模型，方便理论地研究。这些优点让Wannier插值成为一个在非线性光学领域很有前景的计算方法。
 
+\section{倍频效应}
+本章中我们将要计算的物理量是位移电流和倍频效应。位移电流已经在绪论中做了详细的介绍，这里我们简要介绍一下倍频效应。
+
+具有电场$\boldsymbol{E}$和频率$\omega$的光的倍频效应用下面的式子来定义
+\begin{equation}
+P^{c}(2\omega)=\epsilon_0\chi^{abc}(\omega)E^{b}(\omega)E^{c}(\omega),
+\end{equation}
+这里$\boldsymbol{P}(2\omega)$是倍频的极化密度，$\epsilon_0$是真空极化率，$\chi^{abc}$是二阶极化率，$a$, $b$, $c$是笛卡尔指标。根据和位移电流类似的对称性分析法，可以推得在具有空间反演对称性的体系没有倍频效应。对于一个具有空间反演对称性的材料，块体并不会产生倍频效应，因此倍频效应来自于破坏空间反演对称性的界面。因此，倍频效应被广泛应用于刻画材料的界面和表面。
+
+倍频效应的表达式非常的冗长\cite{rashkeev_efficient_1998}，我们将这个表达式写在附录\ref{sec:expression-of-second}。重要的是，和位移电流相似，$\chi^{abc}$也主要包含了贝里联络和贝里联络的导数。因此，我们要解决的核心问题就是贝里联络及其导数的计算。
 
 \section{计算方法}
 \subsection{相位问题}
@@ -58,7 +68,7 @@ U^{\dagger}(\mathbf{k})H^{(\textrm{W})}(\mathbf{k})U(\mathbf{k}) & =H^{(\textrm{
 \[
 O_{nm}^{(\textrm{W})}(\mathbf{k})=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{O}|\mathbf{R}m\rangle.
 \]
-这样我们可以接着通过幺正变换得到$\hat{O}$对$|u_{n}^{(\textrm{H})}\rangle$在任意$k$点的表示矩阵。通过这种方法， Wannier插值提供了一种迅速得到$O^{(\textrm{H})}(\textbf{k})$的方法。
+这样我们可以接着通过幺正变换得到$\hat{O}$对$|u_{n}^{(\textrm{H})}\rangle$在任意$k$点的表示矩阵。通过这种方法， Wannier插值提供了一种迅速得到$O^{(\textrm{H})}(\mathbf{k})$的方法。
 
 可是，和普通算符不同，由于$A_{nm}^{a}(\mathbf{k})$中存在着一个对$k$点的导数，它并不是一个相位协变的量。这个性质提示我们，尽管人们经常将$A_{nm}^{a}(\mathbf{k})$看作位置算符在布洛赫波中的矩阵表示，这个看法并不准确，毕竟任何可观测量在基矢变换下都应该是协变的。具体来说，$A_{nm}^{a}(\mathbf{k})$满足\cite{wang_textitab_2006} 
 \begin{equation}
@@ -136,24 +146,52 @@ $U$的二阶导数的求法和上面的一阶导数的求法是一致的，仅�
 \section{计算结果}
 
 
+\begin{figure}
+	\begin{centering}
+	\includegraphics[width=1.0\textwidth]{1.png}
+	\par\end{centering}
+	\caption{\label{fig1} (a, b)单层GeS【(a)】和WS$_{2}$【(b)】的原子结构的顶视图和侧视图。黄色的小球是S原子，紫色的小球是Ge或者W原子。(c)单层GeS二维位移电导与光频率的关系。文献\onlinecite{rangel_giant_2016}的结果也放了进来。(d)单层WS$_2$的二维位移电流。计算得到的GeS和WS$_2$的带隙分别是1.90 eV和1.82 eV。}
+\end{figure}
+
 我们首先来计算二维空间反演破缺的材料GeS和WS$_{2}$的位移电流。之前的研究表明，由于铁电序很大，单层的GeS存在着非常大的位移电流和倍频效应\cite{rangel_giant_2016,panday_strong_2017}。这里，我们使用\textsc{quantum espresso}软件包\cite{giannozzi_quantum_2009}，采用\text{pslibrary}投影缀加波的赝势\cite{dal_corso_pseudopotentials_2014}进行计算。电子的交换关联作用采用了Perdew-Burke-Ernzerhof的交换关联泛函\cite{perdew_generalized_1996}来描述。电子波函数采用了平面波基组展开，平面波的截断时60Ry。我们采用层状模型来模拟二维材料，真空层超过了15\AA。对于GeS和WS$_2$，我们在布里渊区中的积分分别采用了 $12\times12\times1$和$18\times18\times1$的$k$点。在完成基于密度泛函的第一性原理计算之后，我们采用\textsc{wannier90}软件包\cite{mostofi_updated_2014}构造出了最大局域化Wannier函数。接下来我们采用上述的Wannier插值方法来计算位移电导。计算位移电导的$k$点积分采用了$1000\times1000\times1$的格子，delta函数的展宽取为了$\epsilon = 0.02$eV。值得注意的是，由于二维材料的联合态密度遇到鞍点的时候可以发散，为了避免发散，这个展宽因子式必须的。经过我们的测试，自旋轨道耦合仅仅会稍微改变结果，因此，我们在这里展示没有考虑自旋轨道耦合的结果，方便分析。对于二维材料，我们采用了二维的电流密度的定义$\mathbf{J}_{2D}=\mathbf{J}_{3D}d$，这里$\mathbf{J}_{2D}$是二维电流密度，$\mathbf{J}_{3D}$是超胞计算中的三维电流密度，$d$是超胞在面外方向的长度。在这样的规范下，位移电导变成了$\sigma_{2D}=\sigma_{3D}d$。
 
 
-单层的GeS存在着一个将$y$变为$-y$的镜面操作$\hat{M}_{y}$。 由于这个镜面操作的存在$\sigma^{xxy}$和$\sigma^{yyy}$都是严格为零的。\textbf{图}展示了$\sigma^{xxx}$和$\sigma^{xyy}$的结果。文献\onlinecite{rangel_giant_2016}的结果同样展示在了图中。总体上而言，我们的结果和前人的结果吻合的很好。一些峰值定量上的差距可能是计算方法和参数的不同导致的。WS$_2$有着一个将$x$变为$-x$的镜面操作$\hat{M}_{x}$，因此，$\sigma^{xxx}$ 和 $\sigma^{xyy}$被禁戒。WS$_2$的点群$D_{6h}$要求其不为零的位移电导分量$\sigma^{yyy}$和$\sigma^{yxx}$满足如下关系：$\sigma^{yyy}=-\sigma^{yxx}$，这一点在图上也可以看出来。由于带边存在着范霍夫奇点，两种材料的位移电导都在带边存在着小小的跳跃。除此之外，我们看到两个材料高于带隙$1$eV的地方都有几个峰，这些峰都在可见光的范围之内。
+单层的GeS存在着一个将$y$变为$-y$的镜面操作$\hat{M}_{y}$。 由于这个镜面操作的存在$\sigma^{xxy}$和$\sigma^{yyy}$都是严格为零的。\fig{fig1}展示了$\sigma^{xxx}$和$\sigma^{xyy}$的结果。文献\onlinecite{rangel_giant_2016}的结果同样展示在了图中。总体上而言，我们的结果和前人的结果吻合的很好。一些峰值定量上的差距可能是计算方法和参数的不同导致的。WS$_2$有着一个将$x$变为$-x$的镜面操作$\hat{M}_{x}$，因此，$\sigma^{xxx}$ 和 $\sigma^{xyy}$被禁戒。WS$_2$的点群$D_{6h}$要求其不为零的位移电导分量$\sigma^{yyy}$和$\sigma^{yxx}$满足如下关系：$\sigma^{yyy}=-\sigma^{yxx}$，这一点在图上也可以看出来。由于带边存在着范霍夫奇点，两种材料的位移电导都在带边存在着小小的跳跃。除此之外，我们看到两个材料高于带隙$1$eV的地方都有几个峰，这些峰都在可见光的范围之内。
 
-为了分析不同的电子态对位移电导的贡献，我们在图中展示了WS$_2$的位移电导相关的量在布里渊区中的分布，这些量是在位移电导的第一个峰$\hbar\omega = 2.719$处计算的。这些量分别是跃迁速率$r_{nm}^{b}r_{mn}^{b}\delta(\omega_{nm}-\omega)$，位移矢量$R_{mn}^{a,b}$以及他们的乘积。对于时间反演不变的体系：$I^{abb}(\mathbf{k})=I^{abb}(-\mathbf{k})$，这一点可以在图中看出来。从图中可以看出两个非常重要的特性：（一）由于狄拉克delta函数的存在，绝大部分$\bk$点对位移电导并没有贡献，只有极少数$\bk$点贡献了非常大的值。因此，布里渊区的积分确实需要大量的$\bk$点才能够收敛。（二）如图所示，位移矢量大概在$1$\AA 左右，但是在一些地方超过了$10$\AA ，之前的研究\cite{fregoso_quantitative_2016}在模型计算中也注意到了这一点。与此相对，电子的极化的定义可以相差任意一个晶格格矢。要分析位移电导，我们需要完全的理解位移矢量而不是简单的比较导带和价带的电子极化\cite{young2012}。
+\begin{figure}
+	\begin{centering}
+	\includegraphics[width=1.0\textwidth]{2.png}
+	\par\end{centering}
+	\caption{\label{fig2} 单层WS$_{2}$的位移电流的相关量在布里渊区中的分布，我们取光的频率为$2.719$ eV。(a)跃迁速率$r_{nm}^{y}r_{mn}^{y}\delta(\omega_{nm}-\omega)$ (\AA$^{2}$/eV)；(b)位移矢量$R_{mn}^{y,y}$ (\AA)；(c)位移电导的积分核$r_{nm}^{y}r_{mn}^{y}R_{mn}^{y,y}\delta(\omega_{nm}-\omega)$ (\AA$^{3}$/eV)。}
+\end{figure}
+
+为了分析不同的电子态对位移电导的贡献，我们在\fig{fig2}中展示了WS$_2$的位移电导相关的量在布里渊区中的分布，这些量是在位移电导的第一个峰$\hbar\omega = 2.719$处计算的。这些量分别是跃迁速率$r_{nm}^{b}r_{mn}^{b}\delta(\omega_{nm}-\omega)$，位移矢量$R_{mn}^{a,b}$以及他们的乘积。对于时间反演不变的体系：$I^{abb}(\mathbf{k})=I^{abb}(-\mathbf{k})$，这一点可以在\fig{fig2}中看出来。从\fig{fig2}中可以看出两个非常重要的特性：（一）由于狄拉克delta函数的存在，绝大部分$\bk$点对位移电导并没有贡献，只有极少数$\bk$点贡献了非常大的值。因此，布里渊区的积分确实需要大量的$\bk$点才能够收敛。（二）如\fig{fig2}所示，位移矢量大概在$1$\AA 左右，但是在一些地方超过了$10$\AA ，之前的研究\cite{fregoso_quantitative_2016}在模型计算中也注意到了这一点。与此相对，电子的极化的定义可以相差任意一个晶格格矢。要分析位移电导，我们需要完全的理解位移矢量而不是简单的比较导带和价带的电子极化\cite{young2012}。
 
 
-如前文所述，计算贝里联络的导数可以采用求和规则，而不是二阶微扰的办法，但是这个方法由于需要对所有能带求和，所以并不推荐。除此之外，很多前人的线性响应的计算都采用了紧束缚模型。紧束缚模型可以通过保留第一性原理计算得到的哈密顿量，但是设置$\langle\mathbf{0}n|\hat{\mathbf{r}}|\mathbf{R}m\rangle=\delta_{0\mathbf{R}}\delta_{nm}\mathbf{r}_{n}$得到。图比较了不同的计算方法得到结果。如图所示，我们通过设置不同的内窗口和不同的初始投影，得到了两组数目不同的最大局域化Wannier函数，后一组Wanier函数的数目更多一些。图给出了微扰论和求和规则采用不同组Wannier函数计算得到的位移电导的结果。根据我们的测试，微扰论的计算结果和Wannier的数目并没有什么关系，而求和规则却给出了显然不同的结果。这就展示了求和规则需要对所有能带求和的缺陷。除此之外，两种方法计算得到的位移电导的大小也不太一致，这一点可以有两个解释：（一）求和规则忽略了$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$；（二）对于求和规则来说，Wannier函数的数目尚未收敛；（三）Wannier插值得到的布洛赫波函数仅仅在内窗口和第一性原理重合，因此内窗口外的Wannier插值得到的布洛赫波函数并不是真正的波函数，在求和规则中会产生差异。另外，我们通过忽略位置矩阵元的所有非对角项，得到了紧束缚模型的结果。和微扰论的结果相比，紧束缚的结果有着能够注意到的差异。与此相反，紧束缚模型在计算反常霍尔效应的时候仅仅产生了不到$1\%$的误差\cite{wang_textitab_2006}。我们的结果显示，非线性光学效应比线性响应对波函数的分布更加敏感。
+如前文所述，计算贝里联络的导数可以采用求和规则，而不是二阶微扰的办法，但是这个方法由于需要对所有能带求和，所以并不推荐。除此之外，很多前人的线性响应的计算都采用了紧束缚模型。紧束缚模型可以通过保留第一性原理计算得到的哈密顿量，但是设置$\langle\mathbf{0}n|\hat{\mathbf{r}}|\mathbf{R}m\rangle=\delta_{0\mathbf{R}}\delta_{nm}\mathbf{r}_{n}$得到。\fig{fig3}比较了不同的计算方法得到结果。如\fig{fig3}所示，我们通过设置不同的内窗口和不同的初始投影，得到了两组数目不同的最大局域化Wannier函数，后一组Wanier函数的数目更多一些。\fig{fig3}给出了微扰论和求和规则采用不同组Wannier函数计算得到的位移电导的结果。根据我们的测试，微扰论的计算结果和Wannier的数目并没有什么关系，而求和规则却给出了显然不同的结果。这就展示了求和规则需要对所有能带求和的缺陷。除此之外，两种方法计算得到的位移电导的大小也不太一致，这一点可以有两个解释：（一）求和规则忽略了$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$；（二）对于求和规则来说，Wannier函数的数目尚未收敛；（三）Wannier插值得到的布洛赫波函数仅仅在内窗口和第一性原理重合，因此内窗口外的Wannier插值得到的布洛赫波函数并不是真正的波函数，在求和规则中会产生差异。另外，我们通过忽略位置矩阵元的所有非对角项，得到了紧束缚模型的结果。和微扰论的结果相比，紧束缚的结果有着能够注意到的差异。与此相反，紧束缚模型在计算反常霍尔效应的时候仅仅产生了不到$1\%$的误差\cite{wang_textitab_2006}。我们的结果显示，非线性光学效应比线性响应对波函数的分布更加敏感。
+
+\begin{figure}
+	\begin{centering}
+	\includegraphics[width=1.0\textwidth]{3.png}
+	\par\end{centering}
+	\caption{\label{fig3} (a) 单层WS$_2$的能带，黑色线是密度泛函的结果，红色的点是Wannier插值的结果。两幅图对应着两组不同的Wannier函数。左侧的Wannier函数数目较少，在(b-c)中标为了“small”，右侧的Wannier函数数目较多，标为“large”。(b,c) 采用两组不同的Wannier函数的微扰法【(b)】和求和规则【(c)】算得的位移电导。(d) 应用紧束缚【“tb”】和不用紧束缚近似【“full”】计算的位移电导。} 
+	
+\end{figure}
 
 
 \subsection{倍频效应}
 
 
-我们在没有考虑自旋轨道耦合的情况下进行了GaAs的密度泛函计算。在计算中，我们采用了Hartwigsen-Goedeker-Hutter模守恒赝势\cite{hartwigsen_relativistic_1998}，Perdew-Burke-Ernzerhof的交换关联泛函\cite{perdew_generalized_1996}以及截断为60Ry的平面波基组。在密度泛函自洽计算中，我们采用了 $6\times6\times6$ 的$\bk$格子，在计算倍频效应的时候，我们采用了 $250\times250\times250$ 的$\bk$格子。考虑到PBE交换关联泛函严重低估带隙，我们采用了两种方式来修正带隙。一种是剪刀修正\cite{nastos_scissors_2005}。剪刀修正指的是假设波函数不变，直接将能量修正为实验带隙。另一种是采用Heyd-Scuseria-Ernzerhof（HSE）杂化泛函\cite{heyd_hybrid_2003}。这两种方法得到的结果展示在图中。GaAs的实验带隙是$1.42$eV，这要求我们在剪刀修正上加上$0.86$的修正，而HSE的密度泛函计算则给出了稍小一点的带隙（$1.25$eV）的带隙。在图中，倍频效应的虚部在达到二分之一个带隙的时候会开始有值。
+我们在没有考虑自旋轨道耦合的情况下进行了GaAs的密度泛函计算。在计算中，我们采用了Hartwigsen-Goedeker-Hutter模守恒赝势\cite{hartwigsen_relativistic_1998}，Perdew-Burke-Ernzerhof的交换关联泛函\cite{perdew_generalized_1996}以及截断为60Ry的平面波基组。在密度泛函自洽计算中，我们采用了 $6\times6\times6$ 的$\bk$格子，在计算倍频效应的时候，我们采用了 $250\times250\times250$ 的$\bk$格子。考虑到PBE交换关联泛函严重低估带隙，我们采用了两种方式来修正带隙。一种是剪刀修正\cite{nastos_scissors_2005}。剪刀修正指的是假设波函数不变，直接将能量修正为实验带隙。另一种是采用Heyd-Scuseria-Ernzerhof（HSE）杂化泛函\cite{heyd_hybrid_2003}。这两种方法得到的结果展示在\fig{fig4}中。GaAs的实验带隙是$1.42$eV，这要求我们在剪刀修正上加上$0.86$的修正，而HSE的密度泛函计算则给出了稍小一点的带隙（$1.25$eV）的带隙。在\fig{fig4}中，倍频效应的虚部在达到二分之一个带隙的时候会开始有值。
 
 GaAs的空间群是$F\bar{4}3m$，这个空间群唯一的非零的倍频系数是$\chi^{xyz}$。这里，我们给出GaAs的倍频系数的结果。剪刀修正和HSE杂化泛函的计算，在峰位和峰型的这些特征上基本一致，但是后一种方法给出了稍微小一点的$\chi^{xyz}$。这两个结果都和前人的计算吻合的很好\cite{rashkeev_efficient_1998,nastos_scissors_2005,hughes_calculation_1996}。我们的计算给出的值稍小一些，可能是因为计算细节上的插值。最后我们说明，我们的结果在用不用紧束缚近似，用不用求和规则的情况下结果都基本相同。这一点证明了我们的方法的可靠性。
 
+\begin{figure}
+	\begin{centering}
+	\includegraphics[width=1.0\textwidth]{4.png}
+	\par\end{centering}
+	\caption{\label{fig4} 采用不同方法计算的GaAs的$\chi^{xyz}$的模【(a)】和虚部【(b)】。(a)图中还画出了文献\onlinecite{nastos_scissors_2005}的结果。}
+	\end{figure}
 \section{讨论和结论\label{sec:discussions-and-conclusions}}
 
 

@@ -14,7 +14,7 @@
   %=========
   % 中文信息
   %=========
-  ctitle={布洛赫电子响应性质的计算方法和理论研究},
+  ctitle={布洛赫电子响应性质的计算方法和准经典理论研究},
   cdegree={理学博士},
   cdepartment={高等研究院},
   cmajor={物理学},
@@ -36,22 +36,7 @@
   %=========
   % 英文信息
   %=========
-  etitle={An Introduction to \LaTeX{} Thesis Template of Tsinghua University v\version},
-  % 这块比较复杂，需要分情况讨论：
-  % 1. 学术型硕士
-  %    edegree：必须为Master of Arts或Master of Science（注意大小写）
-  %             “哲学、文学、历史学、法学、教育学、艺术学门类，公共管理学科
-  %              填写Master of Arts，其它填写Master of Science”
-  %    emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
-  % 2. 专业型硕士
-  %    edegree：“填写专业学位英文名称全称”
-  %    emajor：“工程硕士填写工程领域，其它专业学位不填写此项”
-  % 3. 学术型博士
-  %    edegree：Doctor of Philosophy（注意大小写）
-  %    emajor：“获得一级学科授权的学科填写一级学科名称，其它填写二级学科名称”
-  % 4. 专业型博士
-  %    edegree：“填写专业学位英文名称全称”
-  %    emajor：不填写此项
+  etitle={Response theory of Bloch electrons: numerical methods and semiclassical theory},
   edegree={Doctor of Philosophy},
   emajor={Physics},
   eauthor={Wang Chong},
@@ -61,56 +46,30 @@
   % edate={December, 2005}
   %
   % 关键词用“英文逗号”分割
-  ckeywords={\TeX, \LaTeX, CJK, 模板, 论文},
-  ekeywords={\TeX, \LaTeX, CJK, template, thesis}
+  ckeywords={第一性原理计算，布洛赫电子，位移电流，Wannier插值，朗道能级},
+  ekeywords={first-principles calculation, Bloch electrons, shift current, Wannier interpolation, Landau levels}
 }
 
 % 定义中英文摘要和关键字
 \begin{cabstract}
-  论文的摘要是对论文研究内容和成果的高度概括。摘要应对论文所研究的问题及其研究目
-  的进行描述，对研究方法和过程进行简单介绍，对研究成果和所得结论进行概括。摘要应
-  具有独立性和自明性，其内容应包含与论文全文同等量的主要信息。使读者即使不阅读全
-  文，通过摘要就能了解论文的总体内容和主要成果。
+  材料对外场的响应性质是实验探测和工业应用的基石。在本文中，我们数值上和理论上研究了布洛赫电子在外电场和外磁场中的响应性质，具体的例子是位移电流和量子震荡。
 
-  论文摘要的书写应力求精确、简明。切忌写成对论文书写内容进行提要的形式，尤其要避
-  免“第 1 章……；第 2 章……；……”这种或类似的陈述方式。
+  我们发展了一套基于Wannier插值的计算二阶非线性效应的第一性原理方法。该方法首先通过布里渊区少数$\bk$点构造Wannier函数，然后采用二阶微扰论计算波函数的导数和二阶导数，最后在布里渊区积分得到对应的响应函数。微扰论的引入让我们成功的规避了数值求导中遇到的相位不定性问题，Wannier插值让该过程只需要极小的计算量就能完成整个布里渊区的积分。我们采用这个方法计算了位移电流和倍频效应，得到了满意的结果。我们将该方法和前人的波函数求和规则进行对比，发现我们的方法更加准确并且速度更快。另外，我们还比较了该方法和紧束缚近似的结果，发现二阶效应下紧束缚近似的误差比一阶效应大。
 
-  本文介绍清华大学论文模板 \thuthesis{} 的使用方法。本模板符合学校的本科、硕士、
-  博士论文格式要求。
+  我们将上述的Wannier插值方法推广到了非正交局域基组，非正交局域基组是多个第一性原理软件包采用的展开Kohn-Sham波函数的基组。通过求解广义的本征值方程以及广义的本征值方程的导数，我们发展出了基于非正交局域基组的Wannier插值方案。该方案和基于最大局域化Wannier函数的方案结果一致，但是不需要人工干预，适合进行高通量计算。
 
-  本文的创新点主要有：
-  \begin{itemize}
-    \item 用例子来解释模板的使用方法；
-    \item 用废话来填充无关紧要的部分；
-    \item 一边学习摸索一边编写新代码。
-  \end{itemize}
-
-  关键词是为了文献标引工作、用以表示全文主要内容信息的单词或术语。关键词不超过 5
-  个，每个关键词中间用分号分隔。（模板作者注：关键词分隔符不用考虑，模板会自动处
-  理。英文关键词同理。）
+  以上研究主要集中于材料的电响应。对于磁场而言，材料最重要的现象之一就是量子震荡。量子震荡来自于朗道能级的分立性，前人的工作主要集中于非简并和完全简并的能带的朗道能级的求解。本文中，我们提出了适用于近简并能带的朗道能级的量子化条件，该量子化条件可以在非简并和完全简并的极限下退化到前人已有的量子化条件，并可以在第二类狄拉克点模型中退化到前人的磁隧穿模型。基于新的量子化条件，我们分析了什么情况下朗道能级会（准）简并。我们对所有可能的晶体对称性进行了分析，得到了找到一个朗道能级（准）简并的需要调节的参数个数。特别地，我们发现如果存在旋转对称性，需要的参数个数是一。最后我们提出了一个参数就可以找到的朗道能级（准）简并在量子震荡中的信号。
 \end{cabstract}
 
 % 如果习惯关键字跟在摘要文字后面，可以用直接命令来设置，如下：
 % \ckeywords{\TeX, \LaTeX, CJK, 模板, 论文}
 
 \begin{eabstract}
-   An abstract of a dissertation is a summary and extraction of research work
-   and contributions. Included in an abstract should be description of research
-   topic and research objective, brief introduction to methodology and research
-   process, and summarization of conclusion and contributions of the
-   research. An abstract should be characterized by independence and clarity and
-   carry identical information with the dissertation. It should be such that the
-   general idea and major contributions of the dissertation are conveyed without
-   reading the dissertation.
+  Responses of materials is the footstone of their experimental detection and industrial application. In this thesis, we study two of the important response phenomena of Bloch electrons: shift current and quantum oscillation.
 
-   An abstract should be concise and to the point. It is a misunderstanding to
-   make an abstract an outline of the dissertation and words ``the first
-   chapter'', ``the second chapter'' and the like should be avoided in the
-   abstract.
+  A method of calculating second order response effect by Wannier interpolation is developed. By constructing Wannier functions by just a few $\bk$ points in the Brillouin Zone, we use second order perturbation theory to calculate first and second order derivative of Kohn-Sham wave functions. We then integrate over the Brillouin zone to obtain the response function. The perturbation theory is utilized to avoid the phase ambiguity of diagonalization of Kohn-Sham Hamiltonian and Wannier interpolation spares us heavy computatition burden of traditional method. We test our method by calculating shift current and second harmonic generation. Compared with previous method of sum rule, we find our method is advantageous both in speed and accuracy. In addtion, we compared our method with tight binding, finding that tight binding induces more error in calculating second order responses than first order responses.
 
-   Key words are terms used in a dissertation for indexing, reflecting core
-   information of the dissertation. An abstract may contain a maximum of 5 key
-   words, with semi-colons used in between to separate one another.
+  We generalized the above Wannier interpolation method to non-orthogonal localized orbitals, which are the basis functions of many first-principles packages. By solving generalized eigenvalue problems and their derivatives, we develop the theory of non-orthogonal localized orbitals based Wannier interpolation. This scheme yields the same result as Wannier interpolation based on maximally localized Wannier functions. In addition, this method can be fully automated and is suitable for high-throughput calculations.
+
+  We have focused on the response of electric fields. As for magnetic fields, one of the most important phenomenon is quantum oscillation. Quantum oscillation is due to energetically distanct Landau levels. Previous works have focused on the Landau levels of non-degenerate bands and exactly-degenerate bands. We developed the quantization rule applicable to nearly-degenerate bands. Our rule reduces to ones proposed in previous works in the non-degenerate and exactly-degenerate limit. In addition, we show that magnetic breakdown can naturally emerge from our quantiztion rule. With the theoretical advancements above, we calculate the number of parameters needed to tune to a Landau level (quasi-)degeneracy. We exhaustively classified all possible symmetries of a magnetic group and present the number of parameters for each symmetry class. In particular, we discover that in rotationally symmetric systems, only one parameter is needed to find a (quasi-)degeneracy. This fact is manifested in many signatures of quantum oscillations.
 \end{eabstract}
-
-% \ekeywords{\TeX, \LaTeX, CJK, template, thesis}

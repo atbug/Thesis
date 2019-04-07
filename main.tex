@@ -23,7 +23,6 @@
 \usepackage{amsmath,graphicx,xcolor,bm}
 \usepackage{upgreek}
 \usepackage{amssymb}
-\usepackage{appendix}
 
 % 定义所有的图片文件在 figures 子目录下
 \graphicspath{{figures/}}
@@ -53,7 +52,7 @@
 \include{data/chap03}
 \include{data/chap04}
 \include{data/chap05}
-\include{data/app}
+\include{data/conclusion}
 
 %%% 其它部分
 \backmatter
@@ -78,10 +77,10 @@
 \include{data/ack}
 
 %% 附录
-% \begin{appendix}
-% \input{data/appendix01}
-% \end{appendix}
+\begin{appendix}
+\input{data/app}
+\end{appendix}
 
 %% 个人简历
-% \include{data/resume}
+\include{data/resume}
 \end{document}

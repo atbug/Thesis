@@ -3,10 +3,10 @@
 
 \section{引言}
 
-响应理论是实验探测和器件设计的基础。材料的响应指的是在外场的作用下，材料的可观测物理量（用算符$\hat{O}$表示）发生变化的行为。这里的外场一般指的是电场（用$E$表示）或者磁场（用$B$表示）。由于在常见光源中，电磁波中的磁场对材料并没有太大的影响， 因此光场一般可以看成交变电场。由于在施加外场的时候，外场的方向，时间依赖关系，空间依赖关系均可以变化，实验上对材料的探测就有了很多的可变参数，可以探测材料的多种不同性质。实验上的观测物理量则更加多样。传统的可观测物理量有电流电导（霍尔效应\cite{klitzing_new_1980}），磁矩（量子振荡\cite{SdH,dHvA}），极化（铁电回线\cite{cohen_origin_1992}）等等。近年来，人们开始尝试探索电子的新的自由度，由此诞生了一些新的物理可观测量，例如自旋流（自旋霍尔效应\cite{hasan2010,qi2011}），谷极化流（谷霍尔效应\cite{xiao_coupled_2012}）等。这些手段极大地丰富了凝聚态实验的种类，并且对工程应用也有极大的价值。
+响应理论是实验探测和器件设计的基础。材料的响应指的是在外场的作用下，材料的可观测物理量（用算符$\hat{O}$表示）发生变化的行为。这里的外场一般指的是电场（用$E$表示）或者磁场（用$B$表示）。由于在常见光源中，电磁波中的磁场对材料并没有太大的影响， 因此光场一般可以看成交变电场。由于在施加外场的时候，外场的方向，时间依赖关系，空间依赖关系均可以变化，实验上对材料的探测就有了很多的可变参数，从而探测材料的多种不同性质。实验上的观测物理量则更加多样。传统的可观测物理量有电流电导（霍尔效应\cite{klitzing_new_1980}），磁矩（量子振荡\cite{SdH,dHvA}），极化（铁电回线\cite{cohen_origin_1992}）等等。近年来，人们开始尝试探索电子的新的自由度，由此诞生了一些新的物理可观测量，例如自旋流（自旋霍尔效应\cite{hasan2010,qi2011}），谷极化流（谷霍尔效应\cite{xiao_coupled_2012}）等。这些手段极大地丰富了凝聚态实验的种类，并且对工程应用也有极大的价值。
 
 
-由于实验探测的目的主要是了解材料本身的性质，因此实验施加的外场往往较小。在这样的背景下，可观测量偏离平衡态的大小（$\delta\langle\hat{O}\rangle$）经常对外场场强进行小量展开。除非对称性禁止，小量展开的最低阶往往是线性的（$\delta\langle\hat{O}\rangle \propto E$或者$B$），这样的响应称之为线性响应。随着实验技术的发展和实验目的的变化，人们有时也对研究的样品材料施加强场，以期获得高阶的响应，这样的响应统称为高阶响应。其中，二阶响应是最容易被实验观测到的，也是人们研究最多的对象。
+由于实验探测的目的主要是了解材料本身的性质，因此实验施加的外场往往较小。在这样的背景下，可观测量偏离平衡态的大小（$\delta\langle\hat{O}\rangle$）经常以外场场强进行小量展开。除非对称性禁止，小量展开的最低阶往往是线性的（$\delta\langle\hat{O}\rangle \propto E$或者$B$），这样的响应称之为线性响应。随着实验技术的发展和实验目的的变化，人们有时也对研究的样品材料施加强场，以期获得高阶的响应，这样的响应统称为高阶响应。其中，二阶响应是最容易被实验观测到的，也是人们研究最多的对象。
 
 一般而言，由于电子之间存在着交换关联作用，计算一个系统对外场的响应尤其是高阶响应是一件比较困难的事情。幸运的是，对于非强关联体系，基于密度泛函理论的独立粒子近似就能够较好地预测实验结果。因此，本文的理论分析基本基于独立粒子近似，而计算手段则采用基于密度泛函理论的能带论。
 
@@ -63,19 +63,29 @@ D(\br,\bk)=\frac{1}{(2\pi)^d}(1+\frac{e}{\hbar}\boldsymbol{B}\cdot\boldsymbol{\O
 
 位移电流是一种二阶效应，具体来说，位移电流$\boldsymbol{J}$可以表达为
 \begin{equation}
-J^\alpha = \sigma^{\alpha\beta\beta}(\omega) E^\beta(\omega) E^\beta(\omega).
+J^\alpha = \sigma^{abb}(\omega) E^a(\omega) E^b(\omega).
 \end{equation}
-这里的$\alpha$和$\beta$是笛卡尔方向的指标，$\omega$是光场的频率，$\sigma^{\alpha\beta\beta}$被称为位移电导。
+这里的$a$和$b$是笛卡尔方向的指标，$\omega$是光场的频率，$\sigma^{abb}$被称为位移电导。
 
 位移电流的起源是电子在光场的作用下从价带跃迁到导带时发生的位置变化，位移电导计算表达式为
 \begin{equation}
-\sigma^{\alpha\beta\beta}=-\frac{2\pi e^3}{\hbar^2}\int \frac{d\bk}{(2\pi)^3}\sum_{n,m}f_{mn}|\berry^\beta_{mn}|^2 R_{nm}^{\alpha\beta} \delta(\omega_{nm}-\omega),\label{shift-expr}
+\sigma^{abb}=-\frac{2\pi e^3}{\hbar^2}\int \frac{d\bk}{(2\pi)^3}\sum_{n,m}f_{mn}|r^b_{mn}|^2 R_{nm}^{ab} \delta(\omega_{nm}-\omega),\label{shift-expr}
 \end{equation}
-这里的积分区域为第一布里渊区，$n,m$是能带标号，$f_{mn}=f_m-f_n$是费米分布的差，$\boldsymbol{\berry}_{mn}(\bk)=i \langle u_m(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$是贝里联络的非对角项，$\omega_{nm}=\omega_n-\omega_m$是能带能量的差（$\epsilon_n=\hbar\omega_n$）, 而$R_{nm}^{\alpha\beta}$具有长度的单位，被称为位移矢量。位移矢量和式\ref{semi-rc}紧密相关，具体形式为
+这里的积分区域为第一布里渊区，$n,m$是能带标号，$f_{mn}=f_m-f_n$是费米分布的差，$r_{mn}(\bk)=i \langle u_m(\bk)|\nabla_{\bk}|u_n(\bk) \rangle$是贝里联络的非对角项，$\omega_{nm}=\omega_n-\omega_m$是能带能量的差（$\epsilon_n=\hbar\omega_n$）, 而$R_{nm}^{ab}$具有长度的单位，被称为位移矢量。位移矢量和式\ref{semi-rc}紧密相关，具体形式为
 \begin{equation}
-R_{nm}^{\alpha\beta}=\partial_\alpha \phi_{mn}^{\beta}-\berry_m^\alpha+\berry_n^\alpha,
+R_{nm}^{ab}=\partial_a \phi_{mn}^{b}-\berry_m^a+\berry_n^a,
 \end{equation}
-其中$\phi_{mn}^{\beta}$是$\berry_{mn}^{\beta}$的相位。位移矢量的物理阐释就是电子从带$m$跃迁到带$n$发生的位置变化的大小。假设一个波包原先在带$m$上，其权重函数为$w_m(\bk,t)$, 假设光作为微扰项加入本系统中，采用极化子近似，那么微扰哈密顿量就是$\hat{H}_D=A^\beta\cdot\hat{p}^\beta$，其中$\boldsymbol{A}$是矢势。根据含时的一阶微扰论，跃迁到能带$n$上的权重函数正比于$w_n(\bk, t)\propto p^{\beta}_{nm}w_m(\bk, t)$。考虑到$p_{nm}$和$\berry_{nm}$的相位是锁定在一起的（相差$\pi/2$），我们就可以根据式\ref{semi-rc}计算出跃迁前后的位置平均值的差。这个差就是位移矢量。
+其中$\phi_{mn}^{b}$是$\berry_{mn}^{b}$的相位。位移矢量的物理阐释就是电子从带$m$跃迁到带$n$发生的位置变化的大小。假设一个波包原先在带$m$上，其权重函数为$w_m(\bk,t)$, 假设光作为微扰项加入本系统中，采用极化子近似，那么微扰哈密顿量就是$\hat{H}_D=A^b\hat{p}^b$，其中$\boldsymbol{A}$是矢势。根据含时的一阶微扰论，跃迁到能带$n$上的权重函数正比于$w_n(\bk, t)\propto p^b_{nm}w_m(\bk, t)$。考虑到$p_{nm}$和$r_{nm}$的相位是锁定在一起的（相差$\pi/2$），我们就可以根据式\ref{semi-rc}计算出跃迁前后的位置平均值的差。这个差就是位移矢量。
+
+位移电导还有另一个等价的表达式，这个表达式更加适用于数值计算
+\begin{equation}
+	\sigma^{abb}(\omega)=\frac{2\pi e^{3}}{\hbar^{2}}\int\frac{d^{3}\bk}{(2\pi)^{3}}\sum_{n,m}f_{nm}I_{nm}^{abb}\delta(\omega_{nm}-\omega),\label{eq:shift-current}
+\end{equation}
+其中
+\begin{equation}
+I_{nm}^{abb}=\text{Im}[r_{mn}^{b}r_{nm;a}^{b}],\label{eq:shift-integrand}
+\end{equation}
+其中$r_{nm;a}^{b}=\partial_{k_{a}}r_{nm}^{b}-i(\berry_{n}^{a}-\berry_{m}^{a})r_{nm}^{b}$被称为贝里相位的广义导数。
 
 位移电流只有在空间反演破缺的情况下存在，在没有空间反演破缺的材料中，式\ref{shift-expr}被积函数在$\bk$和$-\bk$处严格相反，所以积分结果严格为零。除了空间反演对称性以外，还有别的对称性可以禁止位移电导的某些分量。一般而言，$\berry$和位置算符$\hat{\br}$具有相同的对称变换规则。比如，既然$\hat{T}\hat{\br}\hat{T}^{-1}=\hat{\br}$（$T$是时间反演操作），那么在具有时间反演对称的晶体中就有$\berry_{nm}(\bk)=\berry_{nm}^*(-\bk)$。既然$\hat{\inv} \hat{\br} \hat{\inv}^{-1}=-\hat{\br}$（$\inv$是空间反演操作），那么具有空间反演对称性的材料就会有$\berry_{nm}(\bk)=-\berry_{nm}(-\bk)$。这样的关系可以用来分析位移电导在各种对称性下的变换。注意，由于贝里联络可以出现相位不定性。因此上面的等式都是在选择了一定的相位规范下成立的。
 
@@ -84,9 +94,9 @@ R_{nm}^{\alpha\beta}=\partial_\alpha \phi_{mn}^{\beta}-\berry_m^\alpha+\berry_n^
 \caption{BaTiO$_3$的不同方向的位移电流的理论和实验值\cite{koch_anomalous_1976}对比。实线是理论值，虚线是实验值。灰色部分是由于实验样品尺寸的不确定性导致的卢纶值的不确定范围。本图来自文献\onlinecite{young2012}。 注意：该文和本论文采用的符号不一致。本文中的$\sigma^{\alpha\beta\beta}$相当于文献\onlinecite{young2012}中的$\sigma^{\beta\beta\alpha}$（见图例）。\label{young-shift}}
 \end{figure}
 
-最早的和实验进行对比的位移电流的计算出现2012年，Steve Young等人\cite{young2012}通过第一型原理方法计算了BaTiO$_3$的位移电流。BaTiO$_3$是典型的铁电材料，具有较大的极化。Steve Young等人和更早期的实验进行了对比，得到了相对比较满意的结果（图\ref{young-shift}）。
+最早的和实验进行对比的位移电流的计算出现2012年，Steve Young等人\cite{young2012}通过第一性原理方法计算了BaTiO$_3$的位移电流。BaTiO$_3$是典型的铁电材料，具有较大的极化。Steve Young等人和更早期的实验进行了对比，得到了相对比较满意的结果（图\ref{young-shift}）。
 
-自此之后，出于实际应用的目的，人们开始探索什么样的材料能够具有较大的位移电流。Cook等人\cite{cook_design_2017}通过建立紧束缚模型并且调节模型参数，推荐了单层$GeS$作为具有较大位移电流的材料。Fregoso等人\cite{fregoso_quantitative_2016}提出，在一定条件下，位移矢量的平均值就是导带和价带的极化差，指出了极化和位移电流存在着非常紧密的关系。但是在实际计算中，人们发现位移电流并不是随着极化的增长单调上升的。后来，Tan等人\cite{tan_upper_2017}提出位移电流存在上限，这个上限正比于紧束缚模型的跃迁参数和带隙的比值的平方。但是这个上限仍然是理想化模型化的，实际材料中的紧束缚模型跃迁参数并不是一个容易确定的数值。Tan等人还尝试对位移电流进行了高通量计算，从中找出了一些位移电流比较大的材料。
+自此之后，出于实际应用的目的，人们开始探索什么样的材料能够具有较大的位移电流。Cook等人\cite{cook_design_2017}通过建立紧束缚模型并且调节模型参数，推荐了单层GeS作为具有较大位移电流的材料。Fregoso等人\cite{fregoso_quantitative_2016}提出，在一定条件下，位移矢量的平均值就是导带和价带的极化差，指出了极化和位移电流存在着非常紧密的关系。但是在实际计算中，人们发现位移电流并不是随着极化的增长单调上升的。后来，Tan等人\cite{tan_upper_2017}提出位移电流存在上限，这个上限正比于紧束缚模型的跃迁参数和带隙的比值的平方。但是这个上限仍然是理想化模型化的，实际材料中的紧束缚模型跃迁参数并不是一个容易确定的数值。Tan等人还尝试对位移电流进行了高通量计算，从中找出了一些位移电流比较大的材料。
 
 
 \section{布洛赫电子的磁性质}

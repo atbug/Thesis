@@ -26,7 +26,7 @@ P^{c}(2\omega)=\epsilon_0\chi^{abc}(\omega)E^{b}(\omega)E^{c}(\omega),
 
 \subsection{构造规范不变的表达式}
 
-任何物理量归根结底不应该依赖于规范的选区，这个性质叫做规范不变性。我们要介绍的第一种克服规范问题的方法是采用规范不变的表达式。这里，我们以Zak相位\cite{zak_berrys_1989}为例，来阐述这个方法。Zak相位可以定义在一维布里渊区中，它的表达式$\frac{1}{2\pi}\ointop dk\berry(k)$。这里积分符号上的圈表示这个积分应该穿过整个布里渊区（我们这里将晶格矢长度设置为1）。Zak相位是一个可观测量，和晶体的极化紧密相关\cite{king-smith_theory_1993,resta_theory_1992}，因此，它应该是规范不变的。在计算Zak相位的时候，人们常常使用下面的表达式：
+任何物理量归根结底不应该依赖于规范的选取，这个性质叫做规范不变性。我们要介绍的第一种克服规范问题的方法是采用规范不变的表达式。这里，我们以Zak相位\cite{zak_berrys_1989}为例，来阐述这个方法。Zak相位可以定义在一维布里渊区中，它的表达式$\frac{1}{2\pi}\ointop dk\berry(k)$。这里积分符号上的圈表示这个积分应该穿过整个布里渊区（我们这里将晶格矢长度设置为1）。Zak相位是一个可观测量，和晶体的极化紧密相关\cite{king-smith_theory_1993,resta_theory_1992}，因此，它应该是规范不变的。在计算Zak相位的时候，人们常常使用下面的表达式：
 \begin{align*}
 \frac{i}{2\pi}\text{ln}[\langle u(k)|u(k+\Delta k)\rangle\langle u(k+\Delta k)|u(k+2\Delta k)\rangle\\
 \times...\langle u(k+2\pi-\Delta k)|u(k+2\pi)\rangle].
@@ -38,21 +38,21 @@ P^{c}(2\omega)=\epsilon_0\chi^{abc}(\omega)E^{b}(\omega)E^{c}(\omega),
 
 \subsection{动量矩阵和求和规则}
 
-另外一种计算贝里相位的方法是采用动量矩阵元和求和规则\cite{sipe_second-order_2000}。动量矩阵元$\langle\psi_{n}|-i\hbar\nabla_{\mathbf{r}}|\psi_{m}\rangle$计算的时候没有相位问题。由于贝里联络和速度矩阵元存在如下关系：$v_{nm}^{b}(\mathbf{k})=\frac{1}{\hbar}\partial_{b}E_{n}(\mathbf{k})\delta_{nm}+\frac{i}{\hbar}(E_{n}(\mathbf{k})-E_{m}(\mathbf{k}))r_{nm}^{b}$，因此得到速度矩阵元就可以得到贝里相位。另外一方面，速度算符和动量算符是成正比的：$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$。这样，贝里联络就可以顺利求得。计算广义贝里相位的方法是采用一个求和规则
+另外一种计算贝里联络的方法是采用动量矩阵元和求和规则\cite{sipe_second-order_2000}。动量矩阵元$\langle\psi_{n}|-i\hbar\nabla_{\mathbf{r}}|\psi_{m}\rangle$计算的时候没有相位问题。由于贝里联络和速度矩阵元存在如下关系：$v_{nm}^{b}(\mathbf{k})=\frac{1}{\hbar}\partial_{b}E_{n}(\mathbf{k})\delta_{nm}+\frac{i}{\hbar}(E_{n}(\mathbf{k})-E_{m}(\mathbf{k}))r_{nm}^{b}$，因此得到速度矩阵元就可以得到贝里相位。另外一方面，速度算符和动量算符是成正比的：$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$。这样，贝里联络就可以顺利求得。计算广义贝里相位的方法是采用一个求和规则
 \begin{align}
 r_{nm;a}^{b} & =\frac{i\hbar^{2}}{E_{nm}}[\frac{v_{nm}^{b}\Delta_{nm}^{a}+v_{nm}^{a}\Delta_{nm}^{b}}{E_{nm}}\nonumber \\
 & +\sum_{p\ne n,m}(\frac{v_{np}^{b}v_{pm}^{a}}{E_{pm}}-\frac{v_{np}^{a}v_{pm}^{b}}{E_{np}})]\label{eq:sum-rule}\\ 
 & +\frac{1}{\hbar^{2}}\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle~(n\ne m)\nonumber,
 \end{align}
 这里$\Delta_{nm}^{a}\equiv v_{nn}^{a}-v_{mm}^{a}$， $E_{np}\equiv E_{n}-E_{p}$~\cite{cook_design_2017}.
-式\ref{eq:sum-rule}中的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$难以处理，毕竟数值方法仅仅可以对矩阵而不是算符进行微分。幸运的式，在$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$成立的条件下，$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle  \  (n\ne m)$是0.
+式\ref{eq:sum-rule}中的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$难以处理，毕竟数值方法仅仅可以对矩阵而不是算符进行微分。幸运的是，在$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$成立的条件下，$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle \  (n\ne m)$是0【参见\app{sec:Proving-Second-Order}】。
 
-但是，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$并不是总是成立。对于形如$\hat{H}=\frac{\hat{\mathbf{p}}^{2}}{2m}+V(\mathbf{r})$，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$确实可以从海森堡对易关系中推出。但是在第一性原理计算中，势能往往被写为 $V=V_{0}(r)+V_{nl}$，这里的$V_{nl}$是非局域的势，一般而言和$\hat{\mathbf{r}}$不对易。这个时候$\hat{\mathbf{p}} m\hat{\mathbf{v}}$仅仅是近似成立。除此之外，在基于紧束缚近似的能带计算中，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$完全不成立。在这些情况下，采用动量矩阵元的方法失效，并且求和规则中前人\cite{sipe_second-order_2000}忽略的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$也不应该忽略。
+但是，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$并不是总是成立。对于形如$\hat{H}=\frac{\hat{\mathbf{p}}^{2}}{2m}+V(\mathbf{r})$，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$确实可以从海森堡对易关系中推出。但是在第一性原理计算中，势能往往被写为 $V=V_{0}(r)+V_{nl}$，这里的$V_{nl}$是非局域的势，一般而言和$\hat{\mathbf{r}}$不对易。这个时候$\hat{\mathbf{p}}= m\hat{\mathbf{v}}$仅仅是近似成立。除此之外，在基于紧束缚近似的能带计算中，$\hat{\mathbf{p}}=m\hat{\mathbf{v}}$完全不成立。在这些情况下，采用动量矩阵元的方法失效，并且求和规则中前人\cite{sipe_second-order_2000}忽略的$\langle n|\partial_{a}\partial_{b}\hat{H}(\mathbf{k})|m\rangle$也不应该忽略。
 
 
 \subsection{Wannier函数插值方法}
 
-通过最大局域化Wannier函数方法，人们可以得到最大局域化Wannier函数空间中的晶体的哈密顿量。这个哈密顿量可以通过布里渊区极少数$k$点的第一性原理的波函数及其能量得到。在得到哈密顿量之后，任意$k$点的布洛赫波及其本征能量都可以轻松通过傅里叶变换求得。通过一阶微扰的理论，最大局域化Wannier函数方法在文献\onlinecite{wang_textitab_2006}中曾经备用来计算贝里联络，贝里曲率以及反常霍尔电导。在这里，我们使用Wannier函数方法计算非线性光学效应。由于非线性光学效应需要贝里联络的导数，我们需要用到更高阶的微扰论，下面我们将要介绍这个方法的细节，解释为什么这个方法不存在相位问题。最后我们通过计算实际材料的非线性光学效应来证明这个方法的可靠性。
+通过最大局域化Wannier函数方法，人们可以得到最大局域化Wannier函数空间中的晶体的哈密顿量。这个哈密顿量可以通过布里渊区极少数$k$点的第一性原理的波函数及其能量得到。在得到哈密顿量之后，任意$k$点的布洛赫波及其本征能量都可以轻松通过傅里叶变换求得。通过一阶微扰的理论，最大局域化Wannier函数方法在文献\onlinecite{wang_textitab_2006}中曾经被用来计算贝里联络，贝里曲率以及反常霍尔电导。在这里，我们使用Wannier函数方法计算非线性光学效应。由于非线性光学效应需要贝里联络的导数，我们需要用到更高阶的微扰论，下面我们将要介绍这个方法的细节，解释为什么这个方法不存在相位问题。最后我们通过计算实际材料的非线性光学效应来证明这个方法的可靠性。
 
 我们采用和文献\onlinecite{wang_textitab_2006}一样的符号系统，在这个符号系统中，$|u_{n}^{(\textrm{W})}\rangle$被用来表示Wannier函数的布洛赫波式加和: 
 \[
@@ -70,18 +70,18 @@ O_{nm}^{(\textrm{W})}(\mathbf{k})=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}
 \]
 这样我们可以接着通过幺正变换得到$\hat{O}$对$|u_{n}^{(\textrm{H})}\rangle$在任意$k$点的表示矩阵。通过这种方法， Wannier插值提供了一种迅速得到$O^{(\textrm{H})}(\mathbf{k})$的方法。
 
-可是，和普通算符不同，由于$A_{nm}^{a}(\mathbf{k})$中存在着一个对$k$点的导数，它并不是一个相位协变的量。这个性质提示我们，尽管人们经常将$A_{nm}^{a}(\mathbf{k})$看作位置算符在布洛赫波中的矩阵表示，这个看法并不准确，毕竟任何可观测量在基矢变换下都应该是协变的。具体来说，$A_{nm}^{a}(\mathbf{k})$满足\cite{wang_textitab_2006} 
+可是，和普通算符不同，由于贝里联络$\berry_{nm}^{a}(\mathbf{k})$中存在着一个对$k$点的导数，它并不是一个相位协变的量。这个性质提示我们，尽管人们经常将$\berry_{nm}^{a}(\mathbf{k})$看作位置算符在布洛赫波中的矩阵表示，这个看法并不准确，毕竟任何可观测量在基矢变换下都应该是协变的。具体来说，$\berry_{nm}^{a}(\mathbf{k})$满足\cite{wang_textitab_2006} 
 \begin{equation}
-A^{a(\textrm{H})}=U^{\dagger}A^{a(\textrm{W})}U+iU^{\dagger}\partial_{a}U,\label{eq:A-H-A-W}
+	\berry^{a(\textrm{H})}=U^{\dagger}\berry^{a(\textrm{W})}U+iU^{\dagger}\partial_{a}U,\label{eq:A-H-A-W}
 \end{equation}
 这里
 \begin{equation}
-A^{a(\textrm{W})}\equiv i\langle u_{n}^{(\textrm{W})}|\partial_{a}u_{m}^{(\textrm{W})}\rangle=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{r}^{a}|\mathbf{R}m\rangle.
+	\berry^{a(\textrm{W})}\equiv i\langle u_{n}^{(\textrm{W})}|\partial_{a}u_{m}^{(\textrm{W})}\rangle=\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}\langle\mathbf{0}n|\hat{r}^{a}|\mathbf{R}m\rangle.
 \end{equation}
-$A^{a(\textrm{H})}$的导数则更加复杂：
+$\berry^{a(\textrm{H})}$的导数则更加复杂：
 \begin{align}
-\partial_{b}A^{a(\textrm{H})} & =(\partial_{b}U^{\dagger})A^{a(\textrm{W})}U+U^{\dagger}(\partial_{b}A^{a(\textrm{W})})U\\
-& +U^{\dagger}A^{a(\textrm{W})}\partial_{b}U+i(\partial_{b}U^{\dagger})(\partial_{a}U)+iU^{\dagger}\partial_{b}\partial_{a}U.
+\partial_{b}\berry^{a(\textrm{H})} & =(\partial_{b}U^{\dagger})\berry^{a(\textrm{W})}U+U^{\dagger}(\partial_{b}\berry^{a(\textrm{W})})U\\
+& +U^{\dagger}\berry^{a(\textrm{W})}\partial_{b}U+i(\partial_{b}U^{\dagger})(\partial_{a}U)+iU^{\dagger}\partial_{b}\partial_{a}U.
 \end{align}
 计算$U$的导数同样存在着相位问题。但是，在Wannier插值中，我们不仅仅能够得到$H^{(\textrm{W})}(\mathbf{k})$，而且可以得到$H^{(\textrm{W})}(\mathbf{k})$对$k$的导数。不仅如此，我们还知道$U$的列就是$H^{(\textrm{W})}(\mathbf{k})$的本征矢(见式 \ref{eq:H-w-H-h})。在这样的情况下，我们可以通过微扰论来获得$U$的导数。这个方法本质上就是解析地产生一个平滑地相位规范，然后在这个规范下求导。
 
@@ -141,7 +141,7 @@ $U$的二阶导数的求法和上面的一阶导数的求法是一致的，仅�
 
 大家已经熟知，在构造最大局域化Wannier函数的时候，晶体的对称性，比如点群对称性，并没有能够得到很好的保持。正因为这一点，由于对称性应该简并的能带在Wannier插值中会劈开。目前，我们知道有两种方法来解决这个问题，第一个方法是在得到Wannier函数之后进行对称化，另一个方法是在构造过程中加上对称性约束以得到对称的Wannier函数。前一种方法仅仅是一个临时性的方法，并没有严格的理论依据；后一种方法则需要小心的选择希尔伯特空间，并且目前已有的代码不能够保证能带可以严格重复。为了检验Wannier函数的对称性缺失对结果的影响，我们计算了具有空间反演对称性的材料。具有空间反演对称性的材料的位移电流应该严格为零。但是由于构造Wannier函数的过程中空间反演对称性被轻微破坏，我们的计算得到了非零的位移电流。但是这个位移电流和本身就没有空间反演对称性的材料相比小了两个数量级。因此，我们认为构造Wannier函数中的轻微的对称性破坏对结果几乎没有影响。
 
-我们的计算框架是基于非简并的微扰论，对简并的能带无法处理。在计算线性效应的时候，简并的能带通常不回造成问题。比如说，在计算反常霍尔电导的时候，只有价带和导带之间的矩阵元会被用到（见文献\onlinecite{wang_textitab_2006}中的式32)，因此简并能带之间的矩阵元根本就用不到。但是，在非线性光学效应的计算中，情况就不一样了。之前的研究指出，可以通过沿着光场$\mathbf{E}(t)$方向的速度矩阵来解决简并问题。具体而言，当带标为$n$和$m$的能带简并的时候，我们可以选取一组基，使得$\mathbf{E}(t)\cdot\mathbf{v}_{nm}=0  \ (n\ne m)$\cite{sipe_second-order_2000}，用这组基计算就能够得到正确的结果。但是，布里渊区中的简并点很少，并不会对最终的结果产生重要的影响。因此，我们目前的处理方式是遇到近简并的能带的时候，直接丢弃该$k$点。我们测试了丢弃$k$点的阈值对结果的影响，事实表明，丢弃$k$点的阈值从$10^{-4}$取到$10^{-6}$之间结果都没有明显变化。因此我们认为简并点丢弃的处理是合理的。
+我们的计算框架是基于非简并的微扰论，对简并的能带无法处理。在计算线性效应的时候，简并的能带通常不会造成问题。比如说，在计算反常霍尔电导的时候，只有价带和导带之间的矩阵元会被用到（见文献\onlinecite{wang_textitab_2006}中的式32)，因此简并能带之间的矩阵元根本就用不到。但是，在非线性光学效应的计算中，情况就不一样了。之前的研究指出，可以通过沿着光场$\mathbf{E}(t)$方向的速度矩阵来解决简并问题。具体而言，当带标为$n$和$m$的能带简并的时候，我们可以选取一组基，使得$\mathbf{E}(t)\cdot\mathbf{v}_{nm}=0  \ (n\ne m)$\cite{sipe_second-order_2000}，用这组基计算就能够得到正确的结果。但是，布里渊区中的简并点很少，并不会对最终的结果产生重要的影响。因此，我们目前的处理方式是遇到近简并的能带的时候，直接丢弃该$k$点。我们测试了丢弃$k$点的阈值对结果的影响，事实表明，丢弃$k$点的阈值从$10^{-4}$取到$10^{-6}$之间结果都没有明显变化。因此我们认为简并点丢弃的处理是合理的。
 
 \section{计算结果}
 
@@ -153,7 +153,7 @@ $U$的二阶导数的求法和上面的一阶导数的求法是一致的，仅�
 	\caption{\label{fig1} (a, b)单层GeS【(a)】和WS$_{2}$【(b)】的原子结构的顶视图和侧视图。黄色的小球是S原子，紫色的小球是Ge或者W原子。(c)单层GeS二维位移电导与光频率的关系。文献\onlinecite{rangel_giant_2016}的结果也放了进来。(d)单层WS$_2$的二维位移电流。计算得到的GeS和WS$_2$的带隙分别是1.90 eV和1.82 eV。}
 \end{figure}
 
-我们首先来计算二维空间反演破缺的材料GeS和WS$_{2}$的位移电流。之前的研究表明，由于铁电序很大，单层的GeS存在着非常大的位移电流和倍频效应\cite{rangel_giant_2016,panday_strong_2017}。这里，我们使用\textsc{quantum espresso}软件包\cite{giannozzi_quantum_2009}，采用\text{pslibrary}投影缀加波的赝势\cite{dal_corso_pseudopotentials_2014}进行计算。电子的交换关联作用采用了Perdew-Burke-Ernzerhof的交换关联泛函\cite{perdew_generalized_1996}来描述。电子波函数采用了平面波基组展开，平面波的截断时60Ry。我们采用层状模型来模拟二维材料，真空层超过了15\AA。对于GeS和WS$_2$，我们在布里渊区中的积分分别采用了 $12\times12\times1$和$18\times18\times1$的$k$点。在完成基于密度泛函的第一性原理计算之后，我们采用\textsc{wannier90}软件包\cite{mostofi_updated_2014}构造出了最大局域化Wannier函数。接下来我们采用上述的Wannier插值方法来计算位移电导。计算位移电导的$k$点积分采用了$1000\times1000\times1$的格子，delta函数的展宽取为了$\epsilon = 0.02$eV。值得注意的是，由于二维材料的联合态密度遇到鞍点的时候可以发散，为了避免发散，这个展宽因子式必须的。经过我们的测试，自旋轨道耦合仅仅会稍微改变结果，因此，我们在这里展示没有考虑自旋轨道耦合的结果，方便分析。对于二维材料，我们采用了二维的电流密度的定义$\mathbf{J}_{2D}=\mathbf{J}_{3D}d$，这里$\mathbf{J}_{2D}$是二维电流密度，$\mathbf{J}_{3D}$是超胞计算中的三维电流密度，$d$是超胞在面外方向的长度。在这样的规范下，位移电导变成了$\sigma_{2D}=\sigma_{3D}d$。
+我们首先来计算二维空间反演破缺的材料GeS和WS$_{2}$的位移电流。之前的研究表明，由于铁电序很大，单层的GeS存在着非常大的位移电流和倍频效应\cite{rangel_giant_2016,panday_strong_2017}。这里，我们使用\textsc{quantum espresso}软件包\cite{giannozzi_quantum_2009}，采用\text{pslibrary}投影缀加波的赝势\cite{dal_corso_pseudopotentials_2014}进行计算。电子的交换关联作用采用了Perdew-Burke-Ernzerhof的交换关联泛函\cite{perdew_generalized_1996}来描述。电子波函数采用了平面波基组展开，平面波的截断是60 Ry。我们采用层状模型来模拟二维材料，真空层超过了15 \AA。对于GeS和WS$_2$，我们在布里渊区中的积分分别采用了 $12\times12\times1$和$18\times18\times1$的$k$点。在完成基于密度泛函的第一性原理计算之后，我们采用\textsc{wannier90}软件包\cite{mostofi_updated_2014}构造出了最大局域化Wannier函数。接下来我们采用上述的Wannier插值方法来计算位移电导。计算位移电导的$k$点积分采用了$1000\times1000\times1$的格子，$\delta$函数的展宽取为了$\epsilon = 0.02$eV。值得注意的是，由于二维材料的联合态密度遇到鞍点的时候可以发散，为了避免发散，这个展宽因子是必须的。经过我们的测试，自旋轨道耦合仅仅会稍微改变结果，因此，我们在这里展示没有考虑自旋轨道耦合的结果，方便分析。对于二维材料，我们采用了二维的电流密度的定义$\mathbf{J}_{2D}=\mathbf{J}_{3D}d$，这里$\mathbf{J}_{2D}$是二维电流密度，$\mathbf{J}_{3D}$是超胞计算中的三维电流密度，$d$是超胞在面外方向的长度。在这样的规范下，位移电导变成了$\sigma_{2D}=\sigma_{3D}d$。
 
 
 单层的GeS存在着一个将$y$变为$-y$的镜面操作$\hat{M}_{y}$。 由于这个镜面操作的存在$\sigma^{xxy}$和$\sigma^{yyy}$都是严格为零的。\fig{fig1}展示了$\sigma^{xxx}$和$\sigma^{xyy}$的结果。文献\onlinecite{rangel_giant_2016}的结果同样展示在了图中。总体上而言，我们的结果和前人的结果吻合的很好。一些峰值定量上的差距可能是计算方法和参数的不同导致的。WS$_2$有着一个将$x$变为$-x$的镜面操作$\hat{M}_{x}$，因此，$\sigma^{xxx}$ 和 $\sigma^{xyy}$被禁戒。WS$_2$的点群$D_{6h}$要求其不为零的位移电导分量$\sigma^{yyy}$和$\sigma^{yxx}$满足如下关系：$\sigma^{yyy}=-\sigma^{yxx}$，这一点在图上也可以看出来。由于带边存在着范霍夫奇点，两种材料的位移电导都在带边存在着小小的跳跃。除此之外，我们看到两个材料高于带隙$1$eV的地方都有几个峰，这些峰都在可见光的范围之内。

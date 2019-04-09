@@ -9,17 +9,17 @@ H_R=\frac{{\hbar^2} k^2}{2m}+\hbar\alpha  (k_{x}\sigma_{y}-k_{y}\sigma_{x}).\lab
 \end{equation}
 考虑加上一个$-z$方向的磁场，我们主要关注能量远大于$m\alpha^2$的地方。这里，磁振子轨道【见\fig{fig:orbits}(a)】在$\bk$空间被自旋轨道耦合劈开，其面积之差为$\delta S$，其中$\delta S$远小于两个轨道的面积的平均值$S$\footnote{式\ref{deltaSvsS}中 $\delta S$ 和 $S$ 的表达式在$E{\gg}m\alpha^2$时渐进正确。}：
 \e{\delta S = 4\pi m \alpha k_E/\hbar\ll S =\pi k_E^2; \;\; k_{E}:=\f{\sqrt{2m E}}{\hbar}.\label{deltaSvsS}}
-$S$ 也是在没有自旋轨道耦合的时候的磁振子的面积（$\alpha{=}0$）。
+$S$ 也是在没有自旋轨道耦合时磁振子的面积（$\alpha{=}0$）。
 
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{../figures/orbits.png}
 	\centering
-	\caption{(a) 实线（虚线）阐释了具有（没有）Rashba自旋轨道耦合的二位电子气的能带色散。图中具有方向的圆代表了磁振子轨道，其中磁场方向为$-z$方向。 (b) 虚的圈$S$标注出了零阶轨道$\frako_0$；$\delta S$是自旋轨道耦合劈裂的轨道的面积之差；紫色的箭头标出了自旋结构。\label{fig:orbits}}
+	\caption{(a) 实线（虚线）阐释了具有（没有）Rashba自旋轨道耦合的二维电子气的能带色散。图中具有方向的圆代表了磁振子轨道，其中磁场方向为$-z$方向。 (b) 虚的圈$S$标注出了零阶轨道$\frako_0$；$\delta S$是自旋轨道耦合劈裂的轨道的面积之差；紫色的箭头标出了自旋结构。\label{fig:orbits}}
 \end{figure}
 
 我们的工作给出了一个适用于近简并能带的推广的量子化条件，这个量子化条件的适用范围包括具有自旋轨道劈裂的能带。我们定义近简并为磁振子面积的差远小于磁振子面积的平均值$|\delta S/S|{\ll}1$。我们提出的量子化条件还依赖于另一个条件：$S$远大于$1/l^2$，这里的$l$是磁长度$l{=}\sqrt{\hbar/eB}$；这个条件也是标准的准经典Onsager-Lifshitz-Roth理论假设。通过引入两个小量$|\delta S/S|$和$1/l^2|S|$，我们的研究推广深化了前人仅仅基于一个小量的准经典理论\cite{kohn_effham,blount_effham,rotheffham,wannier_fredkin,fischbeck_review,Mikitik_quantizationrule,topoferm,100p,gao_zero-field_2017}。
 
-$1/l^2|\delta S|$量化了由塞曼能导致的近简并的轨道的耦合。在$l^2|\delta S|{\gg}1$的情况下，Onsager-Lifshitz{-Roth}量子化条件可以分别作用在两个共心但是不耦合的磁振子轨道。在另外一个极限$l^2|\delta S|{\ll}1$，自旋轨道耦合导致的劈裂可以忽略，我们可以采用已有的严格简并能带的量子化条件\cite{rotheffham,rothmag,topoferm,100p,Mikitik_quantizationrule}。我们的统一的量子化条件给出了介于前述的两个极限情况下的朗道能级的解（$l^2|\delta S|{\sim}1$），这种情况下，塞曼能和自旋轨道耦合的能量基本相同；而前人的工作仅仅展示了这两个能量一个远大于另一个的情况下的量子化条件。我们工作给出了在任意对称群的具有自旋轨道耦合的晶体的量子化条件。章节\ref{sec:qtznrules}描述了这个近简并能带的量子化条件，其中我们假设了一个自旋二分之一（或者赝自旋二分之一）的自由度。正如章节\ref{sec:discussion}所述，我们的量子化条件能够涵盖任意带数的近简并能带的朗道量子化。
+$1/l^2|\delta S|$量化了由塞曼能导致的近简并的轨道的耦合。在$l^2|\delta S|{\gg}1$的情况下，Onsager-Lifshitz{-Roth}量子化条件可以分别作用在两个共心但是不耦合的磁振子轨道。在另外一个极限$l^2|\delta S|{\ll}1$，自旋轨道耦合导致的劈裂可以忽略，我们可以采用已有的严格简并能带的量子化条件\cite{rotheffham,rothmag,topoferm,100p,Mikitik_quantizationrule}。我们统一的量子化条件给出了介于前述的两个极限情况下朗道能级的解（$l^2|\delta S|{\sim}1$），这种情况下，塞曼能和自旋轨道耦合的能量基本相同；而前人的工作仅仅展示了这两个能量一个远大于另一个的情况下的量子化条件。我们工作给出了在任意对称群的具有自旋轨道耦合的晶体的量子化条件。章节\ref{sec:qtznrules}描述了这个近简并能带的量子化条件，其中我们假设了一个自旋二分之一（或者赝自旋二分之一）的自由度。正如章节\ref{sec:discussion}所述，我们的量子化条件能够涵盖任意带数的近简并能带的朗道量子化。
 
 
 在章节\ref{sec:Rashba}中，我们利用具有Rashba和Dresselhaus自旋轨道耦合的二维电子气，证明了我们的量子化能级的有效性。如果给具有Rashba自旋轨道耦合的二维电子气加上足够强的面内磁场，能带中的Dirac点不仅仅会移动，而且会倾斜，成为一个第二类的狄拉克点\cite{soluyanov_type-ii_2015, muechler_tilted_2016, bergholtz_topology_2015}。在章节\ref{sec:inplanezeeman}中，我们研究了第二类狄拉克点附近的Landau-Zener隧穿现象。特别的，我们将要证明我们的量子化条件囊括了近简并能带之间的量子隧穿，这个现象被称为带间的磁隧穿\cite{kaganov_coherent_1983,slutskin_dynamics_1968,AALG,100p}。我们将要认真研究一个最近提出的二类狄拉克点附近的完美Klein隧穿的现象\cite{obrien_magnetic_2016}，我们发现如果考虑了塞曼效应的话，这个完美隧穿永远不会发生。
@@ -33,7 +33,7 @@ $1/l^2|\delta S|$量化了由塞曼能导致的近简并的轨道的耦合。在
 
 \section{量子化条件\label{sec:qtznrules}}
 
-首先让我们大致解释一下这个量子化条件是怎么出现的；我们将这个量子化条件的分步的严格的证明留到附录\ref{app:quantizationruleproof}中。我们要考虑的是一个没有加磁场的时候有着离散平移不变性的哈密顿量： $\hat{H}_0{+}\delta \hat{H}$。前面的这个分解要求$\hat{H}_0$的能带在每一个波矢$\bk$处是$D$重简并的，而$\delta \hat{H}$则作为微扰破除这个$D$重简并。简单起见，我们假设$D{=}2$的自旋简并，$D>2$的情形则留在附录\ref{app:quantizationruleproof}中讨论。一个简单的例子是$\hat{H}_0$是薛定谔哈密顿量，而$\delta \hat{H}$是自旋轨道耦合的哈密顿量；另一个例子是$\hat{H}_0$是具有空间反演的包含自旋轨道耦合的泡利哈密顿量，而$\delta \hat{H}$是一个晶格畸变，轻微破坏了空间反演对称性。
+首先让我们大致解释一下这个量子化条件是怎么出现的，并将这个量子化条件的分步的严格的证明留到附录\ref{app:quantizationruleproof}中。我们要考虑的是一个没有加磁场时有着离散平移不变性的哈密顿量： $\hat{H}_0{+}\delta \hat{H}$。前面的这个分解要求$\hat{H}_0$的能带在每一个波矢$\bk$处是$D$重简并的，而$\delta \hat{H}$则作为微扰破除这个$D$重简并。简单起见，我们假设$D{=}2$的自旋简并，$D>2$的情形则留在附录\ref{app:quantizationruleproof}中讨论。一个简单的例子是$\hat{H}_0$是薛定谔哈密顿量，而$\delta \hat{H}$是自旋轨道耦合的哈密顿量；另一个例子是$\hat{H}_0$是具有空间反演的包含自旋轨道耦合的泡利哈密顿量，而$\delta \hat{H}$是轻微破坏了空间反演对称性的晶格畸变。
 
 现在让我们加上一个磁场，我们首先考虑忽略$\delta \hat{H}$和塞曼效应的自旋简并的朗道能级。在准经典的描述下，我们对$\hat{H}_0$的低能简并的能带的磁场动力学性质进行考察，这条能带的色散记为$\var(\bk)$。比如说，对于Rashba模型，$\var(\bk){=}\hbar^2 k^2/2m{+}\order(k^4)$。众所周知，朗道量子化是由Peierls修正得到的$\var(\bk){\rightarrow}\var(\bK)$\cite{peierls_substitution}，这里的$\boldsymbol{K}{:}{=}\boldsymbol{k}{+}(e/\hbar) \boldsymbol{A}(i\nabla_{\boldsymbol{k}})$，并且$\boldsymbol{A}(\br)$是矢势。我们假设磁场沿着$-z$方向，$[K_x,K_y]{=}i\lmt$。准经典的波函数的解对应着电子在$\var(\bk)$的等能面作回旋运动【见图\ref{fig:orbits}(b)】，这个蕴含着电子运动方向（运动方程为$ \hbar dk_{\alpha}/dt {=} \lmt \epsilon_{\ab}\partial \var/\partial k_{\beta} $，其中 $\epsilon_{xy}{=}{-}\epsilon_{yx}{=}1$）的轨道被称为零阶轨道$\frako_0$。在这个工作中，我们仅仅关注闭合的轨道，闭合的意思指的是轨道不会横穿布里渊区。
 
@@ -93,7 +93,7 @@ $\delta \var$是$\delta \hat{H}$在$\hat{H}_0$的简并子空间（也就是前�
 
 出于简单起见，我们认为式\ref{eq:Rashba-Hamiltonian}中的泡利矩阵对应的就是自旋：$s_i{=}\hbar \sigma_i/2$。我们来计算半径为$k$的磁振子轨道$\frako_0$上的有效哈密顿量$\calh(\bk)$。用Rashba哈密顿量$H_R$【参见式\ref{eq:Rashba-Hamiltonian}】的能带布洛赫波（也就是$H_R$的本征态）作基
 \e{\calh(\bk)=-\hbar\alpha k\tau_z{+}\f{g_{s\perp}}{2}\mu_{\sma{B}}B\tau_x {-} \f{eB\hbar}{2m} (\tau_x-I) \epsilon_{\alpha\beta} k_{\alpha}\nabla_{\beta}\theta,\label{rashbaeffham}}
-这里$\tau_i$是一套新的泡利矩阵，$\tau_z{=}{+} 1$ 和 ${-}1$ 分别对应的是外轨道和内轨道。 $e^{i\theta_{\bk}}{=}(ik_x{-}k_y)/k$是面内的$H_R$的自旋劈裂场$(-\hbar\alpha k_y,\hbar\alpha k_x,0)$的角度【参见式 \ref{eq:Rashba-Hamiltonian}】，这个自旋劈裂场在$\frako_0$上转了一圈；由于我们基的自旋平行（或者反平行）于自旋劈裂场，因此也转了一圈【参见图\ref{fig:orbits}(b)】。上式中正比如自旋旋转速度（$\nabk \theta$）的项来自于非阿贝尔的贝里联络。$\calh$的第一项对应于自旋轨道耦合引起的劈裂；其余项可以认为是磁场导致的能带变形。轨道磁矩$B M_z$一般而言会混合近简并的两个带和其余的所有能带，在这里这个效应被吸收在有效的$g$因子中$g_{s\perp}$。众所周知，塞曼效应一般会让自旋朝向磁场$\bB$的方向；令人惊异的是，非阿贝尔的贝里相位在这里也有一个自旋极化的效应，但是和塞曼效应方向相反。这两个效应在自由电子的时候完全抵消（$g_{s\perp}=2$以及 $m$等于自由电子质量$m_0$），这个抵消一般不发生在能带电子上。
+这里$\tau_i$是一套新的泡利矩阵，$\tau_z{=}{+} 1$ 和 ${-}1$ 分别对应的是外轨道和内轨道。 $e^{i\theta_{\bk}}{=}(ik_x{-}k_y)/k$是面内的$H_R$的自旋劈裂场$(-\hbar\alpha k_y,\hbar\alpha k_x,0)$的角度【参见式 \ref{eq:Rashba-Hamiltonian}】，这个自旋劈裂场在$\frako_0$上转了一圈；由于我们基的自旋平行（或者反平行）于自旋劈裂场，因此也转了一圈【参见图\ref{fig:orbits}(b)】。上式中正比于自旋旋转速度（$\nabk \theta$）的项来自于非阿贝尔的贝里联络。$\calh$的第一项对应于自旋轨道耦合引起的劈裂；其余项可以认为是磁场导致的能带变形。轨道磁矩$B M_z$一般而言会混合近简并的两个带和其余的所有能带，在这里这个效应被吸收在有效的$g$因子中$g_{s\perp}$。众所周知，塞曼效应一般会让自旋朝向磁场$\bB$的方向；令人惊异的是，非阿贝尔的贝里相位在这里也有一个自旋极化的效应，但是和塞曼效应方向相反。这两个效应在自由电子的时候完全抵消（$g_{s\perp}=2$以及 $m$等于自由电子质量$m_0$），这个抵消一般不发生在能带电子上。
 
 由于$H_R$的连续旋转对称性的存在，$\nabk \theta$的大小是$1/k$，并且和$\frako_0$相切；因此，$\calh$在$\frako_0$上是一个常数，而传播子则化简为不需要路径有序的$\cala{=}e^{{-}i\calh T_c/\hbar}$，因此量子化条件的相位修正仅仅是$\calh$的本征值乘以$T_c$：
 \begin{equation}
@@ -118,7 +118,7 @@ $\delta \var$是$\delta \hat{H}$在$\hat{H}_0$的简并子空间（也就是前�
 
 \subsection{磁隧穿的案例研究：倾斜磁场中的Rashba二维电子气}\label{sec:inplanezeeman}
 
-我们的下一个案例研究是一个（接近）相交的二类狄拉克点\cite{soluyanov_type-ii_2015,muechler_tilted_2016}。二类狄拉克点是传统狄拉克点的一个变种，其区别在于二类狄拉克点的能带色散不是对称的。在二类狄拉克点附近的量子隧穿数学上和Landau-Zener隧穿是一致的，仅仅是电场力变成了洛伦兹力\cite{AALG,obrien_magnetic_2016,kane_blount}。这里，我们将要证明Landau-Zener动力学很自然的可以从我们的量子化条件得出【式\ref{eq:rule}到式\ref{eq:H1}】我们将要研究电子的运动会怎么受到塞曼效应的影响。特别地，我们将会展示O'Brien等人预言的\cite{obrien_magnetic_2016}完美的Klein透射在考虑进塞曼效应之后，并不是真正地完美。
+我们的下一个案例研究是一个（接近）相交的二类狄拉克点\cite{soluyanov_type-ii_2015,muechler_tilted_2016}。二类狄拉克点是传统狄拉克点的一个变种，其区别在于二类狄拉克点的能带色散不是对称的。在二类狄拉克点附近的量子隧穿数学上和Landau-Zener隧穿是一致的，仅仅是电场力变成了洛伦兹力\cite{AALG,obrien_magnetic_2016,kane_blount}。这里，我们将要证明Landau-Zener动力学很自然的可以从我们的量子化条件得出【式\ref{eq:rule}到式\ref{eq:H1}】，我们将要研究电子的运动会怎么受到塞曼效应的影响。特别地，我们将会展示O'Brien等人预言的\cite{obrien_magnetic_2016}完美的Klein透射在考虑进塞曼效应之后，并不是真正地完美。
 
 我们再次从Rashba模型出发【参见式\ref{eq:Rashba-Hamiltonian}】，它有一个旋转对称的狄拉克点。要将这个狄拉克点变成二类的，我们引入一个面内的磁场$B_\parallel$（平行于$y$方向）导致的塞曼项：
 \e{ 
@@ -199,7 +199,7 @@ $\Omega_{\pm}$是电子在绝热演化穿过$\pm$标志的内外轨道的时候�
 
 从式\ref{eq:rule}得到的两套朗道能级一般而言间距是不相等的，而且由于相位修正$\lambda_{1,2}$的存在，一般而言也是不简并的。正如节\ref{sec:qtznrules}所述，两套朗道能级之间的间距近似等于$\var_c\delta \lambda/2\pi$，这里$\delta \lambda=|\lambda_1-\lambda_2|$。反过来，如果$\lambda_1{=}\lambda_2$ (mod $2\pi$)，那么朗道能级近似是简并的-这个$\A$的本征值简并的条件需要哈密顿量的一些精细的调节。
 
-在节\ref{sec:relatedegeneracies}中，我们要将$\A$的本征值的简并和朗道能级的（近）简并联系到一起。下一步，我们要解决的问题是多少个实的参数可以调节出$\A$的一个本征值简并时间。对于没有任何对称性的系统，我们的答案是$3$，这一点会在节\ref{sec:introducecodimension}中讨论；如果晶体和轨道存在对称性，那么参数的数目可以减少为$0,1$或者$2$，这一点将会在节\ref{sec:introducecodimension}中讨论。在给出最普适的答案之前，我们将先用两个具有旋转对称性的案例研究（参见节\ref{sec:singleparameterrashba}和\ref{sec:rotsymmbreakdown}）来辅助理解，在具有旋转对称性的时候，只需要有一个参数就可以调节得到$\A$的本征值简并，这个参数可以是磁场$B$。
+在节\ref{sec:relatedegeneracies}中，我们要将$\A$的本征值的简并和朗道能级的（近）简并联系到一起。下一步，我们要解决的问题是多少个实的参数可以调节出$\A$的一个本征值简并。对于没有任何对称性的系统，我们的答案是$3$，这一点会在节\ref{sec:introducecodimension}中讨论；如果晶体和轨道存在对称性，那么参数的数目可以减少为$0,1$或者$2$，这一点将会在节\ref{sec:introducecodimension}中讨论。在给出最普适的答案之前，我们将先用两个具有旋转对称性的案例研究（参见节\ref{sec:singleparameterrashba}和\ref{sec:rotsymmbreakdown}）来辅助理解，在具有旋转对称性的时候，只需要有一个参数就可以调节得到$\A$的本征值简并，这个参数可以是磁场$B$。
 
 \subsection{$\A$本征值的简并和朗道能级的准简并}\label{sec:relatedegeneracies}
 
@@ -235,7 +235,7 @@ ${\cal\bar{A}}{=}{\pm}I$是$S^3$上的两个孤立的点，这两个孤立的点
 对称性可以减少找到$\A$的本征值简并需要的参数的数目。一个例子就是绝热演化对称性，绝热演化对称性指的是两个能带之间的间隔较大，因此电子在磁振子轨道中运动时维持在同一个能带上。在能带布洛赫波作为基矢的时候，具有绝热演化对称性的体系$\A$是一个对角矩阵（$r_3{=}r_4{=}0$），$r_1{\pm}ir_2$的相位等于${\pm} l^2\delta S/2$加上和磁场大小无关的修正。要调节$\cala{=}{\pm}I$，只需要调整一个参数，也就是这个相位。因此，朗道能级准简并点随着变量$l^2$周期性变化，周期是$2\pi/\delta S$。这个周期对应着两个磁振子轨道的面积之差接受了一个量子磁通。
 
 
-为了推广绝热演化对称性，我们将要对本征值简并采取一个几何性的描述。如果一个$\text{SU}(2)$矩阵受到对称性的限制，它可能不会再平均分布在$S^3$上【参考式\ref{s3}】，比如说，一个具有绝热演化对称性的${\cal \bar{A}}$平均分布在$S^1$上。在这种情况下，我们应该采用一个对称坐标（$\{r_1,\ldots,r_{d}\}{:}{=}\br$）来描述受到对称性限制的$\text{SU}(2)$矩阵。对称坐标的具体含义将在下面阐明。在我们的绝热演化对称性的例子里，我们可以将${\cal \bar{A}}$对角元的相位取为对称坐标。这样的坐标一般而言和标准坐标【参见式\ref{s3}】不能够用一个非奇异的坐标变换联系在一起。${\cal \bar{A}}(\br){=}{\pm}I$在$\br$空间是一个子流形，我们将要称这个子流形为简并流形。简并流形的余维度定义为$d$减去简并流形的维度；或者说，余维度就是找到一个简并所需要调节的（$\br$空间的）参数的数目。从这里开始，我们提到参数总是指的是实参数，余维度总是指简并流形的余维度。在存在绝热烟花对称性的例子里，简并流形就是$S^1$上的两个点，每个点的余维度都是1.
+为了推广绝热演化对称性，我们将要对本征值简并采取一个几何性的描述。如果一个$\text{SU}(2)$矩阵受到对称性的限制，它可能不会再平均分布在$S^3$上【参考式\ref{s3}】，比如说，一个具有绝热演化对称性的${\cal \bar{A}}$平均分布在$S^1$上。在这种情况下，我们应该采用一个对称坐标（$\{r_1,\ldots,r_{d}\}{:}{=}\br$）来描述受到对称性限制的$\text{SU}(2)$矩阵。对称坐标的具体含义将在下面阐明。在我们的绝热演化对称性的例子里，我们可以将${\cal \bar{A}}$对角元的相位取为对称坐标。这样的坐标一般而言和标准坐标【参见式\ref{s3}】不能够用一个非奇异的坐标变换联系在一起。${\cal \bar{A}}(\br){=}{\pm}I$在$\br$空间是一个子流形，我们将要称这个子流形为简并流形。简并流形的余维度定义为$d$减去简并流形的维度；或者说，余维度就是找到一个简并所需要调节的（$\br$空间的）参数的数目。从这里开始，我们提到参数总是指的是实参数，余维度总是指简并流形的余维度。在存在绝热演化对称性的例子里，简并流形就是$S^1$上的两个点，每个点的余维度都是1.
 
 我们的主要结论之一是（沿着磁场方向）的旋转对称性能够将简并流形的余维度变为1。我们将用两个案例来说明这一点，第一个是Rashba模型（参见第\ref{sec:singleparameterrashba}节），另一个是对称分布的二类狄拉克点模型（参见第\ref{sec:rotsymmbreakdown}节）。
 
@@ -269,7 +269,7 @@ H_{RD}(\bk)=\frac{{\hbar^2}k^2}{2m}+\hbar\alpha(k_{x}\sigma_{y}-k_{y}\sigma_{x})
 \end{equation}
 对于Rashba-Dresselhaus二维电子气，$\A$对$\alpha,~\beta,~l,~E,~m$参数的依赖并不是独立的，事实上，$\A$仅仅和下面三个参数有关
 \e{\left( \f{\hbar\alpha k_{\sma{E}}}{\var_c},\f{\hbar\beta k_{\sma{E}}}{\var_c},g_{s\perp}\f{m}{m_0} \right){\in} \mathbb{R}^3. \la{parameter2}}
-正如我们在\s{sec:ctsrot}所述，$\A(\hbar\alpha k_{\sma{E}}/\var_c,\hbar\beta k_{\sma{E}}/\var_c,g_{s\perp}m/m_0){=}{\pm} I$在$\beta{=}0$的平面上是一系列的共心圆。离开这个平面，我们发现$\A{=}I$在$\beta{=}0$平面附近仍然有解，也就是说，$\A{=}I$在$\mathbb{R}^3$中定义了一个超曲面，图\fig{fig:dgn}(a)画出了这个超曲面。另外一方面，$\A{=}{-}I$一般而言在$\beta{=}0$的附近并没有解，因此对应于$\A{=}{-}I$的圆仍然是孤立的，这一点可以从\fig{fig:dgn}(b)中看出来来。综上所述，我们发现每两个中的一个朗道能级准简并（也就是$j$为奇数的那个）在对称性降低下会消失
+正如我们在\s{sec:ctsrot}所述，$\A(\hbar\alpha k_{\sma{E}}/\var_c,\hbar\beta k_{\sma{E}}/\var_c,g_{s\perp}m/m_0){=}{\pm} I$在$\beta{=}0$的平面上是一系列的共心圆。离开这个平面，我们发现$\A{=}I$在$\beta{=}0$平面附近仍然有解，也就是说，$\A{=}I$在$\mathbb{R}^3$中定义了一个超曲面，\fig{fig:dgn}(a)画出了这个超曲面。另外一方面，$\A{=}{-}I$一般而言在$\beta{=}0$的附近并没有解，因此对应于$\A{=}{-}I$的圆仍然是孤立的，这一点可以从\fig{fig:dgn}(b)中看出来。综上所述，我们发现每两个中的一个朗道能级准简并（也就是$j$为奇数的那个）在对称性降低下会消失
 
 可以证明，$\A{=}I$的余维数为1的超曲面是来自$\mathfrak{c}_2$对称性。我们首先选取$\bk$无关的基（在这组基中泡利矩阵对应着自旋），写出对应的有效哈密顿量$\calh$ 
 \e{\calh=\hbar\alpha (k_{x}\sigma_{y}{-}k_{y}\sigma_{x})+\hbar\beta (k_{x}\sigma_{x}{-}k_{y}\sigma_{y})-\f{g_{s\perp}}{2}\mu_{B}B\sigma_z,}
@@ -380,7 +380,7 @@ $(\cdot)^3$，$\tilde{\lambda}_\pm{=}{\pm} l^2\delta S/4$改为$\pm l^2\delta S/
 	\hline 
 	\end{tabular}
 	\centering
-	\caption{五类适用于严格简并能带的对称性限制的余维度；另外五类在\tab{table:codimension-nearlydegen}中。我们采用和\tab{table:codimension-nearlydegen}一样的符号。在II-4类中, $\breve g$指的是$g$不变的$\bk$ （$g\circ\bk=\bk$）处的表示矩阵。对于I-2, II-3的II-4严格简并的轨道，假设自旋轨道耦合可以连续地去除，并且不会影响轨道地简并度，那么$\A$地行列式为1\cite{topoferm}。\label{table:codimension-exactlydegen}}
+	\caption{五类适用于严格简并能带的对称性限制的余维度；另外五类在\tab{table:codimension-nearlydegen}中。我们采用和\tab{table:codimension-nearlydegen}一样的符号。在II-4类中, $\breve g$指的是$g$不变的$\bk$ （$g\circ\bk=\bk$）处的表示矩阵。对于I-2, II-3的II-4严格简并的轨道，假设自旋轨道耦合可以连续地去除，并且不会影响轨道的简并度，那么$\A$的行列式为1\cite{topoferm}。\label{table:codimension-exactlydegen}}
 \end{table}
 
 我们在本节将要推广第\ref{sec:singleparameterrashba}节到第\ref{sec:rotsymmbreakdown}节的内容，将对称性对余维度的限制推广到十类对称性上\cite{topoferm}。这十类对称性对应的余维数为$0,1,2$或者$3$。下面，我们首先在\s{sec:reviewtenfold}简要回顾一下磁振子轨道的十重对称性分类。然后，我们要在\s{sec:codimquasideg}中研究其中五类，这五类和近简并的能带相关。和严格简并的能带相关的另外五类将要在\s{sec:codimexactdeg}中研究。
@@ -436,7 +436,7 @@ II-2反转了时间的方向，也反转了磁振子轨道的方向。此时，�
 我们的工作主要集中在近简并轨道的量子化条件里，此时没有磁场的哈密顿量写为$\hat{H}_0{+}\delta \hat{H}$。在这一小节，我们关注对称性更高的晶体，这些晶体的$\delta \hat{H}$被禁戒。$\hat{H}_0$有可能包含自旋轨道耦合也有可能不包含自旋轨道耦合，如果包含自旋轨道耦合，那么能带在每个$\bk$点的简并需要一些对称性来保护（比如$T\inv$时间空间反演对称性）。
 
 
-给定了$\hat{H}_0$以及磁场的方向，不同自旋的电子遵循着严格相同的轨道（还是用$\frako_0$）标记。这样的轨道我们成为严格简并的磁振子轨道，而近简并的磁振子轨道在$\bk$空间则会劈开。尽管轨道是简并的，朗道能级一般而言由于塞曼相互作用$B\calm$是劈开的。对于严格简并的轨道，我们同样要研究，多少个实的参数可以调节到一个朗道能级的准简并。
+给定了$\hat{H}_0$以及磁场的方向，不同自旋的电子遵循着严格相同的轨道（还是用$\frako_0$）标记。这样的轨道我们称为严格简并的磁振子轨道，而近简并的磁振子轨道在$\bk$空间则会劈开。尽管轨道是简并的，朗道能级一般而言由于塞曼相互作用$B\calm$是劈开的。对于严格简并的轨道，我们同样要研究，多少个实的参数可以调节到一个朗道能级的准简并。
 
 
 我们的研究方式和近简并的轨道的研究方式是基本相同的：严格简并的轨道的量子化条件\cite{topoferm}和\qq{eq:rule}{berryconn}形式一致，只需要$\delta \var{=}\delta S{=}0$。$\A$的本征值简并同样对应着朗道能级准简并，\s{sec:relatedegeneracies}的分析在这里同样适用。
@@ -498,7 +498,7 @@ Lifshitz-Kosevich公式\cite{lifshitz_kosevich,lifshitz_kosevich_jetp}给出了�
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth]{qo.png}
-\caption{Rashba-Dresselhaus二维电子气的量子振荡。 (a) $\delta\lambda$在不同的$\beta$值下随着$1/B$的变化。横向的虚线表示的是$\delta\lambda=\pi$。在$\beta=3.0\times 10^{5}$cm/s的情况下，我们在(b)的上半部分画出了三个$B$值【对应着(a)中的三条虚线】处的朗道能级。此时$\delta \lambda$在(a)中画成了蓝绿色;三个选出来的$B$分别对应于$\delta\lambda{=}0$, $\delta\lambda{=}\pi/2$以及$\delta\lambda{=}\pi$。(b)的下半部分画出了（固定粒子数密度的情况下）锯齿形的化学势的振荡，它们和(b)的上办部分是对应的。(b)中的其他参数为$m{=}0.076m_0$, $\alpha{=}7.5\times10^{5}$cm/s和$E=0.4$eV.
+\caption{Rashba-Dresselhaus二维电子气的量子振荡。 (a) $\delta\lambda$在不同的$\beta$值下随着$1/B$的变化。横向的虚线表示的是$\delta\lambda=\pi$。在$\beta=3.0\times 10^{5}$cm/s的情况下，我们在(b)的上半部分画出了三个$B$值【对应着(a)中的三条虚线】处的朗道能级。此时$\delta \lambda$在(a)中画成了蓝绿色;三个选出来的$B$分别对应于$\delta\lambda{=}0$, $\delta\lambda{=}\pi/2$以及$\delta\lambda{=}\pi$。(b)的下半部分画出了（固定粒子数密度的情况下）锯齿形的化学势的振荡，它们和(b)的上半部分是对应的。(b)中的其他参数为$m{=}0.076m_0$, $\alpha{=}7.5\times10^{5}$cm/s和$E=0.4$eV.
 \label{fig:qo}}
 \end{figure}
 
@@ -517,7 +517,7 @@ Lifshitz-Kosevich公式\cite{lifshitz_kosevich,lifshitz_kosevich_jetp}给出了�
 我们量子化条件【参见\q{eq:rule}】中的次低阶的的相位修正（$\lambda_1,\lambda_2$）包含了轨道劈裂导致的动力学修正以及推广的两带的塞曼作用。如果在某一个具体的能量$E$和磁场$B$的时候，$\lambda_1{=}\lambda_2$ mod $2\pi$，那么在这个能量和磁场附近，会由成对的接近简并的朗道能级。这样的接近简并的朗道能级被称为准简并，朗道能级准简并的可以在示意图\ref{fig:LL}中看出来。
 
 
-对于五个近简并轨道的对称类，我们确定了需要找到一个朗道能级准简并需要调节的实参数的数目；这个数目可以看成对称性相关的朗道能级相互排斥的量化指标。我们将这个数目成为对称性限制的余维数。不同的对称类具有不同的余维数，其取值可能是0，1，2，3，我们的结果总结在表\ref{table:codimension-nearlydegen}和表\ref{table:codimension-exactlydegen}里。
+对于五个近简并轨道的对称类，我们确定了需要找到一个朗道能级准简并需要调节的实参数的数目；这个数目可以看成对称性相关的朗道能级相互排斥的量化指标。我们将这个数目称为对称性限制的余维数。不同的对称类具有不同的余维数，其取值可能是0，1，2，3，我们的结果总结在表\ref{table:codimension-nearlydegen}和表\ref{table:codimension-exactlydegen}里。
 
 如果余维数是1，那么对于近简并轨道，我们可以仅仅通过调节$B$的大小来找到朗道能级准简并。我们在\s{sec:quantosc_quasideg}中讨论了这一点在Shubnikov-de Haas振荡中的体现。如果余维数是2，那么我们需要再多调节一个参数才能找到朗道能级准简并，这个参数可以是磁场的取向\cite{yakovenko_angular_2006}，或者朗道能级的指标（通过调节隧穿谱的偏压）\cite{Sangjun_Cd3As2,Ilija_SnTe,kushwaha_Dirac}。我们在本章主要讨论了二维系统中的朗道能级，但是在三维系统中，平行于磁场方向的晶格波矢也是一个可调参数。
 
@@ -530,6 +530,6 @@ Lifshitz-Kosevich公式\cite{lifshitz_kosevich,lifshitz_kosevich_jetp}给出了�
 我们的余维数分析不仅仅局限于朗道能级的排斥。如果我们仅仅考虑\q{eq:H1}中的贝里联络，那么\q{eq:prop}则会退化为Wilson圈\cite{wilczek_appearance_1984}。因此，Wilson圈也能够被分为十类，同样遵循着\tab{table:codimension-nearlydegen}至\tab{table:codimension-exactlydegen}中的余维数的分析。因此，我们的工作也能够解释Wilson圈的本征值里稳定的交叉，这些交叉在拓扑能带论里得到了广泛的应用。比如说，这样的交叉的存在曾经被用来分析旋转对称性保护的三维的狄拉克点\footnote{文献\onlinecite{gresch_z2pack:_2017}数值上观测到了相应的现象，其解释可以在文献\onlinecite{100p}和文献\onlinecite{li_topological_2017}中找到。}，以及存在旋转对称性的脆弱拓扑相\cite{bouhon_wilson_2018,bradlyn_disconnected_2018}。
 
 
-对称性不仅仅限制了$\lambda_1$和$\lambda_2$之间的能级排斥，在一些特定的对称类里，对称性也会限制他们的和。在我们之前的工作中\cite{100p,topoferm}，我们确定了I-2, II-3和II-4类中，如果自旋轨道耦合可以连续地调整为0并且不改变简并度，$\lambda_1{+}\lambda_2{\equiv}0$。这里，我们提出这个和为零地规则同样适用于近简并的轨道，这一点可以从文献\onlinecite{topoferm}的对称性分析和$\delta\var$的迹是0处看出来【参见\q{eq:H1}】。
+对称性不仅仅限制了$\lambda_1$和$\lambda_2$之间的能级排斥，在一些特定的对称类里，对称性也会限制他们的和。在我们之前的工作中\cite{100p,topoferm}，我们确定了I-2, II-3和II-4类中，如果自旋轨道耦合可以连续地调整为0并且不改变简并度，$\lambda_1{+}\lambda_2{\equiv}0$。这里，我们提出这个和为零的规则同样适用于近简并的轨道，这一点可以从文献\onlinecite{topoferm}的对称性分析和$\delta\var$的迹是0处看出来【参见\q{eq:H1}】。
 
 如果我们考虑非点式的对称性，那么很容易找到四重或者接近四重简并的能带\cite{michel_elementary_2001,wang_hourglass_2016,bradlyn_topological_2017}。此时，我们的量子化条件的更加广泛的形式就可以派上用场，这个结果展示在\app{app:quantizationruleproof}中。这种情况下，余维数的分析则留由以后的工作进行研究。

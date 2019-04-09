@@ -3,7 +3,7 @@
 Wannier函数包含了一个能带的所有信息。不仅如此，由于Wannier函数非常局域，它们可以仅仅用倒空间的很少的一部分$\bk$点构造出来\cite{souza_maximally-localized_2001,marzari_maximally_1997}。在得到Wannier函数之后，任意$\bk$点的本征布洛赫波函数都可以通过一个简单的傅里叶变换求得，这个过程叫做Wannier插值\cite{marzari_maximally_2012}。Wannier插值抓住了布洛赫电子的本质，是一个计算各种物理可观测量的高效的方法。之前的研究将Wannier插值应用在了反常霍尔电导\cite{wang_textitab_2006}，介电常数\cite{yates_spectral_2007}，轨道磁矩\cite{lopez_wannier-based_2012}以及包括位移电流\cite{wang_first-principles_2017,ibanez-azpiroz_ab_2018}和倍频效应\cite{wang_first-principles_2017}的二阶光学效应中。
 
 
-目前的构造Wannier函数的流行算法是最大局域化Wannier函数算法，这个算法将能带混合在一起，通过调整混合的方式将Wannier函数的展宽尽量减小\cite{marzari_maximally_2012}。这个方法非常普适，经常被作为各种第一性原理计算软件包的后处理工具\cite{mostofi_updated_2014}，并且处理方法和第一性原理软件的实现方式几乎无关。但是，由于最大局域化Wannier函数算法本质上是最优化算法，为了避免局域最小，初始的猜测Wannier函数以及很多其他参数都需要小心的测试。这个过程不可避免的需要人的参与，因此在高通量计算中不太适用。而且，在优化Wannier函数的过程中对称性一般会被破坏，这些对称性在材料性质，比如非线性光学效应和拓扑性质中，往往起着重要的作用。一个解决这些问题的方案是采用基于实空间局域基组的密度泛函计算方法，很多的第一性原理计算软件包已经采用了这样的计算方法。但是，一个非常重要的事实是绝大部分采用实空间局域基组的第一性原理计算软件包都用的是非正交的局域基组。这个做法主要有两个原因：（一）非正交局域基组基本而言没有长尾效应，能够做得更加局域。（二）构造大量得非正交局域基组更加容易。目前的Wannier插值方法都是假设Wannier函数是正交的，因此不能够直接用于非正交局域基组。因此，将Wannier插值方法推广到非正交局域基组就显得非常必要。
+目前的构造Wannier函数的流行算法是最大局域化Wannier函数算法，这个算法将能带混合在一起，通过调整混合的方式将Wannier函数的展宽尽量减小\cite{marzari_maximally_2012}。这个方法非常普适，经常被作为各种第一性原理计算软件包的后处理工具\cite{mostofi_updated_2014}，并且处理方法和第一性原理软件的实现方式几乎无关。但是，由于最大局域化Wannier函数算法本质上是最优化算法，为了避免局域最小，初始的猜测Wannier函数以及很多其他参数都需要小心的测试。这个过程不可避免的需要人的参与，因此在高通量计算中不太适用。而且，在优化Wannier函数的过程中对称性一般会被破坏，这些对称性在材料性质，比如非线性光学效应和拓扑性质中，往往起着重要的作用。一个解决这些问题的方案是采用基于实空间局域基组的密度泛函计算方法，很多的第一性原理计算软件包已经采用了这样的计算方法。但是，一个非常重要的事实是绝大部分采用实空间局域基组的第一性原理计算软件包都用的是非正交的局域基组。这个做法主要有两个原因：（一）非正交局域基组一般而言没有长尾效应，能够做得更加局域。（二）构造大量的非正交局域基组更加容易。目前的Wannier插值方法都是假设Wannier函数是正交的，因此不能够直接用于非正交局域基组。因此，将Wannier插值方法推广到非正交局域基组就显得非常必要。
 
 本章我们将发展一个基于非正交局域基组的广义的Wannier插值方法。这个方法可以计算能带能量和相应布洛赫波函数的任意阶导数。因此，这个方法适合用来计算多种线性和非线性响应函数。我们以WS$_2$的介电常数和位移电导为例，作为这个方法可以计算线性和非线性响应的例子。我们得到的结果和之前的工作是完全一致的。最后，我们讨论了这个方法的性能和对称性相关的性质。
 
@@ -42,7 +42,7 @@ S_{nm}(\boldsymbol{k}) & \equiv\langle\psi_{n\boldsymbol{k}}^{(\text{W})}|\psi_{
 \begin{equation}
 H(\boldsymbol{k})v_{n\boldsymbol{k}}=E_{l\boldsymbol{k}}S(\boldsymbol{k})v_{n\boldsymbol{k}}.\label{eq:gep}
 \end{equation}
-上式仅仅薛定谔方程在非正交基$|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle$下的表示。 $v_{n\boldsymbol{k}}$ 是一个列向量，有$N$个线性独立的解，这些解构成了$V$的列。值得注意的是$V$不是一个幺正矩阵。我们假设非正交局域基是线性无关的，那么$S$既是正定的，也是厄米的。这样的广义本征值问题的行为很好，并且本征矢可以按下面的式子归一。
+上式仅仅是薛定谔方程在非正交基$|\psi_{n\boldsymbol{k}}^{(\text{W})}\rangle$下的表示。 $v_{n\boldsymbol{k}}$ 是一个列向量，有$N$个线性独立的解，这些解构成了$V$的列。值得注意的是$V$不是一个幺正矩阵。我们假设非正交局域基是线性无关的，那么$S$既是正定的，也是厄米的。这样的广义本征值问题的行为很好，并且本征矢可以按下面的式子归一。
 \begin{equation}
 v_{n}^{\dagger}Sv_{m}=\delta_{nm}.\label{eq:norm}
 \end{equation}
@@ -69,7 +69,7 @@ $\hat{r}$ 是位置算符，$\partial_{\alpha}\equiv\partial_{k^{\alpha}}$，$\a
 与此相反的是，在基于最大局域化Wannier函数的Wannier插值方法中，$\langle\boldsymbol{0}m|\hat{r}^{\alpha}|\boldsymbol{R}n\rangle$ （在固定 $\boldsymbol{R}$的情况）下是一个厄米矩阵。 
 
 但是，计算$V^{\dagger}S\partial_{\alpha}V$仍然会遇到随机相位的问题，因为$V$仍然是对角化得到的。幸运的是，由于$\langle\boldsymbol{0}n|\hat{H}|\boldsymbol{R}m\rangle$,
-$\langle\boldsymbol{0}n|\boldsymbol{R}m\rangle$和$\langle\boldsymbol{0}n|\hat{r}^{\alpha}|\boldsymbol{R}m\rangle$这三个矩阵可以从第一性原理求得，$H$, $S$ 和 $\berry^{(\text{W})}$的任意阶导数都可以得到。这样，计算 $V^{\dagger}S\partial_{\alpha}V$ \cite{van2007computation}便成为了可能耐。这里，我们在$\Gamma$点 ($\boldsymbol{k}=\boldsymbol{0}$)计算
+$\langle\boldsymbol{0}n|\boldsymbol{R}m\rangle$和$\langle\boldsymbol{0}n|\hat{r}^{\alpha}|\boldsymbol{R}m\rangle$这三个矩阵可以从第一性原理求得，$H$, $S$ 和 $\berry^{(\text{W})}$的任意阶导数都可以得到。这样，计算 $V^{\dagger}S\partial_{\alpha}V$ \cite{van2007computation}便成为了可能。这里，我们在$\Gamma$点 ($\boldsymbol{k}=\boldsymbol{0}$)计算
 $V^{\dagger}S\partial_{\alpha}V$作为一个例子。对式\ref{eq:gep}两边微分，可以得到
 \begin{align}
 \begin{split}
@@ -106,9 +106,9 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 如果是正交的Wannier函数\cite{wang_first-principles_2017}，我们只需要在上式中将$S$设为$I$。 $V^{\dagger}S\partial_{\beta}\partial_{\alpha}V$的计算和$V^{\dagger}S\partial_{\alpha}V$的计算遵循相似的逻辑。但是不难想象，最后的表达式应该非常复杂。因此，我们在\app{app:degep}中介绍一种递归的计算方法，这个方法可以得到$v_n$和$E_{n}$的任意阶导数。
 
 
-另外一个计算贝里相位的办法是对\ref{eq:gep}采用 $S^{-1/2}$进行正交化，然后采用传统的Wannier插值方法进行计算。但是由于Wannier插值需要对正交化过的哈密顿量的任意阶导数，这个方法需要求得对$S^{-1/2}$的任意阶导数。这个方法将在\s{sec:orthogonalization}里面阐释。
+另外一个计算贝里相位的办法是对\ref{eq:gep}采用 $S^{-1/2}$进行正交化，然后采用传统的Wannier插值方法进行计算。但是由于Wannier插值需要正交化过的哈密顿量的任意阶导数，这个方法需要求得对$S^{-1/2}$的任意阶导数。这个方法将在\s{sec:orthogonalization}里面阐释。
 
-既然我们已经得到了线性和非线性响应函数的所需要矩阵元，我们下面以单层WS$_2$的介电常数和位移电导进行计算，并且和之前的工作进行对比。
+既然我们已经得到了线性和非线性响应函数的所需要矩阵元，我们下面对单层WS$_2$的介电常数和位移电导进行计算，并且和之前的工作进行对比。
 
 \section{单层WS$_2$的位移电流}
 
@@ -120,7 +120,7 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 
 \subsection{计算方法}
 
-由于单层 WS$_2$的点群是$D_{6h}$，位移电导只有一个独立的，不为零的分量 $\sigma^{yyy}$\cite{bilbao,wang_first-principles_2017}。根据文献\onlinecite{wang_first-principles_2017}的惯例，我们采用二维电流密度的定义。我们的第一性原理计算采用了一个全电子的软件包\textsc{fhi-aims}。电子的交换关联作用采用了PBE泛函\cite{perdew_generalized_1996}来处理。我们采用一个层状模型来模拟单层WS$_2$，其中真空层的厚度超过了15\AA。在自洽计算中，我们采用了$12\times12\times1$的$\bk$点来进行布里渊区的积分。但是在计算位移电流的时候，我们采用了密得多的$400\times400\times1$的$\bk$点进行数值积分。在\textsc{fhi-aims}数值积分中，我们采用了“tight”的数值设定，这个设定足以保证原子轨道基矢能够充分地展开Kohn-Sham波函数，并且实空间积分的格点也能够收敛\cite{blum_ab_2009}。我们没有引入自旋轨道耦合。在几分钟，我们采用了$\delta$函数的近似
+由于单层 WS$_2$的点群是$D_{6h}$，位移电导只有一个独立的，不为零的分量 $\sigma^{yyy}$\cite{bilbao,wang_first-principles_2017}。根据文献\onlinecite{wang_first-principles_2017}的惯例，我们采用二维电流密度的定义。我们的第一性原理计算采用了一个全电子的软件包\textsc{fhi-aims}。电子的交换关联作用采用了PBE泛函\cite{perdew_generalized_1996}来处理。我们采用一个层状模型来模拟单层WS$_2$，其中真空层的厚度超过了15\AA。在自洽计算中，我们采用了$12\times12\times1$的$\bk$点来进行布里渊区的积分。但是在计算位移电流的时候，我们采用了密得多的$400\times400\times1$的$\bk$点进行数值积分。在\textsc{fhi-aims}数值积分中，我们采用了“tight”的数值设定，这个设定足以保证原子轨道基矢能够充分地展开Kohn-Sham波函数，并且实空间积分的格点也能够收敛\cite{blum_ab_2009}。我们没有引入自旋轨道耦合。在计算中，我们采用了$\delta$函数的近似
 \[
 \delta(x)=\lim_{\epsilon\to0}\frac{1}{\pi}\frac{\epsilon}{\epsilon^2+x^2},
 \]
@@ -129,14 +129,14 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 
 \subsection{结果}
 
-\fig{fig:WS2}里展示了单层WS$_2$的位移电导。这个结果和之前工作\onlinecite{wang_first-principles_2017}中基于最大局域化Wannier函数的Wannier插值结果在相同参数情况下进行了对比。我们可以看到，尽管我们采用了不同的软件包，不同的DFT实现方式，两种方式计算得到的位移电导的曲线几乎完全重合。除此之外，我们还采用基于最大局域化Wannier函数和基于非正交局域函数的Wannier插值方法计算了光学吸收，也就是介电函数的虚部，这个结果战士在\fig{fig:WS2}中。介电函数和位移电导的曲线都有两个峰，一个峰在2.75eV，另外一个峰在3.05eV。尽管介电函数在3.05eV处的峰高于2.75eV处的峰，位移电导的特征却正好相反。这个差别应该是有位移矢量的不同导致的。在\fig{fig:WS2}中，我们将这两个峰的贡献分解在了能带上，红色和蓝色的点的大小体现了这个点对2.75eV和3.05eV处的峰的贡献大小。我们从图中可以看出这两个峰都是由最高的价带和最低的四条导带在$\Gamma$和$K$点附近贡献的。
+\fig{fig:WS2}里展示了单层WS$_2$的位移电导。这个结果和之前工作\onlinecite{wang_first-principles_2017}中基于最大局域化Wannier函数的Wannier插值结果在相同参数情况下进行了对比。我们可以看到，尽管我们采用了不同的软件包，不同的DFT实现方式，两种方式计算得到的位移电导的曲线几乎完全重合。除此之外，我们还采用基于最大局域化Wannier函数和基于非正交局域函数的Wannier插值方法计算了光学吸收，也就是介电函数的虚部，这个结果展示在\fig{fig:WS2}中。介电函数和位移电导的曲线都有两个峰，一个峰在2.75eV，另外一个峰在3.05eV。尽管介电函数在3.05eV处的峰高于2.75eV处的峰，位移电导的特征却正好相反。这个差别应该是由位移矢量的不同导致的。在\fig{fig:WS2}中，我们将这两个峰的贡献分解在了能带上，红色和蓝色的点的大小体现了这个点对2.75eV和3.05eV处的峰的贡献大小。我们从图中可以看出这两个峰都是由最高的价带和最低的四条导带在$\Gamma$和$K$点附近贡献的。
 
 
 \subsection{关于方法的讨论}
 
-我们已经知道，最大局域化Wannier函数在构造过程中一般会轻微破坏对称性，这一点体现在本应简并的能带在Wannier差值的时候出现一个很小的带隙。在位移电导上，这个特征体现在即使Wannier函数构造的时候收敛良好，被对称性禁戒的分量计算的时候也会得到不为零的值。但是，由于仅仅不可约布里渊区中的点才会被积分，基于非正交局域函数的第一性原理软件不会出现这样的问题。我们在\fig{fig:performance}中展示了用最大局域化Wannier函数和非正交局域基组计算的单层WS$_2$的$\sigma^{xxx}$分量，这个分量是被对称性禁戒的。我们可以看到基于最大局域化Wannier函数的方法有一个1$\mu$A$\cdot$\AA/V$^2$左右的值，而基于非正交局域基组的Wannier插值则基本为零（不大于）$10^{-4}\mu$A$\cdot$\AA/V$^2$。从这个角度看，基于非正交局域基组的Wannier插值能够很好的保持对称性。
+我们已经知道，最大局域化Wannier函数在构造过程中一般会轻微破坏对称性，这一点体现在本应简并的能带在Wannier插值的时候出现一个很小的带隙。在位移电导上，这个特征体现在即使Wannier函数构造的时候收敛良好，被对称性禁戒的分量计算的时候也会得到不为零的值。但是，由于仅仅不可约布里渊区中的点才会被积分，基于非正交局域函数的第一性原理软件不会出现这样的问题。我们在\fig{fig:performance}中展示了用最大局域化Wannier函数和非正交局域基组计算的单层WS$_2$的$\sigma^{xxx}$分量，这个分量是被对称性禁戒的。我们可以看到基于最大局域化Wannier函数的方法有一个1$\mu$A$\cdot$\AA/V$^2$左右的值，而基于非正交局域基组的Wannier插值则基本为零（不大于）$10^{-4}\mu$A$\cdot$\AA/V$^2$。从这个角度看，基于非正交局域基组的Wannier插值能够很好的保持对称性。
 
-第一性原理计算，尤其是全电子的第一性原理计算，一般需要采用大量的轨道来展开希尔伯特空间，与此相反，最大局域化Wannier函数则仅仅需要在费米面附近构造，因此，计算中我们非正交局域基组的数量往往远超Wannier函数的数目。从这个角度来讲，本章提出的方法计算量更加大一些。在这样的情况下，我们测试了计算时间和非正交局域基组数量的关系。我们发现，计算时间基本上和非正交局域基组的数目的关系是$\text{O}(N^2)$，这里$N$是非正交局域基组的数目（见\fig{fig:performance}）。这一点是比较奇怪的，因为对角化的计算复杂度往往是$\text{O}(N^3)$。进一步的分析表明，绝大部分计算计算时间用在了变换，也就是计算$H$, $S$, $A^{(\text{W})}$及其导数上。因此，对于正常大小的体系，我们可以简单的认为计算复杂度就是是$\text{O}(N^2)$。
+第一性原理计算，尤其是全电子的第一性原理计算，一般需要采用大量的轨道来展开希尔伯特空间，与此相反，最大局域化Wannier函数则仅仅需要在费米面附近构造，因此，计算中我们非正交局域基组的数量往往远超Wannier函数的数目。从这个角度来讲，本章提出的方法计算量更加大一些。在这样的情况下，我们测试了计算时间和非正交局域基组数量的关系。我们发现，计算时间基本上和非正交局域基组的数目的关系是$\text{O}(N^2)$，这里$N$是非正交局域基组的数目（见\fig{fig:performance}）。这一点是比较奇怪的，因为对角化的计算复杂度往往是$\text{O}(N^3)$。进一步的分析表明，绝大部分计算计算时间用在了变换，也就是计算$H$, $S$, $A^{(\text{W})}$及其导数上。因此，对于正常大小的体系，我们可以简单的认为计算复杂度就是$\text{O}(N^2)$。
 
 \begin{figure}
     \includegraphics[width=0.9\textwidth]{performance.png}
@@ -151,7 +151,7 @@ v_{n}^{\dagger}S\partial_\alpha v_n=-\frac{1}{2}v_{n}^{\dagger}(\partial_\alpha 
 |\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle=
 \sum_m |\psi^{(\text{W})}_{m\boldsymbol{k}}\rangle S^{-1/2}_{mn}(\boldsymbol{k}).
 \end{equation}
-在这组正交基组下，哈密顿量$|\psi^{(\text{O})}_{n\boldsymbol{k}}\rangle$和$H^{(\text{W})}(\boldsymbol{k})$的关系是
+在这组正交基下，哈密顿量$H^{(\text{O})}(\boldsymbol{k})$和$H^{(\text{W})}(\boldsymbol{k})$的关系是
 \begin{equation}
 H^{(\text{O})}(\boldsymbol{k})=S^{1/2}(\boldsymbol{k})H^{(\text{W})}(\boldsymbol{k})S^{-1/2}(\boldsymbol{k}).\label{HO-HW}
 \end{equation}
